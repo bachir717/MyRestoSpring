@@ -1,5 +1,6 @@
 package eu.ensup.MyResto.domaine;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,12 +15,15 @@ import java.util.Collections;
 import java.util.List;
 
 @Entity
+@Table(name = "User")
 @Getter
 @Setter
+@AllArgsConstructor
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, updatable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String lastName;
@@ -31,6 +35,11 @@ public class User implements UserDetails {
     @OneToMany
     private List<Orders> orders = new ArrayList<>();
 
+    public User(String username) {
+        this.username = username;
+    }
+    public User() {
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

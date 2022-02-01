@@ -8,6 +8,7 @@ import java.util.Set;
 
 
 @Entity
+@Table(name = "Product")
 @Getter
 @Setter
 public class Product {

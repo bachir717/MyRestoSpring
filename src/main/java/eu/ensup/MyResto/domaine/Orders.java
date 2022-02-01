@@ -8,6 +8,7 @@ import java.sql.Date;
 import java.util.Set;
 
 @Entity
+@Table(name = "Orders")
 @Getter
 @Setter
 public class Orders {
