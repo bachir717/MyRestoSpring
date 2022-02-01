@@ -2,7 +2,7 @@ package eu.ensup.MyResto.TestDao;
 
 
 import eu.ensup.MyResto.MyRestoApplication;
-import eu.ensup.MyResto.domaine.Roles;
+import eu.ensup.MyResto.model.Roles;
 import eu.ensup.MyResto.domaine.User;
 import eu.ensup.MyResto.repository.UserRepository;
 import org.junit.Test;
