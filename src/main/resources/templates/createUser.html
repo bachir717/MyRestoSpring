@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link th:href="@{/assets/main.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="content form">
+    <form action="#" th:action="@{/saveUser/}" th:object="${user}" method="post">
+        <input class="user_input" placeholder="Name" type="text" th:field="*{username}"/>
+        <input class="user_input" placeholder="Mot de passe" type="text" th:field="*{password}"/>
+        <input class="user_button" type="submit" value="Enregistrer"/>
+    </form>
+</div>
+</body>
+</html>
