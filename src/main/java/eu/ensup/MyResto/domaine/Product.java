@@ -1,7 +1,9 @@
 package eu.ensup.MyResto.domaine;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -11,6 +13,8 @@ import java.util.Set;
 @Table(name = "Product")
 @Getter
 @Setter
+@AllArgsConstructor
+@ToString
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,4 +23,7 @@ public class Product {
     private String type;
     private String picture;
 
+    public Product() {
+
+    }
 }

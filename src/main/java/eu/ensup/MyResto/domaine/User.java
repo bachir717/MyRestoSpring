@@ -4,9 +4,11 @@ import eu.ensup.MyResto.model.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
+@ToString
 public class User implements UserDetails {
 
     @Id
@@ -32,7 +35,7 @@ public class User implements UserDetails {
     private Roles role; // changer mettre l'enum
     private String password;
     private String picture;
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Orders> orders = new ArrayList<>();
 
     public User() {
