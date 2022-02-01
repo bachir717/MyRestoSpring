@@ -3,6 +3,7 @@ package eu.ensup.MyResto.controller;
 
 import eu.ensup.MyResto.domaine.User;
 import eu.ensup.MyResto.service.AuthService;
+import eu.ensup.MyResto.service.OpinionsService;
 import eu.ensup.MyResto.service.ProductService;
 import eu.ensup.MyResto.service.UserService;
 import lombok.extern.log4j.Log4j2;
@@ -20,6 +21,9 @@ public class HomeController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private OpinionsService opinionsService;
 
 
     @GetMapping("/")
