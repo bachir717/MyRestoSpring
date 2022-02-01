@@ -1,4 +1,4 @@
-package eu.ensup.MyResto.TestDao;
+package eu.ensup.MyResto.TestRepo;
 
 
 import eu.ensup.MyResto.MyRestoApplication;
