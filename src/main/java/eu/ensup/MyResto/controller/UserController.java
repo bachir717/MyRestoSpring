@@ -21,7 +21,7 @@ public class UserController {
     @Autowired
     private AuthService authService;
 
-    @GetMapping("/")
+    @GetMapping("/CreateUser")
     public String viewCreateUserPage(Model model) {
         log.info("viewCreateUserPage");
         model.addAttribute("user", new User());
