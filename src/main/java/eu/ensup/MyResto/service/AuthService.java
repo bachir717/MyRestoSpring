@@ -27,11 +27,11 @@ public class AuthService {
     @Autowired
     private JwtProvider jwtProvider;
 
-    public void signup(User user) {
+    public User signup(User user) {
         user.setUsername(user.getUsername());
         user.setPassword(encodePassword(user.getPassword()));
         user.setRole(String.valueOf(Roles.USER));
-        userRepository.save(user);
+        return userRepository.save(user);
     }
 
     public String signin(User user) {
@@ -40,7 +40,7 @@ public class AuthService {
         return jwtProvider.generateToken(authenticate);
     }
 
-    private String encodePassword(String password) {
+    protected String encodePassword(String password) {
         return passwordEncoder.encode(password);
     }
 }
