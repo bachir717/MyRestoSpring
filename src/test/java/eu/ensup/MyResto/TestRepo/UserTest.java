@@ -32,14 +32,14 @@ public class UserTest {
 
     @Test
     public void TestSaveUser() {
-        User user = new User(0L,"Flavien","Annaix","Flavien.annaix@gmail.com","24 bis", Roles.USER,"azerty","",null);
+        User user = new User(0L,"Flavien","Annaix","Flavien.annaix@gmail.com","24 bis", Roles.USER,"azerty","",null,null);
         User retrunSave =  userRepository.save(user);
         assertThat(retrunSave.getUsername()).isEqualTo(user.getUsername());
     }
 
     @Test
     public void TestSaveUserAndFinbyUsername() {
-        User user = new User(0L,"USerName","Annaix","Flavien.annaix@gmail.com","24 bis", Roles.USER,"azerty","",null);
+        User user = new User(0L,"USerName","Annaix","Flavien.annaix@gmail.com","24 bis", Roles.USER,"azerty","",null,null);
         User repo =  userRepository.save(user);
         Optional<User> found = userRepository.findByUsername(user.getUsername());
         assertThat(found.get().getUsername()).isEqualTo(user.getUsername());
@@ -48,7 +48,7 @@ public class UserTest {
     @Test
     public void TestGetAllUsers() {
         for (int i =0 ; i < 10 ; i++)
-            userRepository.save(new User(0L,"Flavien"+i,"Annaix"+i,"Flavien.annaix@gmail.com"+i,"24 bis", Roles.USER,"azerty","",null));
+            userRepository.save(new User(0L,"Flavien"+i,"Annaix"+i,"Flavien.annaix@gmail.com"+i,"24 bis", Roles.USER,"azerty","",null,null));
 
         List<User> allUsers = userRepository.findAll();
         assertThat(allUsers.size()).isEqualTo(10);
@@ -59,7 +59,7 @@ public class UserTest {
 
 
         for (int i =2 ; i < 10 ; i++)
-            userRepository.save(new User(0L,"Flavien"+i,"Annaix"+i,"Flavien.annaix@gmail.com"+i,"24 bis", Roles.USER,"azerty","",null));
+            userRepository.save(new User(0L,"Flavien"+i,"Annaix"+i,"Flavien.annaix@gmail.com"+i,"24 bis", Roles.USER,"azerty","",null,null));
 
         User user = userRepository.getById(1L);
 
