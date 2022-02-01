@@ -2,6 +2,7 @@ package eu.ensup.MyResto.TestDao;
 
 
 import eu.ensup.MyResto.MyRestoApplication;
+import eu.ensup.MyResto.domaine.Roles;
 import eu.ensup.MyResto.domaine.User;
 import eu.ensup.MyResto.repository.UserRepository;
 import org.junit.Test;
@@ -25,17 +26,17 @@ public class UserTest {
     private UserRepository userRepository;
     @Test
     public void TestSaveUser() {
-        User alex = new User("alex2");
-        User repo =  userRepository.save(alex);
-        assertThat(repo.getUsername()).isEqualTo(alex.getUsername());
+        User user = new User(0L,"Flavien","Annaix","Flavien.annaix@gmail.com","24 bis", Roles.USER,"azerty","",null);
+        User retrunSave =  userRepository.save(user);
+        assertThat(retrunSave.getUsername()).isEqualTo(user.getUsername());
     }
 
     @Test
     public void TestSaveUserAndFinbyUsername() {
-        User alex = new User("alex");
-        User repo =  userRepository.save(alex);
-        Optional<User> found = userRepository.findByUsername(alex.getUsername());
-        assertThat(found.get().getUsername()).isEqualTo(alex.getUsername());
+        User user = new User(0L,"Flavien2","Annaix","Flavien.annaix@gmail.com","24 bis", Roles.USER,"azerty","",null);
+        User repo =  userRepository.save(user);
+        Optional<User> found = userRepository.findByUsername(user.getUsername());
+        assertThat(found.get().getUsername()).isEqualTo(user.getUsername());
     }
 
 

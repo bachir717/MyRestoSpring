@@ -29,21 +29,20 @@ public class User implements UserDetails {
     private String lastName;
     private String email;
     private String address;
-    private String role; // changer mettre l'enum
+    private Roles role; // changer mettre l'enum
     private String password;
     private String picture;
     @OneToMany
     private List<Orders> orders = new ArrayList<>();
 
-    public User(String username) {
-        this.username = username;
-    }
     public User() {
+
     }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority(this.role));
+        return Collections.singleton(new SimpleGrantedAuthority(this.role.toString()));
     }
 
     @Override
