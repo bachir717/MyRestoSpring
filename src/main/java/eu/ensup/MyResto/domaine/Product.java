@@ -12,6 +12,7 @@ import java.util.Set;
 @Setter
 public class Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Float price;
     private String type;

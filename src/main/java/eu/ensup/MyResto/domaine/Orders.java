@@ -13,6 +13,7 @@ import java.util.Set;
 public class Orders {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Float price;
     private Date created;
