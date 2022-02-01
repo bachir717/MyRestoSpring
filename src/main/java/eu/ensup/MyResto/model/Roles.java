@@ -1,4 +1,4 @@
-package eu.ensup.MyResto.domaine;
+package eu.ensup.MyResto.model;
 
 public enum Roles {
     GERANT,

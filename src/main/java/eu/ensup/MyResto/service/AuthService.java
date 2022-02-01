@@ -1,6 +1,6 @@
 package eu.ensup.MyResto.service;
 
-import eu.ensup.MyResto.domaine.Roles;
+import eu.ensup.MyResto.model.Roles;
 import eu.ensup.MyResto.domaine.User;
 import eu.ensup.MyResto.repository.UserRepository;
 import eu.ensup.MyResto.security.JwtProvider;
@@ -30,7 +30,7 @@ public class AuthService {
     public User signup(User user) {
         user.setUsername(user.getUsername());
         user.setPassword(encodePassword(user.getPassword()));
-        user.setRole(String.valueOf(Roles.USER));
+        user.setRole(Roles.USER);
         return userRepository.save(user);
     }
 

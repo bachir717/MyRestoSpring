@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property resource="application.properties"/>
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${logging.pattern.console}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="trace-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logging.file.path}/trace.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logging.file.path}/%d{yyyy-MM-dd}/trace.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${logging.pattern.file}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>TRACE</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="debug-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logging.file.path}/debug.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logging.file.path}/%d{yyyy-MM-dd}/debug.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${logging.pattern.file}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="info-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logging.file.path}/info.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logging.file.path}/%d{yyyy-MM-dd}/info.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${logging.pattern.file}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="warn-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logging.file.path}/warn.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logging.file.path}/%d{yyyy-MM-dd}/warn.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${logging.pattern.file}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="error-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logging.file.path}/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logging.file.path}/%d{yyyy-MM-dd}/error.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${logging.pattern.file}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="fatal-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logging.file.path}/fatal.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logging.file.path}/%d{yyyy-MM-dd}/fatal.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${logging.pattern.file}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>FATAL</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="off-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logging.file.path}/off.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logging.file.path}/%d{yyyy-MM-dd}/off.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${logging.pattern.file}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>OFF</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="Console" level="INFO"/>
+        <appender-ref ref="trace-log"/>
+        <appender-ref ref="debug-log"/>
+        <appender-ref ref="info-log"/>
+        <appender-ref ref="warn-log"/>
+        <appender-ref ref="error-log"/>
+        <appender-ref ref="fatal-log"/>
+        <appender-ref ref="off-log"/>
+    </root>
+</configuration>
