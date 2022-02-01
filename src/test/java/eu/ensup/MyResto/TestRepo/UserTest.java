@@ -7,7 +7,9 @@ import eu.ensup.MyResto.domaine.User;
 import eu.ensup.MyResto.repository.UserRepository;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -51,19 +53,32 @@ public class UserTest {
         List<User> allUsers = userRepository.findAll();
         assertThat(allUsers.size()).isEqualTo(10);
     }
-
     @Test
-    @Ignore
+    @Order(1)
     public void TestGetOneUserByID() {
 
-        userRepository.save(new User(0L,"user1","Annaix","Flavien.annaix@gmail.com","24 bis", Roles.USER,"azerty","",null));
 
         for (int i =2 ; i < 10 ; i++)
             userRepository.save(new User(0L,"Flavien"+i,"Annaix"+i,"Flavien.annaix@gmail.com"+i,"24 bis", Roles.USER,"azerty","",null));
 
         User user = userRepository.getById(1L);
 
-        assertThat(user.getUsername()).isEqualTo("user1");
+        assertThat(user.getUsername()).isEqualTo("Flavien0");
     }
 
+    @Test
+    @AfterAll
+    public void TestDeleteUser() {
+
+        List<User> allUsersBefore = userRepository.findAll();
+        userRepository.deleteById(1L);
+        List<User> allUsersAfter = userRepository.findAll();
+        assertThat(allUsersAfter.size()).isEqualTo(allUsersBefore.size()-1);
+    }
+    public void TestDeleteAllUser() {
+
+        userRepository.deleteAll();
+        List<User> allUsersAfter = userRepository.findAll();
+        assertThat(allUsersAfter.size()).isEqualTo(0);
+    }
 }
