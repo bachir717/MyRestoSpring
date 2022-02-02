@@ -1,121 +1,139 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
-    <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="script.js"></script>
-        <script>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="script.js"></script>
+    <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', '');
-        </script>
-        <!-- Technical needs -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- To support IE8 and IE9 -->
-        <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Control layout on mobile -->
+    </script>
+    <!-- Technical needs -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- To support IE8 and IE9 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Control layout on mobile -->
 
-        <!-- Stuff that is visible or useful for SEO -->
-        <title>Titre de la page</title>
+    <!-- Stuff that is visible or useful for SEO -->
+    <title>Titre de la page</title>
 
-        <meta name="description" content="">
-        <meta charset="utf-8">
-        <meta name="theme-color" content="#141414">
-        <meta name="locale" content="en_US">
-        <meta name="keywords" content="keyword, keyword">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="thumbnail" content=""/><!-- The image visible in search results -->
+    <meta name="description" content="">
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#141414">
+    <meta name="locale" content="en_US">
+    <meta name="keywords" content="keyword, keyword">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="thumbnail" content=""/><!-- The image visible in search results -->
 
-        <meta name="robots" content="index, follow, all" />
+    <meta name="robots" content="index, follow, all"/>
 
-        <link rel="manifest" href="manifest.json"> <!-- Link to the manifest.json -->
-        <link rel="canonical" href="">
-        <link rel="shortcut icon shortcut apple-touch-icon apple-touch-icon-precomposed" type="image/png" href="/img/logos/logo.png">
+    <link rel="manifest" href="manifest.json"> <!-- Link to the manifest.json -->
+    <link rel="canonical" href="">
+    <link rel="shortcut icon shortcut apple-touch-icon apple-touch-icon-precomposed" type="image/png"
+          href="/img/logos/logo.png">
 
-        <!-- For sharing purposes -->
-        <meta property="og:url" content="" />
-        <meta property="og:type" content="" /><!-- On peut ajouter plusieurs types -->
-        <meta property="og:title" content="" />
-        <meta property="og:description" content="">
-        <meta property="og:site_name" content="1234.com">
-        <meta property="og:image" content="" />
-        <meta property="og:image:height" content="1200" />
-        <meta property="og:image:width" content="630" />
+    <!-- For sharing purposes -->
+    <meta property="og:url" content=""/>
+    <meta property="og:type" content=""/><!-- On peut ajouter plusieurs types -->
+    <meta property="og:title" content=""/>
+    <meta property="og:description" content="">
+    <meta property="og:site_name" content="1234.com">
+    <meta property="og:image" content=""/>
+    <meta property="og:image:height" content="1200"/>
+    <meta property="og:image:width" content="630"/>
 
-        <meta property="fb:app_id" content=""><!-- Doesnt do anything -->
-    
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="">
-        <meta name="twitter:description" content="">
-        <meta name="twitter:image" content="">
+    <meta property="fb:app_id" content=""><!-- Doesnt do anything -->
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="styles.css">
-        <!-- External Libraries DN'ai eue S -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <!-- Google Fonts for the fonts -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&family=Roboto+Slab&display=swap" rel="stylesheet">
-        <!-- Font Awesome for the icons -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
 
-        <base href="/">
-        <meta name="google-site-verification" content="xmPhBSEBg0SJc5EZjqOlWFBigNILnPy54t_XVX8dLk8" />
-        <script src="" async defer></script>
-        <link th:href="@{/assets/styles.css}" rel="stylesheet" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- External Libraries DN'ai eue S -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- Google Fonts for the fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&family=Roboto+Slab&display=swap"
+          rel="stylesheet">
+    <!-- Font Awesome for the icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
 
-        <!-- <meta http-equiv="refresh" content="3"> -->
-    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
-    <body class="scrollbar-ok">
-    <!-- For Seo : 1 Use the right tag, 2 : use alt, title and so on, 3 : post regularly -->
+    <base href="/">
+    <meta name="google-site-verification" content="xmPhBSEBg0SJc5EZjqOlWFBigNILnPy54t_XVX8dLk8"/>
+    <script src="" async defer></script>
+    <link th:href="@{/assets/styles.css}" rel="stylesheet"/>
 
-        <header>
-            <div th:replace="fragments/header :: header"></div>
-        </header>
+    <!-- <meta http-equiv="refresh" content="3"> -->
+    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script>
+</head>
+<body class="scrollbar-ok">
+<!-- For Seo : 1 Use the right tag, 2 : use alt, title and so on, 3 : post regularly -->
 
-        <main>
+<header>
+    <div th:replace="fragments/header :: header"></div>
+</header>
 
-                <div class="main_container--form">
-                    <div class="_row">
-                        <h1 class="_col-12">Commande en cours</h1>
-                        <h2 class="_col-12">Récapitulatif de la commande en cours</h2>
-                        <table class="table-spring _col-12 scrollbar-ok">
-                            <tbody>
-                                <tr>
-                                    <td>Frites</td>
-                                    <td>1</td>
-                                    <td>3 €</td>
-                                    <td><button class="button-round button--full button-round--main">-1</td>
-                                    <td><button class="button-round button--full">+1</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Pizza</td>
-                                    <td>2</td>
-                                    <td>23 €</td>
-                                    <td><button class="button-round button--full button-round--main">-1</td>
-                                    <td><button class="button-round button--full">+1</td>
-                                  </tr>
-                            </tbody>
-                          </table>
-                          <a class="link-normal" style="color:var(--color-opposite)!important">Retourner à la carte</a>
-                          <div class="_col-12 button-handler">
-                            <button class="button-round button--big"><i class="fas fa-check"></i> Valider la commande</button>
-                        </div>
-                    </div>
+<main>
+
+    <div class="main_container--form">
+        <div class="_row">
+            <h1 class="_col-12">Commande en cours</h1>
+            <h2 class="_col-12">Récapitulatif de la commande en cours</h2>
+            <table class="table-spring _col-12 scrollbar-ok">
+                <tbody>
+                <tr>
+                    <td>Frites</td>
+                    <td>1</td>
+                    <td>3 €</td>
+                    <td>
+                        <button class="button-round button--full button-round--main">-1
+                    </td>
+                    <td>
+                        <button class="button-round button--full">+1
+                    </td>
+                </tr>
+                <tr>
+                    <td>Pizza</td>
+                    <td>2</td>
+                    <td>23 €</td>
+                    <td>
+                        <button class="button-round button--full button-round--main">-1
+                    </td>
+                    <td>
+                        <button class="button-round button--full">+1
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <a class="link-normal" style="color:var(--color-opposite)!important">Retourner à la carte</a>
+            <div class="_col-12 button-handler">
+                <button class="button-round button--big"><i class="fas fa-check"></i> Valider la commande</button>
             </div>
+        </div>
+    </div>
 
-        </main>
-        
-        <footer>
-            <div th:replace="fragments/footer :: footer"></div>
-        </footer>
+</main>
 
-        <nav class="navbar-mobile">
-            <a><i class="fas fa-pizza-slice"></i></a>
-            <a><i class="fas fa-clipboard"></i></a>
-            <a><span><i class="fas fa-shopping-cart"></i> 1</span></a>
-            <a><i class="fas fa-user"></i></a>
-        </nav>
+<footer>
+    <div th:replace="fragments/footer :: footer"></div>
+</footer>
 
-    <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6d74cff8d9bc086f',m:'NJxE7M1qVwugoXaTrFSha5RXkjS.dgoQhy65ViJwItM-1643819513-0-AdM967KVR5MJyyQaKIm9+c5usTBT+ZMKdTw+Xp4+HflBKb1K8FQBKg4WLgwb4a0z+1xD1S9/BT91Pz2rB5u+3XDehXkBsozsxLlgPhYXa1Tv7BoRoY/yO7oHrvgUyseFgZzV2+ryxJsEHFwgooc7ALCbjCe7VBYF3RuO7XtKj31z2+3JOME7vmfp6fuGMSs0+L574Nb/U594VFCipjv90PM=',s:[0x76e0dc5a50,0x3bdf3daa40],}})();</script></body>
+<div th:replace="fragments/navbarMobile :: navMobile"></div>
+
+
+<script type="text/javascript">(function () {
+    window['__CF$cv$params'] = {
+        r: '6d74cff8d9bc086f',
+        m: 'NJxE7M1qVwugoXaTrFSha5RXkjS.dgoQhy65ViJwItM-1643819513-0-AdM967KVR5MJyyQaKIm9+c5usTBT+ZMKdTw+Xp4+HflBKb1K8FQBKg4WLgwb4a0z+1xD1S9/BT91Pz2rB5u+3XDehXkBsozsxLlgPhYXa1Tv7BoRoY/yO7oHrvgUyseFgZzV2+ryxJsEHFwgooc7ALCbjCe7VBYF3RuO7XtKj31z2+3JOME7vmfp6fuGMSs0+L574Nb/U594VFCipjv90PM=',
+        s: [0x76e0dc5a50, 0x3bdf3daa40],
+    }
+})();</script>
+</body>
 </html>
 
