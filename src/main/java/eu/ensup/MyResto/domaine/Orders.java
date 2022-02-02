@@ -1,5 +1,6 @@
 package eu.ensup.MyResto.domaine;
 
+import eu.ensup.MyResto.model.States;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +24,7 @@ public class Orders {
     private Float price;
     private Date created;
     private Date delivered;
+    private States state;
     @ManyToMany
     private Set<Product> products;
 
