@@ -2,6 +2,7 @@ package eu.ensup.MyResto.service;
 
 import eu.ensup.MyResto.domaine.Product;
 import eu.ensup.MyResto.domaine.User;
+import eu.ensup.MyResto.model.Roles;
 import eu.ensup.MyResto.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,10 +22,9 @@ public class UserService  implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username not found: " + username));
+        return userRepository.findByUsername(username).orElse(null);
     }
     public void save(User user) {
-        user.setPassword(user.getPassword());
         userRepository.save(user);
     }
     public Optional<User> getOne(Long userId) {

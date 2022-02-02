@@ -42,6 +42,10 @@ public class AuthService {
         user.setUsername(userDTO.getUsername());
         user.setPassword(encodePassword(userDTO.getPassword()));
         user.setRole(Roles.USER);
+        user.setPicture("Avatar.png");
+        user.setAddress(userDTO.getAddress());
+        user.setEmail(userDTO.getEmail());
+        user.setLastName(userDTO.getLastName());
         return user;
     }
 
