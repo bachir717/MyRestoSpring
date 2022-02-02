@@ -31,6 +31,6 @@ public class HomeController {
     public String viewHome(Model model) {
         log.info("viewHome");
         model.addAttribute("user", new User());
-        return "register";
+        return "home";
     }
 }

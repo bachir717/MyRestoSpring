@@ -30,8 +30,8 @@ public class AuthService {
 
 
 
-    public void signup(User user) {
-        userRepository.save(mapToEntity(user, new User()));
+    public User signup(User user) {
+        return userRepository.save(mapToEntity(user, new User()));
     }
 
     public UserDTO signin(User user) {
