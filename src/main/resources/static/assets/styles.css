@@ -120,7 +120,7 @@ footer{
 
 /* [0.2.2] The general layout for the grid inside of body */
 
-/* les main_container de la page home */
+/* les main_container de la page home et des autres pages */
 div[class^="main_container"]{
     padding:2rem 5rem;
     box-sizing: border-box;
@@ -144,7 +144,7 @@ div[class^="main_container"]{
       rgba(0, 0, 0, 0.25)
     ),
     /* bottom, image */
-    url("static/assets/images/nourritures/pizza1.jpg") no-repeat center center fixed;
+    url("ivan-torres-MQUqbmszGGM-unsplash.jpg") no-repeat center center fixed;
     background-repeat: no-repeat;
     background-size: 100% auto;
     background-attachment: fixed;
@@ -181,6 +181,16 @@ div[class^="main_container"]{
 .main_container--service{
     background-color: var(--color-opposite);
 }
+
+.main_container--form{
+    padding-top: var(--navbar-height)!important
+}
+
+.main_container--form h1{
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+}
+
 /* */
 
 /* #endregion */
@@ -493,6 +503,11 @@ p{
     font-size:2.2rem!important;
 }
 
+.button-handler{
+    text-align: center;
+    padding-top: 2rem;
+}
+
 /* #region button double */
 
 .button-double {
@@ -693,7 +708,7 @@ p{
 /* #endregion */
 
 /* #region card opinion */
- 
+
 .card-opinion{
     display: flex;
     flex-direction: row;
@@ -744,8 +759,8 @@ p{
 
 .triangle {
     margin-top: 1rem;
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-bottom: 20px solid transparent;
     border-top: 20px solid transparent;
     border-right: 20px solid var(--color-opposite);
@@ -778,8 +793,10 @@ footer{
 }
 
 footer p, footer span, footer a{
-    margin:2.5rem;
+    padding:1rem;
     box-sizing: border-box;
+    font-weight: lighter;
+    font-size: 1.4rem;
 }
 
 footer h3{
@@ -874,3 +891,74 @@ footer a{
 }
 
 /* #endregion  */
+
+
+/* #region form java */
+
+/* General */
+.form-java_container{
+    padding:1rem;
+    box-sizing: border-box;
+    row-gap:0rem!important;
+    column-gap: 0rem!important;
+    flex-direction: column;
+    align-items: flex-start;
+    /* All form-java_container must be _row in order to work*/
+}
+
+.form-java_label{
+}
+
+.form-java_input{
+    margin-top: 0.3rem;
+    height:3rem;
+    width:100%;
+    background-color:var(--color-mode);
+    color:var(--color-opposite);
+    border:0.1rem solid var(--color-opposite);
+    border-radius: 3px;
+    padding: 0.2rem 0.3rem!important;
+    top: 0px;
+}
+
+.form-java_input:active, .form-java_input:focus {
+    outline: none;
+    box-shadow: 0 0 0.1rem 0.1rem var(--color-main-lighter);
+    border-color: var(--color-main);
+}
+
+/* date */
+::-webkit-calendar-picker-indicator {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23bbbbbb" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
+  }
+
+/* file */
+input[type="file"].form-java_input{
+    display:none
+}
+
+.form-java--file{
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+    display:flex;
+    align-items: center;
+}
+
+input[type="file"].form-java_input:active, input[type="file"].form-java_input:focus {
+    outline: none;
+    box-shadow: 0 0 0.1rem 0.1rem var(--color-main-lighter);
+    border-color: var(--color-main);
+}
+ /* textarea */
+textarea.form-java_input{
+    height:auto;
+    resize: vertical;
+}
+
+.form-java_container input, .form-java_container label{
+    width: 80%!important;
+    align-self: center;
+}
+
+/* #endregion */
