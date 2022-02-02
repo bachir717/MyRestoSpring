@@ -77,9 +77,15 @@
 <body>
 <!-- For Seo : 1 Use the right tag, 2 : use alt, title and so on, 3 : post regularly -->
 
-<header>
+        <main>
+            <a class="shopping-cart" href="javascript:window.location.href=window.location.href" th:href="@{/shoppingcard}">
+                <i class="fas fa-shopping-cart"></i>
+                <span th:if="${session.ShoppingCard}" th:text="${#lists.size(session.ShoppingCard)}"></span>
+                <span th:unless="${session.ShoppingCard}">0</span>
+            </a>
+
     <div th:replace="fragments/header :: header"></div>
-</header>
+
 
 <main>
     <a class="shopping-cart">
@@ -183,6 +189,39 @@
                         </div>
                     </div>
                 </th:block>
+
+                    <div class="carousel-food _row">
+                            <h3 id="menu-1" class="_col-12 carousel-food_title">Entrées</h3>
+                                <th:block th:each="entree : ${entrees}">
+                                    <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
+                                        <div class="carousel-food_item_image-container">
+                                            <img th:src="@{/assets/images/nourritures/}+${entree.picture}" th:alt="${entree.picture}">
+                                        </div>
+                                        <h4  th:text="${entree.name}"></h4>
+                                        <div class="carousel-food_item_text-container">
+                                            <span th:text="${entree.price}+€"></span>
+                                            <div sec:authorize="isAuthenticated()">
+                                                <a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}"><button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier</button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </th:block>
+
+                            <h3 id="menu-2" class="_col-12 carousel-food_title">Plats</h3>
+                            <th:block th:each="plat : ${plats}">
+                                <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
+                                    <div class="carousel-food_item_image-container">
+                                        <img  th:src="@{/assets/images/nourritures/}+${plat.picture}" th:alt="${plat.picture}">
+                                    </div>
+                                    <h4  th:text="${plat.name}"></h4>
+                                    <div class="carousel-food_item_text-container">
+                                        <span th:text="${plat.price}+€"></span>
+                                        <div sec:authorize="isAuthenticated()">
+                                            <button class="button-round" th:id="${plat.id}"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th:block>
 
 
                 <h3 id="menu-3" class="_col-12 carousel-food_title">Desserts</h3>

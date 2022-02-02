@@ -21,11 +21,11 @@ public class OrderService {
         return ordersRepository.findAll();
     }
 
-    public void save(Orders orders) {
-        ordersRepository.save(orders);
+    public boolean save(Orders orders) {
+        return ordersRepository.save(orders) != null;
     }
 
-    public Optional<Orders> getOne(Long productID) {
-       return ordersRepository.findById(productID);
+    public Orders getOne(Long productID) {
+       return ordersRepository.findById(productID).orElse(null);
     }
 }

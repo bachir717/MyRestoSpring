@@ -14,10 +14,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,5 +80,38 @@ public class HomeController {
         model.addAttribute("boissons",  boissons);
 
         return "home";
+    }
+
+    @RequestMapping(value = "/addProductShoppingCard/{id}")
+    public String addShoppingCard(@PathVariable("id") Long id,  Model model, HttpSession session)
+    {
+        List<Long> productIds = new ArrayList<>();
+        if( session.getAttribute("ShoppingCard") == null )
+        {
+            productIds.add(id);
+            session.setAttribute("ShoppingCard",productIds);
+        }
+        else
+        {
+            productIds = (List<Long>) session.getAttribute("ShoppingCard");
+            productIds.add(id);
+            session.setAttribute("ShoppingCard",productIds);
+        }
+
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/shoppingcard")
+    public String addShoppingCard(Model model, HttpSession session)
+    {
+        List<Product> products = new ArrayList<>();
+
+        if( session.getAttribute("ShoppingCard") != null ) {
+            List<Long> ids = (List<Long>) session.getAttribute("ShoppingCard");
+            for(Long id : ids )
+                products.add(productService.getOne(id));
+        }
+        model.addAttribute("products", products);
+        return "shoppingCard";
     }
 }
