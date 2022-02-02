@@ -1,0 +1,876 @@
+/*
+[0] - General Settings
+    [0.1] - Base Settings
+    [0.2] - Layout  Settings
+    [0.3] - Bootstrap Settings
+    [0.4]  - Font Settings
+TODO : Mettre le reste dans le sommaire
+*/
+
+._debugDiv{
+    background-color: lightcoral;
+    border: 1px solid lightslategray;
+    padding:0.5rem;
+    /* border: 10px solid black */
+}
+
+/* #region [0] - General Settings */
+
+/* #region [0.1] - Base Settings */
+*{
+    padding:0;
+    margin:0;
+    text-decoration:none;
+    color: var(--color-opposite);
+    font-size:1rem;
+}
+
+html {
+    font-size: 62.5%; /* This makes it so 1rem = 10px */
+    scroll-behavior: smooth;
+}
+
+::selection{
+    background:var(--color-main);
+    color:var(--color-mode);
+}
+
+::-moz-selection{
+    background:var(--color-main);
+    color:var(--color-mode);
+}
+
+:root {
+    /* 1. Fonts */
+    /* 1.1 Fonts */
+    --font-title-primary: 'Bebas Neue', cursive; /* This font is used for the main title of the page */
+    --font-title-secondary: 'Lato', sans-serif; /* This font is used for all the other titles */
+    --font-text-primary: 'Roboto Slab', serif; /* This font is used for most of the texts */
+    /* 1.2 Font Sizes */
+    --font-text-primary-size: 1.8rem;
+    /* 2. Colors */
+    /** 2.1 Default **/
+    --color-error: red;
+    --color-success: lightgreen;
+    /** 2.2 Calc **/
+    --calc-color-light: 10%;
+    --calc-color-lighter: 25%;
+    --calc-color-shade1: 5%;
+    --calc-color-shade2: 10%;
+    /** 2.3 Main Colors **/
+    --color-secondary: #16D01C;
+    --color-secondary-light: hsl(122, 81%, 55%);
+    --color-secondary-lighter: hsl(122, 81%, 70%);
+    --color-main-hue: 2;
+    --color-main-saturation: 81%;
+    --color-main-luminosity: 45%;
+    --color-main: hsla(var(--color-main-hue), var(--color-main-saturation), var(--color-main-luminosity), 1);
+    --color-main-light: hsla(var(--color-main-hue), var(--color-main-saturation), calc(var(--color-main-luminosity) + var(--calc-color-light)), 1);
+    --color-main-lighter: hsla(var(--color-main-hue), var(--color-main-saturation), calc(var(--color-main-luminosity) + var(--calc-color-lighter)), 1);
+
+    /** 2.4 Mode **/
+    --color-mode-hue: 0;
+    --color-mode-saturation: 0%;
+    --color-mode-luminosity: 12%; /* If this is egal to 100 : - in the shade ; + or - depending on darkening or lightning in the shade */
+    --color-mode: hsla(var(--color-mode-hue), var(--color-mode-saturation), var(--color-mode-luminosity), 1);
+    --color-mode-shade1: hsla(var(--color-mode-hue), var(--color-mode-saturation), calc(var(--color-mode-luminosity) + var(--calc-color-shade1)), 1);
+    --color-mode-shade2: hsla(var(--color-mode-hue), var(--color-mode-saturation), calc(var(--color-mode-luminosity) + var(--calc-color-shade2)), 1);
+
+    --color-opposite-hue: 0;
+    --color-opposite-saturation: 0%;
+    --color-opposite-luminosity: 100%;
+    --color-opposite: hsla(var(--color-opposite-hue), var(--color-opposite-saturation), var(--color-opposite-luminosity), 1);
+    --color-opposite-shade1: hsla(var(--color-opposite-hue), var(--color-opposite-saturation), calc(var(--color-opposite-luminosity) - var(--calc-color-shade1)), 1);
+    --color-opposite-shade2: hsla(var(--color-opposite-hue), var(--color-opposite-saturation), calc(var(--color-opposite-luminosity) - var(--calc-color-shade2)), 1);
+    /* --color-opposite: hsl(0, 0%, 100%);
+    --color-opposite-shade1: #F0F2F5;
+    --color-opposite-shade2: #d1d7e0;
+    --color-mode: hsl(0, 0%, 8%);
+    --color-mode-shade1: #242526;
+    --color-mode-shade2: #3A3B3C; */
+    /* 3. Layout */
+    --navbar-height: 4.5rem;
+}
+
+/* #endregion */
+
+/* #region [0.2] - Layout  Settings */
+
+/* [0.2.1] The general layout for the body and its children: header, main and footer */
+body{
+    display:flex;
+    flex-direction: column;
+    min-height:100vh; /* Make the footer stick at the bottom on pages usually smaller than 100vh */
+    background-color: var(--color-mode);
+}
+
+header{
+    width:100%;
+}
+
+main{
+    height:auto;
+    flex-grow: 1;
+}
+
+footer{
+    width:100%;
+    background-color: var(--color-mode-shade1);
+}
+
+/* [0.2.2] The general layout for the grid inside of body */
+
+/* les main_container de la page home */
+div[class^="main_container"]{
+    padding:2rem 5rem;
+    box-sizing: border-box;
+}
+
+.main_container--menu{
+    padding: 0rem!important;
+    background-color: var(--color-mode-shade1);
+}
+
+.main_container--menu h2, .main_container--menu .carousel-food{
+    padding: 2rem 5rem!important;
+}
+
+.main_container--top{
+    height: 100vh;
+    background:
+    /* top, transparent black, faked with gradient */
+    linear-gradient(
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.25)
+    ),
+    /* bottom, image */
+    url("static/assets/images/nourritures/pizza1.jpg") no-repeat center center fixed;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-attachment: fixed;
+    background-position:cover;
+    padding-top:calc(2rem + var(--navbar-height));
+    display: flex;
+}
+
+@media only screen and (max-width: 1080px) {
+    .main_container--top{
+        background-attachment:scroll
+    }
+}
+
+
+
+.centered-div{
+    margin: auto auto;
+    text-align: center;
+    color: var(--color-opposite);
+}
+
+.main_container--auto{
+    height: auto;
+    padding:10rem 5rem!important;
+    background-color: var(--color-opposite-shade2);
+}
+
+.main_container--full{
+    height: 100vh;
+    background-color: rgb(255, 0, 55);
+}
+
+.main_container--service{
+    background-color: var(--color-opposite);
+}
+/* */
+
+/* #endregion */
+
+/* #region [0.3] - Bootstrap Settings */
+
+/* Define the layout and make it responsive */
+._row{
+   --column-gap : 1rem; /* Break the design if too big */
+   width: 100%;
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: row;
+   row-gap: 1rem;
+   column-gap: var(--column-gap);
+}
+
+div[class^="_col"] {
+   /* Don't apply margin on col */
+   display: inline-block;
+   height: auto;
+   box-sizing: border-box;
+   flex: auto; /* On applique du gap, pour pas casser le design on retire le gap à la width de chaque col. Pour pas perdre en width au final, on passe chaque col en flex auto */ /* Si nombre pas égal à 12 ça va avoir l'air de marcher alors que non */
+}
+
+._col-12 {
+   width: 100%;
+}
+._col-11 {
+   width: calc(100% / 12 * 11 - var(--column-gap));
+}
+._col-10 {
+   width: calc(100% / 12 * 10 - var(--column-gap));
+}
+._col-9 {
+   width: calc(75% - var(--column-gap));
+}
+._col-8 {
+   width: calc(100% / 3 * 2 - var(--column-gap));
+}
+._col-7 {
+   width: calc(100% / 12 * 7 - var(--column-gap));
+}
+._col-6 {
+   width: calc(50% - var(--column-gap));
+}
+._col-5 {
+   width: calc(100% / 12 * 5  - var(--column-gap));
+}
+._col-4 {
+   width: calc(100% / 3 - var(--column-gap));
+}
+._col-3 {
+   width: calc(25%  - var(--column-gap));
+}
+._col-2 {
+   width: calc(100% / 12 * 2 - var(--column-gap));
+}
+._col-1 {
+   width: calc(100% / 12 - var(--column-gap));
+}
+
+@media only screen and (max-width: 1080px) {
+   ._col-md-12 {
+       width: 100%;
+   }
+   ._col-md-11 {
+       width: calc(100% / 12 * 11 - var(--column-gap));
+   }
+   ._col-md-10 {
+       width: calc(100% / 12 * 10 - var(--column-gap));
+   }
+   ._col-md-9 {
+       width: calc(75% - var(--column-gap));
+   }
+   ._col-md-8 {
+       width: calc(100% / 3 * 2 - var(--column-gap));
+   }
+   ._col-md-7 {
+       width: calc(100% / 12 * 7 - var(--column-gap));
+   }
+   ._col-md-6 {
+       width: calc(50% - var(--column-gap));
+   }
+   ._col-md-5 {
+       width: calc(100% / 12 * 5  - var(--column-gap));
+   }
+   ._col-md-4 {
+       width: calc(100% / 3 - var(--column-gap));
+   }
+   ._col-md-3 {
+       width: calc(25%  - var(--column-gap));
+   }
+   ._col-md-2 {
+       width: calc(100% / 12 * 2 - var(--column-gap));
+   }
+   ._col-md-1 {
+       width: calc(100% / 12 - var(--column-gap));
+   }
+}
+
+@media only screen and (max-width: 760px) {
+   ._col-sm-12 {
+       width: 100%;
+   }
+   ._col-sm-11 {
+       width: calc(100% / 12 * 11 - var(--column-gap));
+   }
+   ._col-sm-10 {
+       width: calc(100% / 12 * 10 - var(--column-gap));
+   }
+   ._col-sm-9 {
+       width: calc(75% - var(--column-gap));
+   }
+   ._col-sm-8 {
+       width: calc(100% / 3 * 2 - var(--column-gap));
+   }
+   ._col-sm-7 {
+       width: calc(100% / 12 * 7 - var(--column-gap));
+   }
+   ._col-sm-6 {
+       width: calc(50% - var(--column-gap));
+   }
+   ._col-sm-5 {
+       width: calc(100% / 12 * 5  - var(--column-gap));
+   }
+   ._col-sm-4 {
+       width: calc(100% / 3 - var(--column-gap));
+   }
+   ._col-sm-3 {
+       width: calc(25%  - var(--column-gap));
+   }
+   ._col-sm-2 {
+       width: calc(100% / 12 * 2 - var(--column-gap));
+   }
+   ._col-sm-1 {
+       width: calc(100% / 12 - var(--column-gap));
+   }
+}
+
+/* #endregion */
+
+/* #region [0.4]  - Font Settings */
+
+/* Define the fonts and the sizes of the titles */
+h1{
+    font-family:var(--font-title-primary);
+    font-weight: normal;
+    font-size:5rem;
+}
+h2, h3, h4, h5, h6{
+    font-family:var(--font-title-secondary);
+}
+h2{
+    font-size:2.6rem;
+}
+h3{
+    font-size:2.4rem;
+}
+h4{
+    font-size:2.2rem;
+}
+h5{
+    font-size:2rem;
+}
+h6{
+    font-size:1.8rem;
+}
+p, span, label, input, a, i, li, select, option, th, td, textarea{
+    font-family:var(--font-text-primary);
+    color:var(--color-opposite);
+    font-size: var(--font-text-primary-size); /*  This can go from 16px to 21px based on the font */
+}
+
+p{
+    text-align:justify;
+}
+
+.text-smaller{
+    font-size: 1.6rem /* Make the secondary text 2px smaller than the regular one */
+}
+
+.text-color-reverse{
+    color:var(--color-mode)!important;
+}
+
+/* #endregion */
+
+/* #endregion */
+
+/* #region Navbar Music */
+
+.navbar-music{
+    position:absolute;
+    top:0;
+    width:100%;
+    background-color:hsla(var(--color-main-hue), var(--color-main-saturation), var(--color-main-luminosity), 0.05);
+    display:flex;
+    justify-content: center;
+    z-index:998!important;
+    height:var(--navbar-height);
+}
+
+.navbar-music div{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-music_container--left{
+    justify-content: start!important;
+}
+
+.navbar-music_container--right{
+    justify-content: end!important;
+}
+
+.navbar-music div a{
+    padding-left:1.5rem;
+    padding-right:1.5rem;
+    height:100%;
+    display:flex;
+    align-items: center;
+    user-select: none;
+}
+
+.navbar-music .navbar-music_link:hover, .navbar-music .navbar-music_link:focus {
+    text-decoration: underline;
+    text-decoration-color: var(--color-main);
+}
+
+.navbar-music .navbar-music_link:active {
+    text-decoration-color: var(--color-main-lighter);
+}
+
+.navbar-music_logo .navbar-music_logo--basic{
+    /* font-family: var(--font-title-primary); */
+    color:var(--color-opposite)!important;
+}
+
+.navbar-music_link span{
+    font-weight: bold;
+    font-family:var(--font-title-secondary)!important;
+    color:var(--color-opposite)!important;
+}
+
+.navbar-music_link i, .navbar-music_link span i{
+    color:var(--color-opposite)!important;
+}
+
+.navbar-music--transparent{
+    --color-navbar-transparent: hsla(var(--color-mode-hue), var(--color-mode-saturation), var(--color-mode-luminosity), 0.75);
+    background-color:var(--color-navbar-transparent)!important;
+    box-shadow: 0px 0px 5px var(--color-mode-shade2);
+}
+
+.navbar-music--transparent .navbar-music_link:hover, .navbar-music--transparent .navbar-music_link:focus {
+    background-color:var(--color-mode-shade1)!important;
+}
+
+.navbar-music--transparent .navbar-music_link:active {
+    background-color: var(--color-mode-shade2)!important;
+}
+
+.navbar-music--transparent .navbar-music_logo .navbar-music_logo--basic{
+    color:var(--color-opposite)!important;
+}
+
+.navbar-music--transparent .navbar-music_link span{
+    color:var(--color-opposite)!important;
+}
+
+/* #endregion */
+
+/* #region button round */
+
+.button-round{
+    background-color: var(--color-secondary);
+    color: var(--color-mode);
+    cursor: pointer;
+    margin: 1rem 0rem;
+    padding: 0.5em;
+    font-size:1.4rem;
+    transition: 0.1s;
+    font-weight: bold;
+    border: 0.2rem solid var(--color-secondary);
+    user-select: none;
+    border-radius: 25px;
+}
+
+.button-round:hover {
+    border-color: var(--color-secondary-light);
+    background-color: var(--color-secondary-light);
+}
+
+.button-round:active,
+.button-round:focus {
+    border-color: var(--color-secondary-lighter);
+    background-color: var(--color-secondary-lighter);
+}
+
+.button-round i{
+    color: var(--color-mode)!important;
+}
+
+/* #endregion */
+
+.button--big{
+    padding:2rem;
+    font-size:2.2rem!important;
+}
+
+/* #region button double */
+
+.button-double {
+    cursor: pointer;
+    margin: 1rem 0rem;
+    padding: 0.5em;
+    font-size:1.4rem;
+    transition: 0.1s;
+    font-weight: bold;
+    color: var(--color-opposite);
+    background-color: var(--color-main);
+    border: 0.2rem solid var(--color-main);
+    user-select: none;
+    box-shadow: 10px 10px 0px 0px var(--color-main-light);
+}
+
+.button-double:hover {
+    border-color: var(--color-main-lighter);
+    background-color: var(--color-main-light);
+}
+
+.button-double:active,
+.button-double:focus {
+    outline-color: var(--color-main-lighter)!important;
+    outline-style: solid!important;
+    outline-width:0.3rem;
+}
+
+.button-double:active{
+    border-color: var(--color-main-light);
+    background-color: var(--color-main-light);
+}
+
+/* #endregion */
+
+
+/* #region card-icon */
+.card-icon{
+    margin-top: 5rem;
+    box-sizing: border-box;
+    padding:1rem;
+    background-color: var(--color-opposite-shade1)!important;
+    position: relative;
+    padding-top: 5rem;
+}
+
+.card-icon p{
+    color: var(--color-mode-shade2)
+}
+
+.card-icon i, .card-icon h3{
+    color: var(--color-mode)
+}
+
+.card-icon h3{
+    font-size: 2rem;
+    margin: 0.5rem 0rem 1rem 0rem;
+}
+
+.card-icon_icon{
+    height: 10rem;
+    width: 10rem;
+    position: absolute;
+    padding: 2rem;
+    box-sizing: border-box;
+    border-radius: 50%;
+    left:50%;
+    margin-left: -5rem;
+    top: -5rem;
+    background:var(--color-opposite);
+    display: flex;
+}
+
+.card-icon i{
+    font-size: 5rem;
+    margin: auto auto;
+}
+
+/* #endregion */
+
+/* #region nav-good */
+
+.nav-food{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: sticky;
+    top: 0;
+    z-index: 998;
+    height: auto;
+    background-color: var(--color-mode);
+    min-height: 5rem
+}
+
+.nav-food div{
+    font-weight: normal;
+    user-select: none;
+    font-weight: lighter;
+    box-sizing: border-box;
+    text-align: center;
+    margin: auto auto;
+}
+
+.nav-food_link{
+    padding:0.5rem;
+    border-radius: 25px;
+}
+
+.nav-food_link:hover{
+    cursor: pointer;
+    background-color: var(--color-main-light);
+}
+
+.nav-food_link:active, .nav-food_link:focus{
+    background-color: var(--color-main);
+    color: var(--color-mode);
+}
+
+.nav-food_link--active{
+    background-color: var(--color-main);
+    color: var(--color-mode);
+}
+
+/* #endregion */
+
+/* #region carousel food */
+.carousel-food{
+}
+
+.carousel-food_title{
+    padding-top: 4.5rem
+}
+
+.carousel-food_item{
+    background-color: var(--color-mode-shade1);
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: height 5s ease-in
+}
+
+.carousel-food_item_image-container{
+    height: 15rem;
+    width:auto;
+    overflow: hidden;
+    background-color: var(--color-mode);
+    transition: height 0.5s ease-out;
+}
+
+.carousel-food_item_image-container img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.carousel-food_item:hover img{
+    opacity:0.65;
+    transform: scale(1.02);
+}
+
+.carousel-food_item h4{
+    padding-top: 1rem;
+    text-align: center;
+    height: 4rem;
+}
+
+.carousel-food_item_text-container{
+    padding: 0rem 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: height 0.5s ease-out;
+}
+
+@media only screen and (min-width:760px){
+    .carousel-food_item .carousel-food_item_text-container{
+        height: 0rem!important;
+        overflow: hidden;
+    }
+
+    .carousel-food_item .carousel-food_item_image-container{
+        height: 25rem; /* 15 + 4 + 1*/;
+    }
+
+    .carousel-food_item:hover .carousel-food_item_text-container{
+        height: 10rem!important;
+    }
+
+    .carousel-food_item:hover .carousel-food_item_image-container{
+        height: 15rem;
+    }
+}
+
+/* #endregion */
+
+/* #region card opinion */
+ 
+.card-opinion{
+    display: flex;
+    flex-direction: row;
+    /* background-color: var(--color-opposite); */
+    padding: 0.5rem;
+    box-sizing: border-box;
+    /* color: var(--color-mode)!important; */
+}
+
+.card-opinion div{
+    /* padding-top:0.1rem;
+    padding-bottom:0.1rem; */
+    /* padding-right:0!important; */
+    display:flex;
+}
+
+.card-opinion_image-container{
+    width:10em;
+    height:10em;
+}
+
+.card-opinion_image-container img{
+    border-radius:50%;
+    height:8em;
+    width:8em;
+    margin:auto auto;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.card-opinion_text-container{
+    /* margin-left:1rem; */
+    padding:1rem;
+    text-align:left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--color-opposite);
+}
+
+.card-opinion_text-container:last-child{
+    /* margin-top: auto; */
+}
+
+.card-opinion_text h3{
+    margin:auto auto;
+}
+
+.triangle {
+    margin-top: 1rem;
+    width: 0; 
+    height: 0; 
+    border-bottom: 20px solid transparent;
+    border-top: 20px solid transparent;
+    border-right: 20px solid var(--color-opposite);
+}
+
+/* #endregion */
+
+/* #region cart */
+
+.shopping-cart{
+    top:0rem;
+    right: 3rem!important;
+    position:fixed;
+    /* background-color: var(--color-secondary); */
+    padding:1rem;
+    z-index: 999;
+}
+
+.shopping-cart i, .shopping-cart span{
+    color: var(--color-secondary)
+}
+
+/* #endregion */
+
+/* #region footer */
+
+footer{
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+footer p, footer span, footer a{
+    margin:2.5rem;
+    box-sizing: border-box;
+}
+
+footer h3{
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+footer a{
+    color: var(--color-opposite)!important;
+    width: 100%;
+    display: block;
+}
+
+.footer_icons{
+    height:5rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.footer_icons a{
+    display: inline;
+    margin: auto auto;
+    width: 5rem; /* usef avec le margin ça se remet */
+}
+
+/* #endregion */
+
+/* #region Link Normal */
+
+.link-normal{
+    --color-blue-underline : rgb(0, 97, 175); /* Most of the times links are blue */
+    --color-violet-underline : rgb(90, 0, 175); /* This is used for visited links */
+    color:var(--color-blue-underline);
+}
+
+.link-normal:hover{
+    text-decoration:underline;
+}
+
+.link-normal:visited{
+    color:var(--color-violet-underline);
+}
+
+.link-normal:active{
+    color:var(--color-secondary-dark)
+}
+
+.link-normal:focus{
+
+}
+
+.link-normal:active, .link-normal:focus{
+    outline:dotted;
+    outline-color: var(--color-grey-light)
+}
+
+/* #endregion */
+
+/* #region navbar-mobile */
+
+@media only screen and (max-width: 760px) {
+    .navbar-music{
+        display: none;
+    }
+    .navbar-mobile{
+        display: flex!important;
+    }
+    footer{
+        margin-bottom: 5rem;
+    }
+    .shopping-cart{
+        display: none;
+    }
+}
+
+.navbar-mobile{
+    display: none;
+    height: 5rem;
+    flex-direction:row;
+    background-color: var(--color-main);
+    position:fixed;
+    bottom:0;
+    width:100%
+}
+
+.navbar-mobile a{
+    margin: auto auto
+}
+
+.navbar-mobile a i{
+    color: var(--color-opposite)
+}
+
+/* #endregion  */
