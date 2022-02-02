@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="script.js"></script>
@@ -77,11 +77,11 @@
                         <img src="../static/assets/images/myresto.png" th:src="@{/assets/images/myresto.png}" alt="logo myresto" class="svg" />
                     </a>
                 </div>
-                <div class="_col-4">   
+                <div class="_col-4" sec:authorize="isAuthenticated()">
                     <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span>Mes commandes</span></a>
                     <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span>Mon panier</span></a>
                 </div>
-                <div class="_col-4 navbar-music_container--right">   
+                <div class="_col-4 navbar-music_container--right" sec:authorize="isAuthenticated()">
                     <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span><i class="fas fa-user"></i></span></a>
                 </div>
             </nav>
@@ -147,6 +147,7 @@
                             <a id="nav-4" class="nav-food_link" onclick="document.getElementById('menu-4').scrollIntoView();">Boissons</a>
                         </div>
                     </div>
+
                     <div class="carousel-food _row">
                             <h3 id="menu-1" class="_col-12 carousel-food_title">Entrées</h3>
                                 <th:block th:each="entree : ${entrees}">
@@ -157,7 +158,7 @@
                                         <h4  th:text="${entree.name}"></h4>
                                         <div class="carousel-food_item_text-container">
                                             <span th:text="${entree.price}+€"></span>
-                                            <div>
+                                            <div sec:authorize="isAuthenticated()">
                                                 <button class="button-round" th:id="${entree.id}"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
                                             </div>
                                         </div>
@@ -173,7 +174,7 @@
                                     <h4  th:text="${plat.name}"></h4>
                                     <div class="carousel-food_item_text-container">
                                         <span th:text="${plat.price}+€"></span>
-                                        <div>
+                                        <div sec:authorize="isAuthenticated()">
                                             <button class="button-round" th:id="${plat.id}"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
                                         </div>
                                     </div>
@@ -190,7 +191,7 @@
                                     <h4  th:text="${dessert.name}"></h4>
                                     <div class="carousel-food_item_text-container">
                                         <span th:text="${dessert.price}+€"></span>
-                                        <div>
+                                        <div sec:authorize="isAuthenticated()">
                                             <button class="button-round" th:id="${dessert.id}"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
                                         </div>
                                     </div>
@@ -206,7 +207,7 @@
                                     <h4  th:text="${boisson.name}"></h4>
                                     <div class="carousel-food_item_text-container">
                                         <span th:text="${boisson.price}+€"></span>
-                                        <div>
+                                        <div sec:authorize="isAuthenticated()">
                                             <button class="button-round" th:id="${boisson.id}"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
                                         </div>
                                     </div>

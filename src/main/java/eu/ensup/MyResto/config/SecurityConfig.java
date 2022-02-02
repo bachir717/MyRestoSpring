@@ -26,10 +26,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()
-                    .loginPage("/login")
+                    .loginPage("/signin")
                     .permitAll()
                     .and()
                     .logout()
+                    .logoutSuccessUrl("/")
                     .permitAll()
                     .and()
                     .csrf().disable();

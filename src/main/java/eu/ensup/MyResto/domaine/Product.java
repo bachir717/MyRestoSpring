@@ -28,4 +28,11 @@ public class Product {
     public Product() {
 
     }
+
+    public Product(String name, Float price, Types type, String picture) {
+        this.name = name;
+        this.price = price;
+        this.type = type;
+        this.picture = picture;
+    }
 }

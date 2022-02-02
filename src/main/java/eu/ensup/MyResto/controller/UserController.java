@@ -6,6 +6,7 @@ import eu.ensup.MyResto.service.AuthService;
 import eu.ensup.MyResto.service.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +31,7 @@ public class UserController {
     public String viewCreateUserPage(Model model) {
         log.info("viewCreateUserPage");
         model.addAttribute("user", new User());
-        return "register";
+        return "createdUser";
     }
 
     @GetMapping("/login")
@@ -40,26 +41,39 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping("/signin")
-    public String viewSignupPage(@ModelAttribute User user, HttpSession session) {
-       UserDTO userFind= authService.signin(user);
-       if(userFind != null )
-       {
-           session.setAttribute("username", userFind.getUsername());
-           session.setAttribute("user", userFind);
-           return "home";
-       }
-       else
-           return "no";
+    @GetMapping("/edit")
+    public String editPage(Model model) {
+        log.info("loginPage");
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = ((User)principal);
+        model.addAttribute("user", user);
+
+        return "updateUser";
     }
 
-
     @PostMapping("/save")
-    public String saveUser(@ModelAttribute User user) {
+    public String saveUser(@ModelAttribute User user,HttpSession session) {
         log.info("save pour l'utilisateur "+user );
         if (!"".equals(user.getUsername()) && !"".equals(user.getPassword()))
-            authService.signup(user);
+            if (userService.loadUserByUsername(user.getUsername()) == null)
+            {
+                authService.signup(user);
+                return "login";
+            }
+            else
+                session.setAttribute("error", "L'utilistateur est déjà crée");
+        session.setAttribute("error", "Tout les champs ne sont pas remplis");
+        return "createdUser";
+    }
 
-        return "login";
+    @PostMapping("/update")
+    public String updateUser(@ModelAttribute User user,HttpSession session) {
+        log.info("updte pour l'utilisateur "+user );
+        User userload = ((User)userService.loadUserByUsername(user.getUsername()));
+        user.setId(userload.getId());
+        user.setPassword(userload.getPassword());
+        user.setRole(userload.getRole());
+        userService.save(user);
+        return "redirect:/";
     }
 }
