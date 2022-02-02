@@ -149,168 +149,69 @@
                     </div>
                     <div class="carousel-food _row">
                             <h3 id="menu-1" class="_col-12 carousel-food_title">Entrées</h3>
-                            <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
-                                <div class="carousel-food_item_image-container">
-                                    <img  src="../static/assets/images/nourritures/pain_tomate.jpg" th:src="@{/assets/images/nourritures/pain_tomate.jpg}" alt="brushetas">
-                                </div>
-                                <h4>Brushetas</h4>
-                                <div class="carousel-food_item_text-container">
-                                    <span>8.90 €</span>
-                                    <div>
-                                        <button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
+                                <th:block th:each="entree : ${entrees}">
+                                    <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
+                                        <div class="carousel-food_item_image-container">
+                                            <img th:src="@{/assets/images/nourritures/}+${entree.picture}" th:alt="${entree.picture}">
+                                        </div>
+                                        <h4  th:text="${entree.name}"></h4>
+                                        <div class="carousel-food_item_text-container">
+                                            <span th:text="${entree.price}+€"></span>
+                                            <div>
+                                                <button class="button-round" th:id="${entree.id}"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-    
+                                </th:block>
+
                             <h3 id="menu-2" class="_col-12 carousel-food_title">Plats</h3>
-                            <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
-                                <div class="carousel-food_item_image-container">
-                                    <img src="C:\Users\brice\Desktop\front myresto\new new\pizza-g45ca38a9c_1920.jpg" alt="pizza 4 chaussures">
-                                </div>
-                                <h4>Pizza 4 chaussures</h4>
-                                <div class="carousel-food_item_text-container">
-                                    <span>13.90 €</span>
-                                    <div>
-                                    <button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
+                            <th:block th:each="plat : ${plats}">
+                                <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
+                                    <div class="carousel-food_item_image-container">
+                                        <img  th:src="@{/assets/images/nourritures/}+${plat.picture}" th:alt="${plat.picture}">
+                                    </div>
+                                    <h4  th:text="${plat.name}"></h4>
+                                    <div class="carousel-food_item_text-container">
+                                        <span th:text="${plat.price}+€"></span>
+                                        <div>
+                                            <button class="button-round" th:id="${plat.id}"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
-                                <div class="carousel-food_item_image-container">
-                                    <img src="C:\Users\brice\Desktop\front myresto\new new\italian-cuisine-gc39412ac9_1920.jpg" alt="pizza 83 legumes">
-                                </div>
-                                <h4>Pizza 83 légumes</h4>
-                                <div class="carousel-food_item_text-container">
-                                    <span>13.83 €</span>
-                                    <div>
-                                    <button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
-                                <div class="carousel-food_item_image-container">
-                                    <img src="C:\Users\brice\Desktop\front myresto\new new\burger.jpg" alt="hambourgois">
-                                </div>
-                                <h4>Hambourgois</h4>
-                                <div class="carousel-food_item_text-container">
-                                    <span>17.70 €</span>
-                                    <div>
-                                    <button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
-                                <div class="carousel-food_item_image-container">
-                                    <img src="C:\Users\brice\Desktop\front myresto\new new\pasta.jpg" alt="pasta di mama">
-                                </div>
-                                <h4>Les bonnes pastas di mama</h4>
-                                <div class="carousel-food_item_text-container">
-                                    <span>12.50 €</span>
-                                    <div>
-                                    <button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
-                                <div class="carousel-food_item_image-container">
-                                    <img src="../static/assets/images/nourritures/pizza1.jpg" th:src="@{/assets/images/nourritures/pizza1.jpg}" alt="pizza pre decoupe">
-                                </div>
-                                <h4>Pizza pré-découpée</h4>
-                                <div class="carousel-food_item_text-container">
-                                    <span>14.90 €</span>
-                                    <div>
-                                    <button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
-                                <div class="carousel-food_item_image-container">
-                                    <img src="C:\Users\brice\Desktop\front myresto\new new\burger-veggie.jpg" alt="burger veggie">
-                                </div>
-                                <h4>Burger Veggie</h4>
-                                <div class="carousel-food_item_text-container">
-                                    <span>15 €</span>
-                                    <div>
-                                    <button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
-                                    </div>
-                                </div>
-                            </div>
+                            </th:block>
+
     
                             <h3 id="menu-3" class="_col-12 carousel-food_title">Desserts</h3>
-                            <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
-                                <div class="carousel-food_item_image-container">
-                                    <img src="C:\Users\brice\Desktop\front myresto\new new\framboise.jpg" alt="framboise">
-                                </div>
-                                <h4>Framboises</h4>
-                                <div class="carousel-food_item_text-container">
-                                    <span>6.99 €</span>
-                                    <div>
-                                    <button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
+                            <th:block th:each="dessert : ${desserts}">
+                                <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
+                                    <div class="carousel-food_item_image-container">
+                                        <img  th:src="@{/assets/images/nourritures/}+${dessert.picture}" th:alt="${dessert.picture}">
+                                    </div>
+                                    <h4  th:text="${dessert.name}"></h4>
+                                    <div class="carousel-food_item_text-container">
+                                        <span th:text="${dessert.price}+€"></span>
+                                        <div>
+                                            <button class="button-round" th:id="${dessert.id}"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
-                                <div class="carousel-food_item_image-container">
-                                    <img src="C:\Users\brice\Desktop\front myresto\new new\macaron.jpg" alt="macaron framboise">
-                                </div>
-                                <h4>Macaron framboise</h4>
-                                <div class="carousel-food_item_text-container">
-                                    <span>4.20 €</span>
-                                    <div>
-                                    <button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
-                                    </div>
-                                </div>
-                            </div>
+                            </th:block>
     
                             <h3 id="menu-4" class="_col-12 carousel-food_title">Boissons</h3>
-                            <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
-                                <div class="carousel-food_item_image-container">
-                                    <img src="C:\Users\brice\Desktop\front myresto\new new\vin.jpg" alt="vin">
-                                </div>
-                                <h4>Vin</h4>
-                                <div class="carousel-food_item_text-container">
-                                    <span>23.80 €</span>
-                                    <div>
-                                    <button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
+                            <th:block th:each="boisson : ${boissons}">
+                                <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
+                                    <div class="carousel-food_item_image-container">
+                                        <img th:src="@{/assets/images/nourritures/}+${boisson.picture}" th:alt="${boisson.picture}">
+                                    </div>
+                                    <h4  th:text="${boisson.name}"></h4>
+                                    <div class="carousel-food_item_text-container">
+                                        <span th:text="${boisson.price}+€"></span>
+                                        <div>
+                                            <button class="button-round" th:id="${boisson.id}"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
-                                <div class="carousel-food_item_image-container">
-                                    <img src="C:\Users\brice\Desktop\front myresto\new new\coca.jpg" alt="coca">
-                                </div>
-                                <h4>Boisson divine</h4>
-                                <div class="carousel-food_item_text-container">
-                                    <span>101 €</span>
-                                    <div>
-                                    <button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
-                                <div class="carousel-food_item_image-container">
-                                    <img src="C:\Users\brice\Desktop\front myresto\new new\cafe.jpg" alt="cafe">
-                                </div>
-                                <h4>Meilleure drogue</h4>
-                                <div class="carousel-food_item_text-container">
-                                    <span>80085 €</span>
-                                    <div>
-                                    <button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
-                                <div class="carousel-food_item_image-container">
-                                    <img src="C:\Users\brice\Desktop\front myresto\new new\mojito.jpg" alt="mojito">
-                                </div>
-                                <h4>Mojito</h4>
-                                <div class="carousel-food_item_text-container">
-                                    <span>4.99 €</span>
-                                    <div>
-                                    <button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
-                                    </div>
-                                </div>
-                        </div>
+                            </th:block>
                     </div>
                 </div>
             </div>
@@ -320,7 +221,7 @@
                     <div class="_row">
                         <div class="card-opinion _col-6 _col-sm-12">
                             <div class="card-opinion_image-container">
-                                <img src="C:\Users\brice\Desktop\front myresto\new new\image.jpg" alt="jeanne-julienne">
+                                <img  th:src="@{/assets/images/humains/image.jpg}"  alt="jeanne-julienne">
                             </div>
                             <div class="triangle"></div>
                             <div class="card-opinion_text-container">
@@ -330,7 +231,7 @@
                         </div>
                         <div class="card-opinion _col-6 _col-sm-12 scroll">
                             <div class="card-opinion_image-container">
-                                <img src="C:\Users\brice\Desktop\front myresto\new new\image (1).jpg" alt="jeanne-julienne">
+                                <img  th:src="@{/assets/images/humains/image (1).jpg}" alt="jeanne-julienne">
                             </div>
                             <div class="triangle"></div>
                             <div class="card-opinion_text-container">
@@ -340,7 +241,7 @@
                         </div>
                         <div class="card-opinion _col-6 _col-sm-12">
                             <div class="card-opinion_image-container">
-                                <img src="C:\Users\brice\Desktop\front myresto\new new\image (4).jpg" alt="martin-martin">
+                                <img  th:src="@{/assets/images/humains/image (4).jpg}"  alt="martin-martin">
                             </div>
                             <div class="triangle"></div>
                             <div class="card-opinion_text-container">
@@ -350,7 +251,7 @@
                         </div>
                         <div class="card-opinion _col-6 _col-sm-12 scroll">
                             <div class="card-opinion_image-container">
-                                <img src="C:\Users\brice\Desktop\front myresto\new new\image (2).jpg" alt="luc-edward">
+                                <img  th:src="@{/assets/images/humains/image (2).jpg}"  alt="luc-edward">
                             </div>
                             <div class="triangle"></div>
                             <div class="card-opinion_text-container">
