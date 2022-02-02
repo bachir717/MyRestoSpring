@@ -7,7 +7,7 @@ public enum States {
 
     private States(){}
 
-    public States getStateByName(String name)
+    public static States getStateByName(String name)
     {
         if(name==null || name.length()==0) return null;
         for(States state : States.values())
