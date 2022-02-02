@@ -14,19 +14,11 @@ import java.util.Optional;
 
 @Service
 public class AuthService {
-    @Bean
-    public ModelMapper modelMapper() {
-        return new ModelMapper();
-    }
-
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-
-    @Autowired
-    private ModelMapper modelMapper;
 
     public User signup(User user) {
         user.setRole(Roles.USER);

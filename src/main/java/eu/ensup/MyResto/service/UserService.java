@@ -32,6 +32,7 @@ public class UserService  implements UserDetailsService {
     public boolean save(User user) {
         return userRepository.save(user) != null;
     }
+
     public User getOne(Long userID) {
         User user = userRepository.findById(userID).orElse(null);
         if( user != null )

@@ -34,9 +34,9 @@ class UserServiceTest
     private UserService userService;
 
     @Test
-    @DisplayName("Test load an user who exist return an user")
+    @DisplayName("Test load an user")
     void TestLoadUserByUsername() {
-        User user = new User(0L,"name","LastName","email","address", Roles.USER,"mdp","",null,null);
+        User user = new User(0L,"name","LastName","email","address", Roles.USER,"mdp","",null);
 
         // GIVEN
         when(userRepository.findByUsername(user.getUsername())).thenReturn(java.util.Optional.of(user));
@@ -50,23 +50,9 @@ class UserServiceTest
     }
 
     @Test
-    @DisplayName("Test load an user who does not exist return an exception")
-    public void TestExceptionLoadUserByUsername() {
-        // GIVEN
-        when(userRepository.findByUsername("admin")).thenReturn(Optional.empty());
-
-        // WHEN
-        var result = Assertions.catchThrowable(() -> userService.loadUserByUsername("admin"));
-        Assertions.assertThat(result).isInstanceOf(UsernameNotFoundException.class).hasMessage("Username not found: admin");
-
-        // THEN
-        verify(userRepository).findByUsername("admin");
-    }
-
-    @Test
     @DisplayName("Test save an user")
     public void testSave() {
-        User user = new User(0L,"name","LastName","email","address", Roles.USER,"mdp","",null,null);
+        User user = new User(0L,"name","LastName","email","address", Roles.USER,"mdp","",null);
 
         // GIVEN
         when(userRepository.save(user)).thenReturn(user);
@@ -80,7 +66,7 @@ class UserServiceTest
     @DisplayName("Test get one user by id")
     public void testGetOne()
     {
-        User user = new User(0L,"name","LastName","email","address", Roles.USER,"mdp","",null,null);
+        User user = new User(0L,"name","LastName","email","address", Roles.USER,"mdp","",null);
 
         // GIVEN
         when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));

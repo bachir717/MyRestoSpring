@@ -38,7 +38,7 @@ class OrderServiceTest {
     public void testGetAll(){
         List<Orders> listOrders = new ArrayList<>();
         for (int i=0 ; i < 10 ; i++)
-            listOrders.add(new Orders(Long.valueOf(i), 4.12f, Date.valueOf("2022-01-01"), null, States.CREATED, null));
+            listOrders.add(new Orders(Long.valueOf(i), 4.12f, Date.valueOf("2022-01-01"), null, null, States.CREATED, null));
 
         // GIVEN
         when(ordersRepository.findAll()).thenReturn(listOrders);
@@ -56,7 +56,7 @@ class OrderServiceTest {
     @Test
     @DisplayName("Test save an order")
     public void testSave() {
-        Orders order = new Orders(0L, 4.12f, Date.valueOf("2022-01-01"), null, States.CREATED, null);
+        Orders order = new Orders(0L, 4.12f, Date.valueOf("2022-01-01"), null, null, States.CREATED, null);
 
         // GIVEN
         when(ordersRepository.save(order)).thenReturn(order);
@@ -69,7 +69,7 @@ class OrderServiceTest {
     @Test
     @DisplayName("Test get an order by id")
     public void testGetOne() {
-        Orders order = new Orders(0L, 4.12f, Date.valueOf("2022-01-01"), null, States.CREATED, null);
+        Orders order = new Orders(0L, 4.12f, Date.valueOf("2022-01-01"), null, null, States.CREATED, null);
 
         // GIVEN
         when(ordersRepository.findById(order.getId())).thenReturn(Optional.of(order));
