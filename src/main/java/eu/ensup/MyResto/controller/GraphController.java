@@ -35,6 +35,28 @@ public class GraphController {
 
     }
 
+    /*
+    	@Autowired
+	private ProduitService service;
+
+	@PostMapping("/addProduit")
+	public String addProduit(@RequestBody Produit produit)
+	{
+		return service.saveProduit(produit);
+	}
+
+
+	@GetMapping("/barChart")
+	public String getAllProduit(Model model) {
+
+	List<String> nameList= service.getAllProduit().stream().map(x->x.getName()).collect(Collectors.toList());
+	List<Integer> priceList = service.getAllProduit().stream().map(x-> x.getPrice()).collect(Collectors.toList());
+	model.addAttribute("name", nameList);
+	model.addAttribute("price", priceList);
+	return "barChart";
+
+	}*/
+
 
 
 
