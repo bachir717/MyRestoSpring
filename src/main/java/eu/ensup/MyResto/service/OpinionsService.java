@@ -2,6 +2,7 @@ package eu.ensup.MyResto.service;
 
 import eu.ensup.MyResto.domaine.Opinions;
 import eu.ensup.MyResto.domaine.Orders;
+import eu.ensup.MyResto.domaine.User;
 import eu.ensup.MyResto.repository.OpinionsRepository;
 import eu.ensup.MyResto.repository.OrdersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class OpinionsService {
         return opinionsRepository.save(opinions) != null;
     }
 
-    public Optional<Opinions> getOne(Long productID) {
-       return opinionsRepository.findById(productID);
+    public Opinions getOne(Long opinionID) {
+       return opinionsRepository.findById(opinionID).orElse(null);
     }
 }

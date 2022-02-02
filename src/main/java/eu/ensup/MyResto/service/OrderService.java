@@ -25,7 +25,7 @@ public class OrderService {
         return ordersRepository.save(orders) != null;
     }
 
-    public Optional<Orders> getOne(Long productID) {
-       return ordersRepository.findById(productID);
+    public Orders getOne(Long productID) {
+       return ordersRepository.findById(productID).orElse(null);
     }
 }

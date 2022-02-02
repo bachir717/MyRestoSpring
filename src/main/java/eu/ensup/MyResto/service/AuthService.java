@@ -29,21 +29,19 @@ public class AuthService {
     private ModelMapper modelMapper;
 
     public User signup(User user) {
-        return userRepository.save(mapToEntity(user, new User()));
-    }
-
-    public UserDTO signin(User user) {
-        return modelMapper.map(userRepository.findByUsername(user.getUsername()).get(),UserDTO.class);
-    }
-
-    private String encodePassword(String password) {
-        return passwordEncoder.encode(password);
-    }
-
-    private User mapToEntity(final User userDTO, final User user) {
-        user.setUsername(userDTO.getUsername());
-        user.setPassword(encodePassword(userDTO.getPassword()));
         user.setRole(Roles.USER);
-        return user;
+        User result = userRepository.save(user);
+        result.setPassword(passwordEncoder.encode(user.getPassword()));
+        return result;
+    }
+
+    public User signin(User user) {
+        User result = userRepository.findByUsername(user.getUsername()).get();
+        result.setPassword(passwordEncoder.encode(user.getPassword()));
+        return result;
+    }
+
+    private String getEncodedPassword(String password) {
+        return passwordEncoder.encode(password);
     }
 }
