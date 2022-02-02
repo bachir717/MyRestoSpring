@@ -17,7 +17,6 @@ import java.util.Collections;
 import java.util.List;
 
 @Entity
-@Table(name = "User")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -37,13 +36,10 @@ public class User implements UserDetails {
     private String picture;
     @OneToMany(fetch = FetchType.LAZY)
     private List<Orders> orders = new ArrayList<>();
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Opinions> opinions = new ArrayList<>();
 
     public User() {
 
     }
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
