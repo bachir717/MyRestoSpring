@@ -30,6 +30,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
                     .permitAll()
                     .and()
                     .logout()
+                    .logoutSuccessUrl("/home")
                     .permitAll()
                     .and()
                     .csrf().disable();
