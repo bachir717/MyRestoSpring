@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  db:
+    image: mysql
+    ports: 
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: my_resto
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      #MYSQL_ROOT_PASSWORD: test 
+    volumes:
+      - persistent:/var/lib/mysql
+    networks:
+      - spring-boot-app-network
+  spring-boot-app:
+    container_name: spring-apps
+    image: thomaslpro/myresto
+    depends_on:
+      - db
+    ports:
+      - 80:8080
+    networks:
+      - spring-boot-app-network
+volumes:
+    persistent:
+networks:
+  spring-boot-app-network:
+    name: spring-boot-app-network
+    driver: bridge
