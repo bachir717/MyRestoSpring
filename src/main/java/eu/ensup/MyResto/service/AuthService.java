@@ -38,7 +38,6 @@ public class AuthService {
         return modelMapper.map(userRepository.findByUsername(user.getUsername()).get(),UserDTO.class);
     }
 
-
     private String encodePassword(String password) {
         return passwordEncoder.encode(password);
     }
