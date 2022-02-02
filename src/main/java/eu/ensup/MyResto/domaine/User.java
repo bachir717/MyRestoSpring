@@ -1,6 +1,7 @@
 package eu.ensup.MyResto.domaine;
 
 import eu.ensup.MyResto.model.Roles;
+import eu.ensup.MyResto.model.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -68,4 +69,6 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 }
