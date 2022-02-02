@@ -1,120 +1,131 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
-    <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="script.js"></script>
-        <script>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="script.js"></script>
+    <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', '');
-        </script>
-        <!-- Technical needs -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- To support IE8 and IE9 -->
-        <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Control layout on mobile -->
+    </script>
+    <!-- Technical needs -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- To support IE8 and IE9 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Control layout on mobile -->
 
-        <!-- Stuff that is visible or useful for SEO -->
-        <title>Titre de la page</title>
+    <!-- Stuff that is visible or useful for SEO -->
+    <title>Titre de la page</title>
 
-        <meta name="description" content="">
-        <meta charset="utf-8">
-        <meta name="theme-color" content="#141414">
-        <meta name="locale" content="en_US">
-        <meta name="keywords" content="keyword, keyword">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="thumbnail" content=""/><!-- The image visible in search results -->
+    <meta name="description" content="">
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#141414">
+    <meta name="locale" content="en_US">
+    <meta name="keywords" content="keyword, keyword">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="thumbnail" content=""/><!-- The image visible in search results -->
 
-        <meta name="robots" content="index, follow, all" />
+    <meta name="robots" content="index, follow, all"/>
 
-        <link rel="manifest" href="manifest.json"> <!-- Link to the manifest.json -->
-        <link rel="canonical" href="">
-        <link rel="shortcut icon shortcut apple-touch-icon apple-touch-icon-precomposed" type="image/png" href="/img/logos/logo.png">
+    <link rel="manifest" href="manifest.json"> <!-- Link to the manifest.json -->
+    <link rel="canonical" href="">
+    <link rel="shortcut icon shortcut apple-touch-icon apple-touch-icon-precomposed" type="image/png"
+          href="/img/logos/logo.png">
 
-        <!-- For sharing purposes -->
-        <meta property="og:url" content="" />
-        <meta property="og:type" content="" /><!-- On peut ajouter plusieurs types -->
-        <meta property="og:title" content="" />
-        <meta property="og:description" content="">
-        <meta property="og:site_name" content="1234.com">
-        <meta property="og:image" content="" />
-        <meta property="og:image:height" content="1200" />
-        <meta property="og:image:width" content="630" />
+    <!-- For sharing purposes -->
+    <meta property="og:url" content=""/>
+    <meta property="og:type" content=""/><!-- On peut ajouter plusieurs types -->
+    <meta property="og:title" content=""/>
+    <meta property="og:description" content="">
+    <meta property="og:site_name" content="1234.com">
+    <meta property="og:image" content=""/>
+    <meta property="og:image:height" content="1200"/>
+    <meta property="og:image:width" content="630"/>
 
-        <meta property="fb:app_id" content=""><!-- Doesnt do anything -->
-    
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="">
-        <meta name="twitter:description" content="">
-        <meta name="twitter:image" content="">
+    <meta property="fb:app_id" content=""><!-- Doesnt do anything -->
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="styles.css">
-        <!-- External Libraries DN'ai eue S -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <!-- Google Fonts for the fonts -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&family=Roboto+Slab&display=swap" rel="stylesheet">
-        <!-- Font Awesome for the icons -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
-        <link th:href="@{/assets/styles.css}" rel="stylesheet" />
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
 
-        <base href="/">
-        <meta name="google-site-verification" content="xmPhBSEBg0SJc5EZjqOlWFBigNILnPy54t_XVX8dLk8" />
-        <script src="" async defer></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- External Libraries DN'ai eue S -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- Google Fonts for the fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&family=Roboto+Slab&display=swap"
+          rel="stylesheet">
+    <!-- Font Awesome for the icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
+    <link th:href="@{/assets/styles.css}" rel="stylesheet"/>
 
-        <!-- <meta http-equiv="refresh" content="3"> -->
-    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
-    <body class="scrollbar-ok">
-    <!-- For Seo : 1 Use the right tag, 2 : use alt, title and so on, 3 : post regularly -->
+    <base href="/">
+    <meta name="google-site-verification" content="xmPhBSEBg0SJc5EZjqOlWFBigNILnPy54t_XVX8dLk8"/>
+    <script src="" async defer></script>
 
-        <header>
-            <div th:replace="fragments/header :: header"></div>
-        </header>
+    <!-- <meta http-equiv="refresh" content="3"> -->
+    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script>
+</head>
+<body class="scrollbar-ok">
+<!-- For Seo : 1 Use the right tag, 2 : use alt, title and so on, 3 : post regularly -->
 
-        <main>
+<header>
+    <div th:replace="fragments/header :: header"></div>
+</header>
 
-                <div class="main_container--form">
-                    <div class="_row">
-                        <h1 class="_col-12">Jean-Claude</h1>
-                        <div class="_col-12">
-                            <div class="img-container">
-                                <img atl="" src="C:\Users\brice\Desktop\front myresto\new new\calum-lewis-rPkgYDh2bmo-unsplash.jpg">
-                            </div>
-                        </div>
-                        <div class="_col-12">
-                            <div class="_row">
+<main>
 
-                                <span class="form-java_label _col-12">Prénom: Jean</span>
-                                <span class="form-java_label _col-12">Nom: Claude</span>
-                                <span class="form-java_label _col-12">Email: jc@jc.jc</span>
-
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="_col-12 button-handler button-handler--left">
-                        <button class="button-round"><i class="fas fa-sign-out-alt"></i> Se déconnecter</button>
-                    </div>
-                    <div class="_col-12 button-handler button-handler--left">
-                        <button class="button-round button-round--main"><i class="fas fa-user-minus"></i> Supprimer son compte</button>
-                    </div>
+    <div class="main_container--form">
+        <div class="_row">
+            <h1 class="_col-12">Jean-Claude</h1>
+            <div class="_col-12">
+                <div class="img-container">
+                    <img atl="" src="C:\Users\brice\Desktop\front myresto\new new\calum-lewis-rPkgYDh2bmo-unsplash.jpg">
+                </div>
             </div>
+            <div class="_col-12">
+                <div class="_row">
 
-        </main>
-        
-        <footer>
-            <div th:replace="fragments/footer :: footer"></div>
-        </footer>
+                    <span class="form-java_label _col-12">Prénom: Jean</span>
+                    <span class="form-java_label _col-12">Nom: Claude</span>
+                    <span class="form-java_label _col-12">Email: jc@jc.jc</span>
 
-        <nav class="navbar-mobile">
-            <a><i class="fas fa-pizza-slice"></i></a>
-            <a><i class="fas fa-clipboard"></i></a>
-            <a><span><i class="fas fa-shopping-cart"></i> 1</span></a>
-            <a><i class="fas fa-user"></i></a>
-        </nav>
 
-    <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6d74cfcc193d086f',m:'tFaXeFh3CxFvmLEwY.Mdma0tnN9gmc9nTUe.duKZ_.c-1643819506-0-AWB3nIjeA12VLcGSrmv6m2gMwiXrCWePUna0mDUMyU12zfsHEuW0tky0YkNyu7F0UghVEk7qxoI4WIX6Aof0sigxoAjGcfBF2/MKaBM43s69wkAqaHzDdUHbFerE/fYAaAbLyVA6xJlNncS4p96ojxx3VcE1UTrqcYmFP298rJp2/PIGK39oRYdNeUWkbNlrTw==',s:[0x5eefbb076a,0xb3e2bef6dc],}})();</script></body>
+                </div>
+            </div>
+        </div>
+
+        <div class="_col-12 button-handler button-handler--left">
+            <button class="button-round"><i class="fas fa-sign-out-alt"></i> Se déconnecter</button>
+        </div>
+        <div class="_col-12 button-handler button-handler--left">
+            <button class="button-round button-round--main"><i class="fas fa-user-minus"></i> Supprimer son compte
+            </button>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    <div th:replace="fragments/footer :: footer"></div>
+</footer>
+
+<div th:replace="fragments/navbarMobile :: navMobile"></div>
+
+
+<script type="text/javascript">(function () {
+    window['__CF$cv$params'] = {
+        r: '6d74cfcc193d086f',
+        m: 'tFaXeFh3CxFvmLEwY.Mdma0tnN9gmc9nTUe.duKZ_.c-1643819506-0-AWB3nIjeA12VLcGSrmv6m2gMwiXrCWePUna0mDUMyU12zfsHEuW0tky0YkNyu7F0UghVEk7qxoI4WIX6Aof0sigxoAjGcfBF2/MKaBM43s69wkAqaHzDdUHbFerE/fYAaAbLyVA6xJlNncS4p96ojxx3VcE1UTrqcYmFP298rJp2/PIGK39oRYdNeUWkbNlrTw==',
+        s: [0x5eefbb076a, 0xb3e2bef6dc],
+    }
+})();</script>
+</body>
 </html>
 
