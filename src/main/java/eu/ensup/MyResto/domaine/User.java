@@ -31,10 +31,11 @@ public class User implements UserDetails {
     private String lastName;
     private String email;
     private String address;
-    private Roles role; // changer mettre l'enum
+    private Roles role;
     private String password;
     private String picture;
     @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
     private List<Orders> orders = new ArrayList<>();
 
     public User() {
