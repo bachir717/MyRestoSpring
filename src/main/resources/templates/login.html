@@ -88,7 +88,7 @@
 
             <div class="main_container--form">
                 <h1>Se connecter</h1>
-                <form class="_row" th:action="@{/signin}" th:object="${user}"  method="post">
+                <form class="_row" th:action="@{/login}" th:object="${user}"  method="post">
                         <div class="form-java_container _row _col-6 _col-sm-12">
                             <label class="form-java_label _col-12">Login</label>
                             <input type="text" class="form-java_input _col-12" th:field="*{username}">
