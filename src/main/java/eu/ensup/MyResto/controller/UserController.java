@@ -72,11 +72,11 @@ public class UserController {
                         session.setAttribute("error", "L'utilistateur est déjà crée");
                 else
                     session.setAttribute("error", "Les mot de passe ne sont pas identiques");
-
             else
                 session.setAttribute("error", "L'adresse mail n'est pas sous le bon format");
         else
             session.setAttribute("error", "Tout les champs ne sont pas remplis");
+
         return "createdUser";
     }
 
