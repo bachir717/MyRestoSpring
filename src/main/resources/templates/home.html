@@ -75,9 +75,10 @@
         </header>
 
         <main>
-            <a class="shopping-cart">
+            <a class="shopping-cart" href="javascript:window.location.href=window.location.href" th:href="@{/shoppingcard}">
                 <i class="fas fa-shopping-cart"></i>
-                <span>0</span>
+                <span th:if="${session.ShoppingCard}" th:text="${#lists.size(session.ShoppingCard)}"></span>
+                <span th:unless="${session.ShoppingCard}">0</span>
             </a>
 
             <div class="main_container--top">
@@ -145,7 +146,7 @@
                                         <div class="carousel-food_item_text-container">
                                             <span th:text="${entree.price}+€"></span>
                                             <div sec:authorize="isAuthenticated()">
-                                                <button class="button-round" th:id="${entree.id}"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
+                                                <a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}"><button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier</button></a>
                                             </div>
                                         </div>
                                     </div>
