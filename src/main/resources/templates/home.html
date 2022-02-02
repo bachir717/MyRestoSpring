@@ -84,15 +84,14 @@
                 <div class="_col-4 navbar-music_container--right" sec:authorize="isAuthenticated()">
                     <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span><i class="fas fa-user"></i></span></a>
                 </div>
+                <div class="_col-4 navbar-music_container--right">
+
+                    <a th:href="@{/cart}" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge"></span></a>
+                </div>
             </nav>
         </header>
 
         <main>
-
-            <a class="shopping-cart">
-                <i class="fas fa-shopping-cart"></i>
-                <span>0</span>
-            </a>
 
             <div class="main_container--top">
                 <div class="centered-div">
