@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org">
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="script.js"></script>
@@ -62,22 +62,23 @@
         <meta name="google-site-verification" content="xmPhBSEBg0SJc5EZjqOlWFBigNILnPy54t_XVX8dLk8" />
         <script src="" async defer></script>
         <link th:href="@{/assets/styles.css}" rel="stylesheet" />
+
         <!-- <meta http-equiv="refresh" content="3"> -->
-    </head>
-    <body>
+    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+    <body class="scrollbar-ok">
     <!-- For Seo : 1 Use the right tag, 2 : use alt, title and so on, 3 : post regularly -->
 
         <header>
             <nav class="navbar-music _row">
                 <div class="_col-4 navbar-music_container--left">
-                    <a class="navbar-music_logo" th:href="@{/}">
-                        <img src="../static/assets/images/myresto.png" th:src="@{/assets/images/myresto.png}" alt="logo myresto" class="svg" />
+                    <a class="navbar-music_logo" href="">  
+                        <img src="C:\Users\brice\Desktop\front myresto\new new\logo.svg" alt="logo myresto" class="svg" />
                     </a>
                 </div>
-                <!--  <div class="_col-4">
+                <div class="_col-4">   
                     <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span>Mes commandes</span></a>
                     <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span>Mon panier</span></a>
-                </div> -->
+                </div>
                 <div class="_col-4 navbar-music_container--right">   
                     <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span><i class="fas fa-user"></i></span></a>
                 </div>
@@ -86,55 +87,46 @@
 
         <main>
 
-            <div class="main_container--form">
-                <h1>Se connecter</h1>
-                <form class="_row" th:action="@{/login}" th:object="${user}"  method="post">
-                        <div class="form-java_container _row _col-6 _col-sm-12">
-                            <label class="form-java_label _col-12">Login</label>
-                            <input type="text" class="form-java_input _col-12" th:field="*{username}">
-                        </div>
-
-                        <div class="form-java_container _row _col-6 _col-sm-12">
-                            <label class="form-java_label _col-12">Mot de passe</label>
-                            <input  type="password" class="form-java_input _col-12" th:field="*{password}">
-                        </div>
-
-                    <!-- <div class="form-java_container _row _col-6 _col-sm-12">
-                        <label class="form-java_label _col-12">Select</label>
-                        <select class="form-java_input _col-12">
-                            <option selected disabled hidden>Select a value</option>
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                        </select>
-                    </div> -->
-    
-                    <!-- <div class="form-java_container _row _col-6 _col-sm-12">
-                        <label class="form-java_label _col-12">TextArea</label>
-                        <textarea rows="1" class="form-java_input _col-12"></textarea>
-                    </div> -->
-    
-                    <!-- <div class="form-java_container _row _col-6 _col-sm-12">
-                        <label class="form-java_label _col-12">Date</label>
-                        <input type="date" class="form-java_input _col-12">
-                    </div> -->
-    
-                    <!-- <div class="form-java_container _row _col-6 _col-sm-12">
-                        <label class="form-java_label _col-12">File</label>
-                        <input type="file" id="inputFile" class="form-java_input _col-12">
-                        <label class="form-java_input form-java--file _col-12" for="inputFile"><span>Upload your file <i class="fas fa-folder-open"></i></span></label>
-                    </div> -->
-
-                    <div class="_col-12 button-handler">
-                        <button onclick="document.getElementById('menu').scrollIntoView();" class="button--big button-double" type="submit">Se connecter</button>
+                <div class="main_container--form">
+                    <div class="_row">
+                        <h1 class="_col-12">Liste des utilisateurs</h1>
+                        <table class="table-spring _col-12 scrollbar-ok">
+                            <tbody>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Email</th>
+                                    <th>Date création compte</th>
+                                    <th>Nb commandes</th>
+                                    <th>Actions</th>
+                                </tr>
+                                <tr>
+                                    <td>brikema</td>
+                                    <td>brikemahaha@gnail.fr</td>
+                                    <td>11/04/2022</td>
+                                    <td>4</td>
+                                    <td><a class="link-normal" href="">Supprimer</a></td>
+                                  </tr>
+                                  <tr>
+                                      <td>jean-claude</td>
+                                      <td>jcvd@jc.fr</td>
+                                      <td>07/07/1968</td>
+                                      <td>2</td>
+                                      <td><a class="link-normal" href="">Supprimer</a></td>
+                                    </tr>
+                                    <tr>
+                                      <td>paulo l'asticot</td>
+                                      <td>paulol@yopmail.fr</td>
+                                      <td>25/12/2027</td>
+                                      <td>17</td>
+                                      <td><a class="link-normal" href="">Supprimer</a></td>
+                                    </tr>
+                            </tbody>
+                          </table>
                     </div>
-
-                </form>
             </div>
-            <h4  th:text="${session.error}"></h4>
 
         </main>
-
+        
         <footer>
             <div class="_row footer-container">
                 <div class="_col-4">
@@ -167,10 +159,10 @@
         <nav class="navbar-mobile">
             <a><i class="fas fa-pizza-slice"></i></a>
             <a><i class="fas fa-clipboard"></i></a>
-            <a><i class="fas fa-shopping-cart"></i></a>
+            <a><span><i class="fas fa-shopping-cart"></i> 1</span></a>
             <a><i class="fas fa-user"></i></a>
         </nav>
 
-    </body>
+    <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6d74cfe28db1086f',m:'5xNcIA0RF.beHUCFMUut.OlWGUp1FfpuTKdA1CSxpcw-1643819510-0-AZnxs4fPi/itnzQXu93KGNdKQ1H0KxnqbcJ/aKjJzW32+18nuDT3AVTKSiKE2rUzRATXnKx52gEPH2/i+uphx8HP/mPJEMgvCRDLS6YLP3gsbhrLZlPluilk3AgZF7D4X59Qz2xvlyiE1ZThcbcdjuf7tjLfftPN9Ei8MkCcxLIeZ31O2nlMLBPt5DMmpqqJzxQoJpiw10QxIBCZzu3W9qs=',s:[0x4d3fa10875,0x6452fb4a61],}})();</script></body>
 </html>
 

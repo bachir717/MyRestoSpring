@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org">
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="script.js"></script>
@@ -57,27 +57,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&family=Roboto+Slab&display=swap" rel="stylesheet">
         <!-- Font Awesome for the icons -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
+        <link th:href="@{/assets/styles.css}" rel="stylesheet" />
 
         <base href="/">
         <meta name="google-site-verification" content="xmPhBSEBg0SJc5EZjqOlWFBigNILnPy54t_XVX8dLk8" />
         <script src="" async defer></script>
-        <link th:href="@{/assets/styles.css}" rel="stylesheet" />
+
         <!-- <meta http-equiv="refresh" content="3"> -->
-    </head>
-    <body>
+    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+    <body class="scrollbar-ok">
     <!-- For Seo : 1 Use the right tag, 2 : use alt, title and so on, 3 : post regularly -->
 
         <header>
             <nav class="navbar-music _row">
                 <div class="_col-4 navbar-music_container--left">
-                    <a class="navbar-music_logo" th:href="@{/}">
-                        <img src="../static/assets/images/myresto.png" th:src="@{/assets/images/myresto.png}" alt="logo myresto" class="svg" />
+                    <a class="navbar-music_logo" href="">  
+                        <img src="C:\Users\brice\Desktop\front myresto\new new\logo.svg" alt="logo myresto" class="svg" />
                     </a>
                 </div>
-                <!--  <div class="_col-4">
+                <div class="_col-4">   
                     <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span>Mes commandes</span></a>
                     <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span>Mon panier</span></a>
-                </div> -->
+                </div>
                 <div class="_col-4 navbar-music_container--right">   
                     <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span><i class="fas fa-user"></i></span></a>
                 </div>
@@ -86,55 +87,36 @@
 
         <main>
 
-            <div class="main_container--form">
-                <h1>Se connecter</h1>
-                <form class="_row" th:action="@{/login}" th:object="${user}"  method="post">
-                        <div class="form-java_container _row _col-6 _col-sm-12">
-                            <label class="form-java_label _col-12">Login</label>
-                            <input type="text" class="form-java_input _col-12" th:field="*{username}">
+                <div class="main_container--form">
+                    <div class="_row">
+                        <h1 class="_col-12">Jean-Claude</h1>
+                        <div class="_col-12">
+                            <div class="img-container">
+                                <img atl="" src="C:\Users\brice\Desktop\front myresto\new new\calum-lewis-rPkgYDh2bmo-unsplash.jpg">
+                            </div>
                         </div>
+                        <div class="_col-12">
+                            <div class="_row">
 
-                        <div class="form-java_container _row _col-6 _col-sm-12">
-                            <label class="form-java_label _col-12">Mot de passe</label>
-                            <input  type="password" class="form-java_input _col-12" th:field="*{password}">
+                                <span class="form-java_label _col-12">Prénom: Jean</span>
+                                <span class="form-java_label _col-12">Nom: Claude</span>
+                                <span class="form-java_label _col-12">Email: jc@jc.jc</span>
+
+
+                            </div>
                         </div>
-
-                    <!-- <div class="form-java_container _row _col-6 _col-sm-12">
-                        <label class="form-java_label _col-12">Select</label>
-                        <select class="form-java_input _col-12">
-                            <option selected disabled hidden>Select a value</option>
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                        </select>
-                    </div> -->
-    
-                    <!-- <div class="form-java_container _row _col-6 _col-sm-12">
-                        <label class="form-java_label _col-12">TextArea</label>
-                        <textarea rows="1" class="form-java_input _col-12"></textarea>
-                    </div> -->
-    
-                    <!-- <div class="form-java_container _row _col-6 _col-sm-12">
-                        <label class="form-java_label _col-12">Date</label>
-                        <input type="date" class="form-java_input _col-12">
-                    </div> -->
-    
-                    <!-- <div class="form-java_container _row _col-6 _col-sm-12">
-                        <label class="form-java_label _col-12">File</label>
-                        <input type="file" id="inputFile" class="form-java_input _col-12">
-                        <label class="form-java_input form-java--file _col-12" for="inputFile"><span>Upload your file <i class="fas fa-folder-open"></i></span></label>
-                    </div> -->
-
-                    <div class="_col-12 button-handler">
-                        <button onclick="document.getElementById('menu').scrollIntoView();" class="button--big button-double" type="submit">Se connecter</button>
                     </div>
 
-                </form>
+                    <div class="_col-12 button-handler button-handler--left">
+                        <button class="button-round"><i class="fas fa-sign-out-alt"></i> Se déconnecter</button>
+                    </div>
+                    <div class="_col-12 button-handler button-handler--left">
+                        <button class="button-round button-round--main"><i class="fas fa-user-minus"></i> Supprimer son compte</button>
+                    </div>
             </div>
-            <h4  th:text="${session.error}"></h4>
 
         </main>
-
+        
         <footer>
             <div class="_row footer-container">
                 <div class="_col-4">
@@ -167,10 +149,10 @@
         <nav class="navbar-mobile">
             <a><i class="fas fa-pizza-slice"></i></a>
             <a><i class="fas fa-clipboard"></i></a>
-            <a><i class="fas fa-shopping-cart"></i></a>
+            <a><span><i class="fas fa-shopping-cart"></i> 1</span></a>
             <a><i class="fas fa-user"></i></a>
         </nav>
 
-    </body>
+    <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6d74cfcc193d086f',m:'tFaXeFh3CxFvmLEwY.Mdma0tnN9gmc9nTUe.duKZ_.c-1643819506-0-AWB3nIjeA12VLcGSrmv6m2gMwiXrCWePUna0mDUMyU12zfsHEuW0tky0YkNyu7F0UghVEk7qxoI4WIX6Aof0sigxoAjGcfBF2/MKaBM43s69wkAqaHzDdUHbFerE/fYAaAbLyVA6xJlNncS4p96ojxx3VcE1UTrqcYmFP298rJp2/PIGK39oRYdNeUWkbNlrTw==',s:[0x5eefbb076a,0xb3e2bef6dc],}})();</script></body>
 </html>
 
