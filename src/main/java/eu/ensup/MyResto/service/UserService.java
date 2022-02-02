@@ -23,9 +23,9 @@ public class UserService  implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username not found: " + username));
     }
-    public void save(User user) {
+    public boolean save(User user) {
         user.setPassword(user.getPassword());
-        userRepository.save(user);
+        return userRepository.save(user) != null;
     }
     public Optional<User> getOne(Long productID) {
         return userRepository.findById(productID);

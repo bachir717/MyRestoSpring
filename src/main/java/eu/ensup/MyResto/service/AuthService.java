@@ -28,8 +28,6 @@ public class AuthService {
     @Autowired
     private ModelMapper modelMapper;
 
-
-
     public User signup(User user) {
         return userRepository.save(mapToEntity(user, new User()));
     }
@@ -48,6 +46,4 @@ public class AuthService {
         user.setRole(Roles.USER);
         return user;
     }
-
-
 }

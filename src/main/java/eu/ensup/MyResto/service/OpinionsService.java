@@ -21,8 +21,8 @@ public class OpinionsService {
         return opinionsRepository.findAll();
     }
 
-    public void save(Opinions opinions) {
-        opinionsRepository.save(opinions);
+    public boolean save(Opinions opinions) {
+        return opinionsRepository.save(opinions) != null;
     }
 
     public Optional<Opinions> getOne(Long productID) {
