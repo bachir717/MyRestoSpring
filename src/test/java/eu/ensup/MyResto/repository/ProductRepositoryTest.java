@@ -38,7 +38,6 @@ class ProductRepositoryTest {
 
     @Test
     public void TestGetOneUserByID() {
-
         productRepository.save(new Product(3L,"Crepe 3", 4.12f,Types.PLAT,null));
 
         for (int i=0; i < 10 ; i++)
