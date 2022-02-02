@@ -40,20 +40,6 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping("/signin")
-    public String viewSignupPage(@ModelAttribute User user, HttpSession session) {
-       UserDTO userFind= authService.signin(user);
-       if(userFind != null )
-       {
-           session.setAttribute("username", userFind.getUsername());
-           session.setAttribute("user", userFind);
-           return "home";
-       }
-       else
-           return "no";
-    }
-
-
     @PostMapping("/save")
     public String saveUser(@ModelAttribute User user) {
         log.info("save pour l'utilisateur "+user );

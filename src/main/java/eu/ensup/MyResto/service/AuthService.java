@@ -34,10 +34,6 @@ public class AuthService {
         return userRepository.save(mapToEntity(user, new User()));
     }
 
-    public UserDTO signin(User user) {
-        return modelMapper.map(userRepository.findByUsername(user.getUsername()).get(),UserDTO.class);
-    }
-
     private String encodePassword(String password) {
         return passwordEncoder.encode(password);
     }

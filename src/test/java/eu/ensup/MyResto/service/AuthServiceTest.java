@@ -3,9 +3,6 @@ package eu.ensup.MyResto.service;
 import eu.ensup.MyResto.domaine.User;
 import eu.ensup.MyResto.model.Roles;
 import eu.ensup.MyResto.repository.UserRepository;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;
@@ -77,7 +74,6 @@ class AuthServiceTest
         Authentication authenticate = token;
         SecurityContextHolder.getContext().setAuthentication(authenticate);
 
-        String resultExpect = Jwts.builder().setSubject(user.getUsername()).signWith(Keys.secretKeyFor(SignatureAlgorithm.HS512)).compact();
 
         // GIVEN
 //        when(authenticationManager.authenticate(token)).thenReturn(authenticate);

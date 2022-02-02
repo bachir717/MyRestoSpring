@@ -27,7 +27,7 @@ public class UserService  implements UserDetailsService {
         user.setPassword(user.getPassword());
         userRepository.save(user);
     }
-    public Optional<User> getOne(Long productID) {
-        return userRepository.findById(productID);
+    public Optional<User> getOne(Long userId) {
+        return userRepository.findById(userId);
     }
 }
