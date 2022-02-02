@@ -1,5 +1,6 @@
 package eu.ensup.MyResto.domaine;
 
+import eu.ensup.MyResto.model.Types;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +22,7 @@ public class Product {
     private Long id;
     private String name;
     private Float price;
-    private String type;
+    private Types type;
     private String picture;
 
     public Product() {
