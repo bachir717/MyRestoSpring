@@ -1,21 +1,16 @@
 package eu.ensup.MyResto.config;
 
-import eu.ensup.MyResto.security.JwtAuthenticationFilter;
 import eu.ensup.MyResto.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.BeanIds;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 
     @Configuration
     @EnableWebSecurity
@@ -23,49 +18,38 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
         @Autowired
         private UserService userService;
 
-        @Bean
-        public JwtAuthenticationFilter jwtAuthenticationFilter(){
-            return new JwtAuthenticationFilter();
-        }
-
-        @Bean(BeanIds.AUTHENTICATION_MANAGER)
         @Override
-        public AuthenticationManager authenticationManagerBean() throws Exception {
-            return super.authenticationManagerBean();
-        }
-
-        @Override
-        public void configure(HttpSecurity httpSecurity) throws Exception {
-            httpSecurity.csrf().disable().cors().and().authorizeRequests()
-                    .antMatchers("**")
+        protected void configure(HttpSecurity http) throws Exception {
+            http
+                    .authorizeRequests()
+                    .antMatchers("/", "/**").permitAll()
+                    .anyRequest().authenticated()
+                    .and()
+                    .formLogin()
+                    .loginPage("/login")
                     .permitAll()
-                    .anyRequest()
-                    .authenticated();
-
-            httpSecurity.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+                    .and()
+                    .logout()
+                    .permitAll()
+                    .and()
+                    .csrf().disable();
         }
 
         @Bean
-        public PasswordEncoder passwordEncoder() {
+        public BCryptPasswordEncoder passwordEncoder() {
             return new BCryptPasswordEncoder();
         }
 
-        @Autowired
-        public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-            authenticationManagerBuilder.userDetailsService(userService).passwordEncoder(passwordEncoder());
+        @Bean
+        public DaoAuthenticationProvider authenticationProvider() {
+            DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
+            auth.setUserDetailsService(userService);
+            auth.setPasswordEncoder(passwordEncoder());
+            return auth;
         }
 
-
-        @Bean
-        public WebMvcConfigurer corsConfigurer() {
-            return new WebMvcConfigurer() {
-                public void addCorsMappings(CorsRegistry registry) {
-                    registry.addMapping("/**")
-                            .allowCredentials(true)
-                            .allowedOriginPatterns("*")
-                            .allowedMethods("*")
-                            .allowedHeaders("*");
-                }
-            };
+        @Override
+        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+            auth.authenticationProvider(authenticationProvider());
         }
 }

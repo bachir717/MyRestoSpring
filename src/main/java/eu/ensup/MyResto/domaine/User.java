@@ -1,6 +1,7 @@
 package eu.ensup.MyResto.domaine;
 
 import eu.ensup.MyResto.model.Roles;
+import eu.ensup.MyResto.model.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +9,6 @@ import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -37,6 +37,8 @@ public class User implements UserDetails {
     private String picture;
     @OneToMany(fetch = FetchType.LAZY)
     private List<Orders> orders = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Opinions> opinions = new ArrayList<>();
 
     public User() {
 
@@ -67,4 +69,6 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 }

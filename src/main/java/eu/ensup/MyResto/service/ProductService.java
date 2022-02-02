@@ -2,6 +2,7 @@ package eu.ensup.MyResto.service;
 
 import eu.ensup.MyResto.domaine.Product;
 import eu.ensup.MyResto.domaine.User;
+import eu.ensup.MyResto.repository.ProductRepository;
 import eu.ensup.MyResto.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,23 +12,24 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @Transactional
-public class UserService  implements UserDetailsService {
+public class ProductService {
 
     @Autowired
-    private UserRepository userRepository;
+    private ProductRepository productRepository;
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username not found: " + username));
+    public Iterable<Product> getAll(){
+        return productRepository.findAll();
     }
-    public void save(User user) {
-        user.setPassword(user.getPassword());
-        userRepository.save(user);
+
+    public void save(Product product) {
+        productRepository.save(product);
     }
-    public Optional<User> getOne(Long productID) {
-        return userRepository.findById(productID);
+
+    public Optional<Product> getOne(Long productID) {
+       return productRepository.findById(productID);
     }
 }

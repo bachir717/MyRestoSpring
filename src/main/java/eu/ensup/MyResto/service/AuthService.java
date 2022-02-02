@@ -2,18 +2,22 @@ package eu.ensup.MyResto.service;
 
 import eu.ensup.MyResto.model.Roles;
 import eu.ensup.MyResto.domaine.User;
+import eu.ensup.MyResto.model.UserDTO;
 import eu.ensup.MyResto.repository.UserRepository;
-import eu.ensup.MyResto.security.JwtProvider;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AuthService {
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 
     @Autowired
     private UserRepository userRepository;
@@ -22,25 +26,28 @@ public class AuthService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private AuthenticationManager authenticationManager;
+    private ModelMapper modelMapper;
 
-    @Autowired
-    private JwtProvider jwtProvider;
 
-    public User signup(User user) {
-        user.setUsername(user.getUsername());
-        user.setPassword(encodePassword(user.getPassword()));
-        user.setRole(Roles.USER);
-        return userRepository.save(user);
+
+    public void signup(User user) {
+        userRepository.save(mapToEntity(user, new User()));
     }
 
-    public String signin(User user) {
-        Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
-        SecurityContextHolder.getContext().setAuthentication(authenticate);
-        return jwtProvider.generateToken(authenticate);
+    public UserDTO signin(User user) {
+        return modelMapper.map(userRepository.findByUsername(user.getUsername()).get(),UserDTO.class);
     }
 
-    protected String encodePassword(String password) {
+    private String encodePassword(String password) {
         return passwordEncoder.encode(password);
     }
+
+    private User mapToEntity(final User userDTO, final User user) {
+        user.setUsername(userDTO.getUsername());
+        user.setPassword(encodePassword(userDTO.getPassword()));
+        user.setRole(Roles.USER);
+        return user;
+    }
+
+
 }
