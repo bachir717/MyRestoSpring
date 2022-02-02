@@ -16,11 +16,11 @@ public class GraphController {
     public String barChart(Model model)
     {
         Map<String, Integer> data = new LinkedHashMap<String, Integer>();
-        data.put("Ashish", 30);
-        data.put("Ankit", 50);
-        data.put("Gurpreet", 70);
-        data.put("Mohit", 90);
-        data.put("Manish", 25);
+        data.put("AD", 30);
+        data.put("BL", 50);
+        data.put("GP", 70);
+        data.put("MO", 90);
+        data.put("KN", 25);
         model.addAttribute("keySet", data.keySet());
         model.addAttribute("values", data.values());
         return "barChart";
