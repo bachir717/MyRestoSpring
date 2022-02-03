@@ -1,8 +1,10 @@
 package eu.ensup.MyResto.controller;
 
+import eu.ensup.MyResto.domaine.Orders;
 import eu.ensup.MyResto.domaine.User;
 import eu.ensup.MyResto.model.UserDTO;
 import eu.ensup.MyResto.service.AuthService;
+import eu.ensup.MyResto.service.OrderService;
 import eu.ensup.MyResto.service.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,6 +30,9 @@ public class UserController {
 
     @Autowired
     private AuthService authService;
+
+    @Autowired
+    private OrderService orderService;
 
     @GetMapping("/register")
     public String viewCreateUserPage(Model model) {
@@ -76,7 +84,6 @@ public class UserController {
                 session.setAttribute("error", "L'adresse mail n'est pas sous le bon format");
         else
             session.setAttribute("error", "Tout les champs ne sont pas remplis");
-
         return "createdUser";
     }
 
@@ -91,6 +98,21 @@ public class UserController {
         return "redirect:/";
     }
 
+    @GetMapping("/myCommand")
+    public String myCommand(Model model, HttpSession session) throws ParseException {
+
+        User userload = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<Orders> listOrders = new ArrayList<>();
+        Iterable<Orders> allorders = orderService.getAll();
+        allorders.forEach(o -> {
+            if (o.getUser().getId() == userload.getId()){
+                listOrders.add(o);
+            }
+        });
+
+        model.addAttribute("allcommands",listOrders);
+        return "list-commands-user";
+    }
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
