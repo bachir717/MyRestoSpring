@@ -65,6 +65,7 @@ public class UserController {
     @PostMapping("/save")
     public String saveUser(@ModelAttribute User user,HttpSession session) {
         log.info("save pour l'utilisateur "+user );
+        user.setActivate(true);
         if (!"".equals(user.getUsername()) && !"".equals(user.getPassword())  && !"".equals(user.getAddress())  && !"".equals(user.getLastName()))
             if (validate(user.getEmail()))
                 if (user.getPassword().split(",")[0].equals(user.getPassword().split(",")[1]))

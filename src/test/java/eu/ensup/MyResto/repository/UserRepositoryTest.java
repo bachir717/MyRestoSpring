@@ -25,7 +25,7 @@ class UserRepositoryTest {
 
     @Test
     public void TestSaveUser() {
-        User user = new User(1L,"name","LastName","email","address", Roles.USER,"mdp","",null);
+        User user = new User(1L,"name","LastName","email","address", Roles.USER,"mdp","",true,null);
         User retrunSave =  userRepository.save(user);
         assertThat(user.getUsername(), equalTo(retrunSave.getUsername()));
     }
@@ -33,7 +33,7 @@ class UserRepositoryTest {
     @Test
     public void TestGetAllUsers() {
         for (int i=1 ; i < 10 ; i++)
-            userRepository.save(new User(Long.valueOf(i),"name "+i, "LastName","email","address", Roles.USER,"mdp","",null));
+            userRepository.save(new User(Long.valueOf(i),"name "+i, "LastName","email","address", Roles.USER,"mdp","",true,null));
 
         List<User> allUsers = userRepository.findAll();
         assertThat(9, equalTo(allUsers.size()));
@@ -42,7 +42,7 @@ class UserRepositoryTest {
     @Test
     public void TestGetOneUserByID() {
         for (int i=1; i < 10 ; i++)
-            userRepository.save(new User(Long.valueOf(i),"name "+i, "LastName","email","address", Roles.USER,"mdp","",null));
+            userRepository.save(new User(Long.valueOf(i),"name "+i, "LastName","email","address", Roles.USER,"mdp","",true,null));
 
         User user = userRepository.getById(3L);
         assertThat(3L, equalTo(user.getId()));
@@ -51,7 +51,7 @@ class UserRepositoryTest {
     @Test
     public void TestDeleteOneUserByID() {
         for (int i=1; i < 10 ; i++)
-            userRepository.save(new User(Long.valueOf(i),"name "+i, "LastName","email","address", Roles.USER,"mdp","",null));
+            userRepository.save(new User(Long.valueOf(i),"name "+i, "LastName","email","address", Roles.USER,"mdp","",true,null));
 
         userRepository.deleteById(3L);
         List<User> allUsers = userRepository.findAll();
@@ -61,7 +61,7 @@ class UserRepositoryTest {
     @Test
     public void TestDeleteAllUser() {
         for (int i=1; i < 10 ; i++)
-            userRepository.save(new User(Long.valueOf(i),"name "+i, "LastName","email","address", Roles.USER,"mdp","",null));
+            userRepository.save(new User(Long.valueOf(i),"name "+i, "LastName","email","address", Roles.USER,"mdp","",true,null));
 
         userRepository.deleteAll();
         List<User> allUsers = userRepository.findAll();
