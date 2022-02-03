@@ -72,7 +72,7 @@ public class GraphstatController {
         List<Orders> orders = (List<Orders>) orderService.getAll();
         for(Orders order: orders){
             Date dateCreated = order.getCreated();
-            if(order.getSate() == States.CREATED && dateCreated != null)
+            if(order.getSate() != States.CANCELED && dateCreated != null)
             {
                 Float total = 0F;
                 if(mapCreated.get(dateCreated) != null)
@@ -83,7 +83,7 @@ public class GraphstatController {
                 mapCreated.put(dateCreated.getTime(), total);
             }
             Date dateDelivered = order.getDelivered();
-            if(order.getSate() == States.DELIVERED && dateDelivered != null)
+            if(order.getSate() != States.CANCELED && dateDelivered != null)
             {
                 Float total = 0F;
                 if(mapDelivered.get(dateDelivered.getMonth()) != null)
