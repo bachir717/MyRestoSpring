@@ -1,22 +1,40 @@
 # MyRestoSpring
 
-# Sommaire
-1. 
-2. 
-3. 
-4. 
-5. 
-6. DEVOPS
-    1. [Prérequis](#prérequis)
-    2. [Lancer l'application avec docker & docker-compose](#docker)
-    3. [Lancer l'application sur une Ec2 aws avec terraform et ansible](#terraform)
-    4. [Tester notre application](#test)
 
+## Foncionnalités :
 
-## DEVOPS 
+Application web et mobile permettant :
 
-## Prérequis <a name="prérequis"></a>
+   * Aux visiteurs de voir la carte
+   * Aux clients de commander en ligne
+   * Au gérant d'analyser les commandes et faire un prévisionnel de commandes
 
+## Prérequis :
+* Java : version `11.0.0` 
+* Maven : version `3.6.3`
+* Système de gestion de Base de donnée: `MySQL`
+
+## Framework :
+### Spring :
+Spring est un framework JAVA qui permet de développer des applications web, dans le cadre de ce projet nous avons utilisé plusieurs foncionnalités de Spring :
+
+* l'injection de dépendences
+* Configuration automatique en déclarant les propriétés dans le fichier `application.properties`
+* l'implémentation du pattern MVC
+* l'utilisation du moteur de template [Thymleaf](https://www.thymeleaf.org/) pour la partie front-end
+
+## Utilisation :
+* Créer un répertoire à l'emplacement de votre choix,
+* Lancer la commande `git clone https://github.com/Flav1-ann/MyRestoSpring.git`
+* Accéder au repértoire MyRestoSpring
+* Executer la commande `./mvnw spring-boot:run`
+* Rendez-vous sur http://localhost:8080/myresto
+
+## Logs :
+Vous pouvez retrouver les logs dans les différents sous-dossiers de MyResto dans un dossier nommer `logging.file.*`
+Les logs sont ranger dans des dossiers en fonction du jour ou ils ont été générer.
+
+## DEVOPS :
 
 ### Pour lancer l'application via docker en local 
 
