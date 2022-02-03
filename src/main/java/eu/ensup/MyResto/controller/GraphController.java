@@ -67,5 +67,22 @@ public class GraphController {
         return "prixChart";
     }
 
+    //@GetMapping("/DatePrix")
+//    public String datePrix(Model model)
+//    {
+//        Map<String, Float> data = new LinkedHashMap<>();
+//        List<Orders> orders = (List<Orders>) orderService.getAll();
+//        for(Orders order: orders){
+//            if(order.getSate() == States.DELIVERED)
+//            {
+//                Float value = data.get(order.getCreated().toString());
+//                data.put(order.getCreated().toString(), (value == null ? 0F : value ) + order.getPrice());
+//            }
+//        }
+//        model.addAttribute("keySet", data.keySet());
+//        model.addAttribute("values", data.values());
+//        return "prixChart";
+//    }
+
 
 }
