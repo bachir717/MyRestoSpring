@@ -177,12 +177,6 @@
                         <h4 th:text="${entree.name}"></h4>
                         <div class="carousel-food_item_text-container">
                             <span th:text="${entree.price}+€"></span>
-                            <div sec:authorize="isAuthenticated()">
-                                <a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}">
-                                    <button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier
-                                    </button>
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </th:block>

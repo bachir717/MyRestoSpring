@@ -11,7 +11,7 @@
         </div>
         <div class="_col-4" sec:authorize="isAuthenticated() && hasAuthority('GERANT')">
             <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span>Les commandes</span></a>
-            <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span>Les utilisateurs</span></a>
+            <a th:href="@{/users}" class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span>Les utilisateurs</span></a>
         </div>
         <div class="_col-4 navbar-music_container--right" sec:authorize="!isAuthenticated() && hasAuthority('USER')">
             <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span><i class="fas fa-user"></i></span></a>
