@@ -168,6 +168,18 @@
                                     </button>
                                 <!--/a-->
                             </div>
+                            <div sec:authorize="isAuthenticated() && hasAuthority('GERANT')">
+                                <!--a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}"-->
+                                <button class="button-round"  style="cursor: not-allowed">
+                                    <i class="fas fa-cart-plus"></i> Ajouter au panier
+                                </button>
+                                <!--/a-->
+                            </div>
+                            <a  th:href="@{/login}" sec:authorize="!isAuthenticated()">
+                                <button class="button-round"  th:href="@{/login}" >
+                                    <i class="fas fa-cart-plus"></i> Ajouter au panier
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </th:block>
@@ -188,6 +200,18 @@
                                     </button>
                                 <!--/a-->
                             </div>
+                            <div sec:authorize="isAuthenticated() && hasAuthority('GERANT')">
+                                <!--a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}"-->
+                                <button class="button-round"  style="cursor: not-allowed">
+                                    <i class="fas fa-cart-plus"></i> Ajouter au panier
+                                </button>
+                                <!--/a-->
+                            </div>
+                            <a  th:href="@{/login}" sec:authorize="!isAuthenticated()">
+                                <button class="button-round"  th:href="@{/login}" >
+                                    <i class="fas fa-cart-plus"></i> Ajouter au panier
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </th:block>
@@ -210,6 +234,18 @@
                                     </button>
                                 <!--/a-->
                             </div>
+                            <div sec:authorize="isAuthenticated() && hasAuthority('GERANT')">
+                                <!--a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}"-->
+                                <button class="button-round"  style="cursor: not-allowed">
+                                    <i class="fas fa-cart-plus"></i> Ajouter au panier
+                                </button>
+                                <!--/a-->
+                            </div>
+                            <a  th:href="@{/login}" sec:authorize="!isAuthenticated()">
+                                <button class="button-round"  th:href="@{/login}" >
+                                    <i class="fas fa-cart-plus"></i> Ajouter au panier
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </th:block>
@@ -231,6 +267,18 @@
                                     </button>
                                 <!--/a-->
                             </div>
+                            <div sec:authorize="isAuthenticated() && hasAuthority('GERANT')">
+                                <!--a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}"-->
+                                <button class="button-round"  style="cursor: not-allowed">
+                                    <i class="fas fa-cart-plus"></i> Ajouter au panier
+                                </button>
+                                <!--/a-->
+                            </div>
+                            <a  th:href="@{/login}" sec:authorize="!isAuthenticated()">
+                                <button class="button-round"  th:href="@{/login}" >
+                                    <i class="fas fa-cart-plus"></i> Ajouter au panier
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </th:block>
