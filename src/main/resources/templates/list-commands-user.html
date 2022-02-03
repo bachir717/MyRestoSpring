@@ -89,11 +89,7 @@
                     <div class="card-command_title">
                         <h2 th:text=" Commande + ${command.id}"></h2>
                     </div>
-                    <div class="card-command_customer">
-                        <!-- Seul le gérant voit cette partie -->
-                        <span th:text="${command.user.username} + ' ' + ${command.user.lastName}">Jean-Claude</span>
-                        <span th:text="${command.user.email}">0634951837</span>
-                    </div>
+
                     <div class="card-command_command">
                         <th:block th:each="pro : ${command.products}">
                             <div><span th:text="${pro.name}">Frites x1</span>
@@ -104,9 +100,7 @@
                     </div>
                     <div class="card-command_status">
                         <span th:text="${command.sate}">En cours</span>
-
-                        <div th:if="${command.sate  == T(eu.ensup.MyResto.model.States).CREATED}"> <a   th:href="@{'/deleteOrder/' + ${command.id}}"> <button class="button-round"><i class="fas fa-cart-arrow-down"></i> Annuler la commande</button></a></div>
-                        <div th:if="${command.sate  == T(eu.ensup.MyResto.model.States).CREATED}"> <a th:href="@{'/liveredOrder/' + ${command.id}}"> <button class="button-round"><i class="fas fa-cart-arrow-down"></i> Commande  livrée</button></a></div>
+                        <div th:if="${command.sate  == T(eu.ensup.MyResto.model.States).CREATED}"><a th:href="@{'/deleteOrder/' + ${command.id}}"> <button class="button-round"><i class="fas fa-cart-arrow-down"></i> Annuler la commande</button></a></div>
                     </div>
                 </div>
             </th:block>
