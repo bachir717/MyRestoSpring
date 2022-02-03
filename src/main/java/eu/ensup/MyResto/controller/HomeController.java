@@ -70,7 +70,7 @@ public class HomeController {
         }
         //orderService.save(new Orders(12.1f,null,null,entrees, States.CREATED,userService.getOne(1l).get()));
 
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 
         model.addAttribute("user", new User());
@@ -78,7 +78,6 @@ public class HomeController {
         model.addAttribute("plats",  plats);
         model.addAttribute("desserts",  desserts);
         model.addAttribute("boissons",  boissons);
-
         return "home";
     }
 
@@ -97,7 +96,6 @@ public class HomeController {
             productIds.add(id);
             session.setAttribute("ShoppingCard",productIds);
         }
-
         return "redirect:/";
     }
 
