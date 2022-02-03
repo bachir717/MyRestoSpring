@@ -35,20 +35,13 @@ public class GraphController {
 
     }
 
-    @GetMapping("/pieChart")
-    public String pieChart(Model model) {
-        model.addAttribute("pass", 90);
-        model.addAttribute("fail", 10);
-        return "pieChart";
-
-    }
 
     @Autowired
 	private ProductService productService ;
     @Autowired
     private OrderService  orderService ;
 	@GetMapping("/ListProduit")
-	public String addProduit(Model model)
+	public String etatOrderB(Model model)
 	{
         int nbProductDelivered = 0;
         int nbProductCreated = 0;
@@ -70,14 +63,32 @@ public class GraphController {
         //data.put("Totale des produit", orders.size());
         model.addAttribute("keySet", data.keySet());
         model.addAttribute("values", data.values());
-        return "barChart";
+        return "orderChart";
 	}
-//	 @GetMapping("/barChart")
-//	public String getAllProduit(Model model) {
-//	List<String> nameList= service.getAllProduit().stream().map(x->x.getName()).collect(Collectors.toList());
-//	List<Integer> priceList = service.getAllProduit().stream().map(x-> x.getPrice()).collect(Collectors.toList());
-//	model.addAttribute("name", nameList);
-//	model.addAttribute("price", priceList);
-//	return "barChart";
-//	}
+
+    @GetMapping("/ChiffreAffaireChart")
+    public String chiffreAffaire(Model model)
+    {
+        Map<String, Float> data = new LinkedHashMap<>();
+        List<Orders> orders = (List<Orders>) orderService.getAll();
+        for(Orders order: orders){
+            if(order.getSate() == States.DELIVERED)
+            {
+                Float value = data.get(order.getCreated().toString());
+                data.put(order.getCreated().toString(), (value == null ? 0F : value ) + order.getPrice());
+            }
+        }
+        model.addAttribute("keySet", data.keySet());
+        model.addAttribute("values", data.values());
+        return "prixChart";
+    }
+
+    @GetMapping("/pieChart")
+    public String pieChart(Model model) {
+        model.addAttribute("pass", 90);
+        model.addAttribute("fail", 10);
+        return "pieChart";
+
+    }
+
 }
