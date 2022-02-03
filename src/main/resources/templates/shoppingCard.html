@@ -17,17 +17,13 @@
                 <table class="table-spring _col-12 scrollbar-ok">
                     <tbody>
                         <tr>
-                            <th>Id</th>
-                            <th>Type</th>
                             <th>Produit</th>
                             <th>Prix UT</th>
                             <th>Quantité</th>
                             <th>Prix</th>
-                            <th class="table-spring_case--empty"></th>
+                            <th></th>
                         </tr>
                         <tr th:each="entry : ${products}">
-                            <th th:text="${entry.key.id}"></th>
-                            <td th:text="${entry.key.type}"></td>
                             <td th:text="${entry.key.name}"></td>
                             <td th:text="${entry.key.price}"></td>
                             <td class="table-spring_case--plusminus">
@@ -40,13 +36,13 @@
                             <th:block th:with="result=${entry.key.price} * ${entry.value}">
                                 <td th:text="${#numbers.formatDecimal(result, 0, 2)}"></td>
                             </th:block>
-                            <td class="table-spring_case--empty"><a class="button-round button--full button-round--discret" th:href="@{/shoppingcard/remove/{id}(id=${entry.key.id})}">Supprimer</a></td>
+                            <td><a class="link-normal" style="color:var(--color-mode)!important" th:href="@{/shoppingcard/remove/{id}(id=${entry.key.id})}">Supprimer</a></td>
                           </tr>
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="4" th:text="'Total quantité: '+${totalQuantity}"></td>
-                            <td colspan="3" th:text="'Total: '+${totalPrice}+'€'"></td>
+                            <!-- <td colspan="4" th:text="'Total quantité: '+${totalQuantity}"></td> -->
+                            <td colspan="5" th:text="'Total: '+${totalPrice}+'€'"></td>
                         </tr>
                     </tfoot>
                   </table>

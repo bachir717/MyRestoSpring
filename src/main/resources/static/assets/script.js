@@ -26,7 +26,7 @@ window.onscroll = function(){
     parallax(parallaxElements);
 
     var top = window.scrollY;
-    console.log(top)
+    // console.log(top)
     if (top >= menu1.offsetTop && top <= menu2.offsetTop ){
         document.getElementById("nav-1").classList.add("nav-food_link--active");
     } else {
@@ -50,12 +50,22 @@ window.onscroll = function(){
     } else {
         document.getElementById("nav-4").classList.remove("nav-food_link--active");
     }
-    
 }
+
+//Ajouter un produit au panier
 function add_product(idProduct) {
+    this.incrementeCart();
     var request = new XMLHttpRequest();
     var url = "my_resto/addProductShoppingCard/"+idProduct;
     request.open("GET", url, true);
     //request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     request.send();
+}
+
+function incrementeCart() {
+    console.log('toto')
+    cart = document.getElementById('cart-count');
+    var cartCount = Number(document.getElementById('cart-count').innerHTML);
+    var newCount = cartCount + 1;
+    cart.innerHTML = newCount;
 }
