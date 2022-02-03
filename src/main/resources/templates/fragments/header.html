@@ -13,7 +13,7 @@
     <div class="_col-4 navbar-music_container--right" >
         <a sec:authorize="!isAuthenticated()" class="navbar-music_link" th:href="@{/login}"><span>Se connecter</span></a>
         <a sec:authorize="!isAuthenticated()" class="navbar-music_link" th:href="@{/register}"><span>Se créer un compte</span></a>
-        <a sec:authorize="isAuthenticated() && hasAuthority('USER')" class="navbar-music_link"><span><i class="fas fa-user"></i></span></a>
+        <a sec:authorize="isAuthenticated() && hasAuthority('USER')" class="navbar-music_link" th:href="@{/edit}"><span><i class="fas fa-user"></i></span></a>
         <a sec:authorize="isAuthenticated()" class="navbar-music_link" th:href="@{/logout}"><span><i class="fas fa-sign-out-alt"></i></span></a>
     </div>
 </nav>

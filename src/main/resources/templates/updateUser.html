@@ -137,9 +137,15 @@
                 <button onclick="document.getElementById('menu').scrollIntoView();" class="button--big button-double"
                         type="submit">Modifier
                 </button>
+
             </div>
 
         </form>
+        <a th:href="@{/deleteMyUser}">
+            <button onclick="document.getElementById('menu').scrollIntoView();" class="button--big button-double">
+                Supprimer mon compte
+            </button>
+        </a>
     </div>
     <h4 th:text="${session.error}"></h4>
 
