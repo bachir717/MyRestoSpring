@@ -2,7 +2,7 @@
      xmlns:sec="http://www.w3.org/1999/xhtml">
   <a class="shopping-cart" href="javascript:window.location.href=window.location.href" th:href="@{/shoppingcard}">
     <i class="fas fa-shopping-cart"></i>
-    <span th:if="${session.ShoppingCard}" th:text="${#maps.size(session.ShoppingCard)}"></span>
-    <span th:unless="${session.ShoppingCard}">0</span>
+    <span id="cart-count" th:if="${session.ShoppingCard}" th:text="${#maps.size(session.ShoppingCard)}"></span>
+    <span id="cart-count" th:unless="${session.ShoppingCard}">0</span>
   </a>
 </div>
