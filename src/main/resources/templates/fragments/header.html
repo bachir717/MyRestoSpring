@@ -25,5 +25,12 @@
         <div class="_col-4 navbar-music_container--right" sec:authorize="!isAuthenticated()">
             <a class="navbar-music_link" href="javascript:window.location.href=window.location.href" th:href="@{/register}"><span><i class="fas fa-user-plus"></i></span></a>
         </div>
+        <div class="_col-4 navbar-music_container--right" sec:authorize="isAuthenticated()">
+            <a class="shopping-cart" href="javascript:window.location.href=window.location.href" th:href="@{/shoppingcard}">
+                <i class="fas fa-shopping-cart"></i>
+                <span th:if="${session.ShoppingCard}" th:text="${#lists.size(session.ShoppingCard)}"></span>
+                <span th:unless="${session.ShoppingCard}">0</span>
+            </a>
+        </div>
     </nav>
 </div>

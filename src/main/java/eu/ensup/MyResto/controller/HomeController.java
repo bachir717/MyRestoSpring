@@ -10,6 +10,7 @@ import eu.ensup.MyResto.model.Types;
 import eu.ensup.MyResto.service.*;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -70,7 +71,7 @@ public class HomeController {
         }
         //orderService.save(new Orders(12.1f,null,null,entrees, States.CREATED,userService.getOne(1l).get()));
 
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 
         model.addAttribute("user", new User());
@@ -78,7 +79,6 @@ public class HomeController {
         model.addAttribute("plats",  plats);
         model.addAttribute("desserts",  desserts);
         model.addAttribute("boissons",  boissons);
-
         return "home";
     }
 
@@ -97,10 +97,8 @@ public class HomeController {
             productIds.add(id);
             session.setAttribute("ShoppingCard",productIds);
         }
-
         return "redirect:/";
     }
-
     @RequestMapping(value = "/shoppingcard")
     public String addShoppingCard(Model model, HttpSession session)
     {
