@@ -49,7 +49,8 @@ public class OrderController {
             }
             orderService.save(new Orders(total,new java.sql.Date(new Date().getTime()),null,list, States.CREATED,(User)(SecurityContextHolder.getContext().getAuthentication().getPrincipal())));
         }else{
-
+            session.setAttribute("error","Aucun produit a commander");
+            return "shoppingcard";
         }
         return "redirect:/";
     }
