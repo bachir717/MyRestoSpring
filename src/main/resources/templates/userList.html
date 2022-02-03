@@ -99,7 +99,7 @@
                     <td th:text="${user.email}" />
                     <td th:text="${user.address}" />
                     <td  th:text="${#lists.size(user.orders)}" />
-                    <td><a class="link-normal" href="">Supprimer</a></td>
+                    <td><a class="link-normal" th:href="@{/deleteUser?id={id}(id=${user.id})}">Supprimer</a></td>
                 </tr>
                 </tbody>
             </table>

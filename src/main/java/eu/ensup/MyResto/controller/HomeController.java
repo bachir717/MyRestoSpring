@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static eu.ensup.MyResto.model.Types.*;
 
@@ -171,12 +172,24 @@ public class HomeController {
         log.info("listUser");
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = ((User)principal);
-        log.info(user.toString());
         if (user.getRole() == Roles.GERANT){
-            List<User> users = userRepository.findAll();
+            List<User> users = userRepository.findAll().stream().filter(u->u.getActivate()==true).collect(Collectors.toList());
             model.addAttribute("users", users);
             return "userList";
         }else
             return "error";
     }
+
+    @GetMapping("/deleteUser")
+    public String deleteUser(Model model, @RequestParam(value = "id", required = true) Long id) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = ((User)principal);
+        if (user.getRole() == Roles.GERANT){
+            userRepository.deleteById(id);
+            return listUser(model);
+        }else
+            return "error";
+
+    }
+
 }

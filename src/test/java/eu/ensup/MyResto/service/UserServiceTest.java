@@ -36,7 +36,7 @@ class UserServiceTest
     @Test
     @DisplayName("Test load an user")
     void TestLoadUserByUsername() {
-        User user = new User(0L,"name","LastName","email","address", Roles.USER,"mdp","",null);
+        User user = new User(0L,"name","LastName","email","address", Roles.USER,"mdp","",true,null);
 
         // GIVEN
         when(userRepository.findByUsername(user.getUsername())).thenReturn(java.util.Optional.of(user));
@@ -52,7 +52,7 @@ class UserServiceTest
     @Test
     @DisplayName("Test save an user")
     public void testSave() {
-        User user = new User(0L,"name","LastName","email","address", Roles.USER,"mdp","",null);
+        User user = new User(0L,"name","LastName","email","address", Roles.USER,"mdp","",true,null);
 
         // GIVEN
         when(userRepository.save(user)).thenReturn(user);
@@ -66,7 +66,7 @@ class UserServiceTest
     @DisplayName("Test get one user by id")
     public void testGetOne()
     {
-        User user = new User(0L,"name","LastName","email","address", Roles.USER,"mdp","",null);
+        User user = new User(0L,"name","LastName","email","address", Roles.USER,"mdp","",true,null);
 
         // GIVEN
         when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
