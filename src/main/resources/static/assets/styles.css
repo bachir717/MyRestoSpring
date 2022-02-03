@@ -815,7 +815,7 @@ p{
 
 .shopping-cart{
     top: var(--navbar-height);
-    right: 1rem!important;
+    right: var(--navbar-height);
     position:fixed;
     /* background-color: var(--color-secondary); */
     padding:1rem;
@@ -824,6 +824,29 @@ p{
 
 .shopping-cart i, .shopping-cart span{
     color: var(--color-secondary)
+}
+
+.cart-round{
+    background-color: hsla(var(--color-opposite-hue), var(--color-opposite-saturation), calc(var(--color-opposite-luminosity) - 15%))!important;
+    border-radius: 50px;
+}
+
+.cart-round i{
+    color: var(--color-mode-shade2)!important;
+}
+
+.cart-round span{
+    font-size: 1.4rem;
+    border-radius: 50px;
+    padding: 0.2rem 0.8rem;
+    position: absolute;
+    box-sizing: border-box;
+    border-radius: 50%;
+    left:50%;
+    margin-left: -3rem;
+    bottom: -1rem;
+    background:var(--color-opposite);
+    color: var(--color-secondary)!important;
 }
 
 /* #endregion */
@@ -1173,5 +1196,13 @@ textarea.form-java_input{
     object-position: 50% 50%;
 }
 
+
+/* #endregion */
+
+/* #region error-handler */
+
+.error-handler{
+    background-color: var(--color-main);color: var(--color-opposite);box-sizing:border-box
+}
 
 /* #endregion */
