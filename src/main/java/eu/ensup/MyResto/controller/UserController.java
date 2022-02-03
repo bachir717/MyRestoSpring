@@ -72,6 +72,7 @@ public class UserController {
                     if (userService.loadUserByUsername(user.getUsername()) == null)
                     {
                         user.setPassword(user.getPassword().split(",")[0]);
+                        user.setActivate(true);
                         authService.signup(user);
                         session.removeAttribute("error");
 
