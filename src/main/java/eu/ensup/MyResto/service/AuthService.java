@@ -22,8 +22,8 @@ public class AuthService {
 
     public User signup(User user) {
         user.setRole(Roles.USER);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         User result = userRepository.save(user);
-        result.setPassword(passwordEncoder.encode(user.getPassword()));
         return result;
     }
 
