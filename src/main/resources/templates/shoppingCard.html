@@ -80,13 +80,19 @@
                         <table class="table-spring _col-12 scrollbar-ok">
                             <tbody>
                                 <tr>
+                                    <th>Id</th>
+                                    <th>Type</th>
                                     <th>Produit</th>
+                                    <th>Prix UT</th>
                                     <th>Quantité</th>
                                     <th>Prix</th>
                                     <th class="table-spring_case--empty"></th>
                                 </tr>
                                 <tr th:each="entry : ${products}">
+                                    <th th:text="${entry.key.id}"></th>
+                                    <td th:text="${entry.key.type}"></td>
                                     <td th:text="${entry.key.name}"></td>
+                                    <td th:text="${entry.key.price}"></td>
                                     <td class="table-spring_case--plusminus">
                                         <div>
                                             <a class="button-round button-round--discret" th:href="@{/shoppingcard/less/{id}(id=${entry.key.id})}">-1</a>
@@ -100,6 +106,12 @@
                                     <td class="table-spring_case--empty"><a class="button-round button--full button-round--discret" th:href="@{/shoppingcard/remove/{id}(id=${entry.key.id})}">Supprimer</a></td>
                                   </tr>
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4" th:text="'Total quantité: '+${totalQuantity}"></td>
+                                    <td colspan="3" th:text="'Total: '+${totalPrice}+'€'"></td>
+                                </tr>
+                            </tfoot>
                           </table>
                           <a  th:href="@{/}" class="link-normal" style="color:var(--color-opposite)!important">Retourner à la carte</a>
                           <div class="_col-12 button-handler">
@@ -123,7 +135,6 @@
             <a><span><i class="fas fa-shopping-cart"></i> 1</span></a>
             <a><i class="fas fa-user"></i></a>
         </nav>
-
-    <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6d74cff8d9bc086f',m:'NJxE7M1qVwugoXaTrFSha5RXkjS.dgoQhy65ViJwItM-1643819513-0-AdM967KVR5MJyyQaKIm9+c5usTBT+ZMKdTw+Xp4+HflBKb1K8FQBKg4WLgwb4a0z+1xD1S9/BT91Pz2rB5u+3XDehXkBsozsxLlgPhYXa1Tv7BoRoY/yO7oHrvgUyseFgZzV2+ryxJsEHFwgooc7ALCbjCe7VBYF3RuO7XtKj31z2+3JOME7vmfp6fuGMSs0+L574Nb/U594VFCipjv90PM=',s:[0x76e0dc5a50,0x3bdf3daa40],}})();</script></body>
+    </body>
 </html>
 
