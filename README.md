@@ -28,7 +28,7 @@ Spring est un framework JAVA qui permet de développer des applications web, dan
 * Lancer la commande `git clone https://github.com/Flav1-ann/MyRestoSpring.git`
 * Accéder au repértoire MyRestoSpring
 * Executer la commande `./mvnw spring-boot:run`
-* Rendez-vous sur http://localhost:8080/myresto
+* Rendez-vous sur http://localhost:8080/my_resto
 
 ## Logs :
 Vous pouvez retrouver les logs dans les différents sous-dossiers de MyResto dans un dossier nommer `logging.file.*`
