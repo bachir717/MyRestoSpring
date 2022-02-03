@@ -12,44 +12,55 @@
 <body>
 
     <main layout:fragment="content">
-        <main>
-            <div class="main_container--form">
-                <div class="_row">
-                    <h1 class="_col-12">Panier</h1>
-                    <table class="table-spring _col-12 scrollbar-ok">
-                        <tbody>
-                            <tr>
-                                <th>Produit</th>
-                                <th>Quantité</th>
-                                <th>Prix</th>
-                                <th class="table-spring_case--empty"></th>
-                            </tr>
-                            <tr th:each="entry : ${products}">
-                                <td th:text="${entry.key.name}"></td>
-                                <td class="table-spring_case--plusminus">
-                                    <div>
-                                        <a class="button-round button-round--discret" th:href="@{/shoppingcard/less/{id}(id=${entry.key.id})}">-1</a>
-                                        <span th:text="${entry.value}"></span>
-                                        <a class="button-round button-round--discret" th:href="@{/shoppingcard/more/{id}(id=${entry.key.id})}">+1</a>
-                                    </div>
-                                </td>
-                                <th:block th:with="result=${entry.key.price} * ${entry.value}">
-                                    <td th:text="${#numbers.formatDecimal(result, 0, 2)}"></td>
-                                </th:block>
-                                <td class="table-spring_case--empty"><a class="button-round button--full button-round--discret" th:href="@{/shoppingcard/remove/{id}(id=${entry.key.id})}">Supprimer</a></td>
-                              </tr>
-                        </tbody>
-                      </table>
-                      <a  th:href="@{/}" class="link-normal" style="color:var(--color-opposite)!important">Retourner à la carte</a>
-                      <div class="_col-12 button-handler">
-                          <a th:href="@{/createsOrder}">
-                              <button class="button-round button--big"><i class="fas fa-check"></i> Commander</button>
-                          </a>
-                          <h4 th:text="${session.error}"></h4>
-                      </div>
-                </div>
-        </div>
-    </main>
+        <div class="main_container--form">
+            <div class="_row">
+                <h1 class="_col-12">Panier</h1>
+                <table class="table-spring _col-12 scrollbar-ok">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <th>Type</th>
+                            <th>Produit</th>
+                            <th>Prix UT</th>
+                            <th>Quantité</th>
+                            <th>Prix</th>
+                            <th class="table-spring_case--empty"></th>
+                        </tr>
+                        <tr th:each="entry : ${products}">
+                            <th th:text="${entry.key.id}"></th>
+                            <td th:text="${entry.key.type}"></td>
+                            <td th:text="${entry.key.name}"></td>
+                            <td th:text="${entry.key.price}"></td>
+                            <td class="table-spring_case--plusminus">
+                                <div>
+                                    <a class="button-round button-round--discret" th:href="@{/shoppingcard/less/{id}(id=${entry.key.id})}">-1</a>
+                                    <span th:text="${entry.value}"></span>
+                                    <a class="button-round button-round--discret" th:href="@{/shoppingcard/more/{id}(id=${entry.key.id})}">+1</a>
+                                </div>
+                            </td>
+                            <th:block th:with="result=${entry.key.price} * ${entry.value}">
+                                <td th:text="${#numbers.formatDecimal(result, 0, 2)}"></td>
+                            </th:block>
+                            <td class="table-spring_case--empty"><a class="button-round button--full button-round--discret" th:href="@{/shoppingcard/remove/{id}(id=${entry.key.id})}">Supprimer</a></td>
+                          </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4" th:text="'Total quantité: '+${totalQuantity}"></td>
+                            <td colspan="3" th:text="'Total: '+${totalPrice}+'€'"></td>
+                        </tr>
+                    </tfoot>
+                  </table>
+                  <a  th:href="@{/}" class="link-normal" style="color:var(--color-opposite)!important">Retourner à la carte</a>
+                  <div class="_col-12 button-handler">
+                      <a th:href="@{/createsOrder}">
+                          <button class="button-round button--big"><i class="fas fa-check"></i> Commander</button>
+                      </a>
+                      <h4 th:text="${session.error}"></h4>
+                  </div>
+            </div>
+    </div>
+</main>
 
 </body>
 </html>

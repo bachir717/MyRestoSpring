@@ -11,8 +11,6 @@
 <body>
 
     <main layout:fragment="content">
-        <div th:replace="fragments/cart :: div"></div>
-
         <div class="main_container--top" th:style="'background:linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.35)), url(' + @{/assets/images/nourritures/pizza-background.jpg} + ') no-repeat center center fixed;'">
             <div class="centered-div">
                 <h1>Envie de manger du sale</h1>
@@ -92,16 +90,25 @@
                             <h4 th:text="${entree.name}"></h4>
                             <div class="carousel-food_item_text-container">
                                 <span th:text="${entree.price}+€"></span>
-                                <div>
-                                    <button class="button-round">
-                                        <i class="fas fa-cart-plus"></i> Ajouter au panier
-                                    </button>
-                                </div>
                                 <div sec:authorize="isAuthenticated() && hasAuthority('USER')">
+                                    <!--a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}"-->
                                         <button class="button-round" th:onclick="'add_product('+${entree.id}+');'">
                                             <i class="fas fa-cart-plus"></i> Ajouter au panier
                                         </button>
+                                    <!--/a-->
                                 </div>
+                                <div sec:authorize="isAuthenticated() && hasAuthority('GERANT')">
+                                    <!--a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}"-->
+                                    <button class="button-round"  style="cursor: not-allowed">
+                                        <i class="fas fa-cart-plus"></i> Ajouter au panier
+                                    </button>
+                                    <!--/a-->
+                                </div>
+                                <a  th:href="@{/login}" sec:authorize="!isAuthenticated()">
+                                    <button class="button-round"  th:href="@{/login}" >
+                                        <i class="fas fa-cart-plus"></i> Ajouter au panier
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </th:block>
@@ -117,11 +124,23 @@
                                 <span th:text="${plat.price}+€"></span>
                                 <div sec:authorize="isAuthenticated() && hasAuthority('USER')">
                                     <!--a th:href="@{/addProductShoppingCard/{id}(id=${plat.id})}"-->
-                                        <button class="button-round" th:onclick="add_product(${plat.id});">
+                                        <button class="button-round" th:onclick="'add_product('+${plat.id}+');'">
                                             <i class="fas fa-cart-plus"></i> Ajouter au panier
                                         </button>
                                     <!--/a-->
                                 </div>
+                                <div sec:authorize="isAuthenticated() && hasAuthority('GERANT')">
+                                    <!--a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}"-->
+                                    <button class="button-round"  style="cursor: not-allowed">
+                                        <i class="fas fa-cart-plus"></i> Ajouter au panier
+                                    </button>
+                                    <!--/a-->
+                                </div>
+                                <a  th:href="@{/login}" sec:authorize="!isAuthenticated()">
+                                    <button class="button-round"  th:href="@{/login}" >
+                                        <i class="fas fa-cart-plus"></i> Ajouter au panier
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </th:block>
@@ -139,11 +158,23 @@
                                 <span th:text="${dessert.price}+€"></span>
                                 <div sec:authorize="isAuthenticated() && hasAuthority('USER')">
                                     <!--a th:href="@{/addProductShoppingCard/{id}(id=${dessert.id})}"-->
-                                        <button class="button-round" th:onclick="add_product(${dessert.id});">
+                                        <button class="button-round" th:onclick="'add_product('+${dessert.id}+');'">
                                             <i class="fas fa-cart-plus"></i> Ajouter au panier
                                         </button>
                                     <!--/a-->
                                 </div>
+                                <div sec:authorize="isAuthenticated() && hasAuthority('GERANT')">
+                                    <!--a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}"-->
+                                    <button class="button-round"  style="cursor: not-allowed">
+                                        <i class="fas fa-cart-plus"></i> Ajouter au panier
+                                    </button>
+                                    <!--/a-->
+                                </div>
+                                <a  th:href="@{/login}" sec:authorize="!isAuthenticated()">
+                                    <button class="button-round"  th:href="@{/login}" >
+                                        <i class="fas fa-cart-plus"></i> Ajouter au panier
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </th:block>
@@ -160,11 +191,23 @@
                                 <span th:text="${boisson.price}+€"></span>
                                 <div sec:authorize="isAuthenticated() && hasAuthority('USER')">
                                     <!--a th:href="@{/addProductShoppingCard/{id}(id=${boisson.id})}"-->
-                                        <button class="button-round" th:onclick="add_product(${boisson.id});">
+                                        <button class="button-round" th:onclick="'add_product('+${boisson.id}+');'">
                                             <i class="fas fa-cart-plus"></i> Ajouter au panier
                                         </button>
                                     <!--/a-->
                                 </div>
+                                <div sec:authorize="isAuthenticated() && hasAuthority('GERANT')">
+                                    <!--a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}"-->
+                                    <button class="button-round"  style="cursor: not-allowed">
+                                        <i class="fas fa-cart-plus"></i> Ajouter au panier
+                                    </button>
+                                    <!--/a-->
+                                </div>
+                                <a  th:href="@{/login}" sec:authorize="!isAuthenticated()">
+                                    <button class="button-round"  th:href="@{/login}" >
+                                        <i class="fas fa-cart-plus"></i> Ajouter au panier
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </th:block>
@@ -224,7 +267,6 @@
             </div>
         </div>
     </main>
-
 </body>
 </html>
 
