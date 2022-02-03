@@ -72,7 +72,8 @@
     <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script>
 </head>
 <link th:href="@{/assets/styles.css}" rel="stylesheet"/>
-<link th:href="@{/assets/script.js}" rel="javascript"/>
+<script type="text/javascript" th:src="@{/assets/script.js}"></script>
+<script type="text/javascript" th:src="@{/assets/script_shoppingcard.js}"></script>
 
 <body>
 <!-- For Seo : 1 Use the right tag, 2 : use alt, title and so on, 3 : post regularly -->
@@ -159,10 +160,11 @@
                         <div class="carousel-food_item_text-container">
                             <span th:text="${entree.price}+€"></span>
                             <div sec:authorize="isAuthenticated()">
-                                <a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}">
-                                    <button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier
+                                <!--a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}"-->
+                                    <button class="button-round" th:onclick="'add_product('+${entree.id}+');'">
+                                        <i class="fas fa-cart-plus"></i> Ajouter au panier
                                     </button>
-                                </a>
+                                <!--/a-->
                             </div>
                         </div>
                     </div>
@@ -178,11 +180,11 @@
                         <div class="carousel-food_item_text-container">
                             <span th:text="${plat.price}+€"></span>
                             <div sec:authorize="isAuthenticated()">
-                                <a th:href="@{/addProductShoppingCard/{id}(id=${plat.id})}">
-                                    <button class="button-round" th:id="${plat.id}"><i class="fas fa-cart-plus"></i>
-                                        Ajouter au panier
+                                <!--a th:href="@{/addProductShoppingCard/{id}(id=${plat.id})}"-->
+                                    <button class="button-round" th:onclick="add_product(${plat.id});">
+                                        <i class="fas fa-cart-plus"></i> Ajouter au panier
                                     </button>
-                                </a>
+                                <!--/a-->
                             </div>
                         </div>
                     </div>
@@ -200,12 +202,11 @@
                         <div class="carousel-food_item_text-container">
                             <span th:text="${dessert.price}+€"></span>
                             <div sec:authorize="isAuthenticated()">
-                                <a th:href="@{/addProductShoppingCard/{id}(id=${dessert.id})}">
-                                    <button class="button-round" th:id="${dessert.id}"><i
-                                            class="fas fa-cart-plus"></i>
-                                        Ajouter au panier
+                                <!--a th:href="@{/addProductShoppingCard/{id}(id=${dessert.id})}"-->
+                                    <button class="button-round" th:onclick="add_product(${dessert.id});">
+                                        <i class="fas fa-cart-plus"></i> Ajouter au panier
                                     </button>
-                                </a>
+                                <!--/a-->
                             </div>
                         </div>
                     </div>
@@ -222,12 +223,11 @@
                         <div class="carousel-food_item_text-container">
                             <span th:text="${boisson.price}+€"></span>
                             <div sec:authorize="isAuthenticated()">
-                                <a th:href="@{/addProductShoppingCard/{id}(id=${boisson.id})}">
-                                    <button class="button-round" th:id="${boisson.id}"><i
-                                            class="fas fa-cart-plus"></i>
-                                        Ajouter au panier
+                                <!--a th:href="@{/addProductShoppingCard/{id}(id=${boisson.id})}"-->
+                                    <button class="button-round" th:onclick="add_product(${boisson.id});">
+                                        <i class="fas fa-cart-plus"></i> Ajouter au panier
                                     </button>
-                                </a>
+                                <!--/a-->
                             </div>
                         </div>
                     </div>
@@ -294,7 +294,6 @@
 </footer>
 
 <div th:replace="fragments/navbarMobile :: navMobile"></div>
-
 
 <script type="text/javascript">(function () {
     window['__CF$cv$params'] = {
