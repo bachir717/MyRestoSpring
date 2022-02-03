@@ -34,7 +34,7 @@ class AuthServiceTest
     @DisplayName("Test sign up")
     public void testSignUp()
     {
-        User user = new User(0L,"name","LastName","email","address", Roles.USER,"mdp","",null);
+        User user = new User(0L,"name","LastName","email","address", Roles.USER,"mdp","",true,null);
 
         User resu = new User();
         resu.setUsername(user.getUsername());
@@ -56,7 +56,7 @@ class AuthServiceTest
     @DisplayName("Test sign in")
     public void testSignIn()
     {
-        User user = new User(0L,"name","LastName","email","address", Roles.USER,"mdp","",null);
+        User user = new User(0L,"name","LastName","email","address", Roles.USER,"mdp","",true,null);
 
         // GIVEN
         when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));

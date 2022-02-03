@@ -34,6 +34,7 @@ public class User implements UserDetails {
     private Roles role;
     private String password;
     private String picture;
+    private Boolean activate;
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private List<Orders> orders = new ArrayList<>();

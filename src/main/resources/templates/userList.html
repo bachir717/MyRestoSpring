@@ -86,33 +86,20 @@
             <h1 class="_col-12">Liste des utilisateurs</h1>
             <table class="table-spring _col-12 scrollbar-ok">
                 <tbody>
+
                 <tr>
                     <th>Nom</th>
                     <th>Email</th>
-                    <th>Date création compte</th>
+                    <th>Adress</th>
                     <th>Nb commandes</th>
                     <th>Actions</th>
                 </tr>
-                <tr>
-                    <td>brikema</td>
-                    <td>brikemahaha@gnail.fr</td>
-                    <td>11/04/2022</td>
-                    <td>4</td>
-                    <td><a class="link-normal" href="">Supprimer</a></td>
-                </tr>
-                <tr>
-                    <td>jean-claude</td>
-                    <td>jcvd@jc.fr</td>
-                    <td>07/07/1968</td>
-                    <td>2</td>
-                    <td><a class="link-normal" href="">Supprimer</a></td>
-                </tr>
-                <tr>
-                    <td>paulo l'asticot</td>
-                    <td>paulol@yopmail.fr</td>
-                    <td>25/12/2027</td>
-                    <td>17</td>
-                    <td><a class="link-normal" href="">Supprimer</a></td>
+                <tr th:each="user: ${users}">
+                    <td th:text="${user.username}" />
+                    <td th:text="${user.email}" />
+                    <td th:text="${user.address}" />
+                    <td  th:text="${#lists.size(user.orders)}" />
+                    <td><a class="link-normal" th:href="@{/deleteUser?id={id}(id=${user.id})}">Supprimer</a></td>
                 </tr>
                 </tbody>
             </table>
