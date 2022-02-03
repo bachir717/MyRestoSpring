@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout.html}">
+<head>
+    <title>Titre de la page</title>
+    <meta name="description" content="Description de la page">
+</head>
+<link th:href="@{/assets/styles.css}" rel="stylesheet"/>
+<link th:href="@{/assets/script.js}" rel="javascript"/>
+<script type="text/javascript" th:src="@{/assets/script_shoppingcard.js}"></script>
+
+<body>
+
+    <main layout:fragment="content">
+        <!-- Si nécessaire -->
+        <div th:replace="fragments/cart :: div"></div>
+    </main>
+
+</body>
+</html>
+
