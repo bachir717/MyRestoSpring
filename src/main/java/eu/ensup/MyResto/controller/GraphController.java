@@ -20,22 +20,6 @@ import java.util.stream.Collectors;
 @Controller
 public class GraphController {
 
-    @GetMapping("/barChart")
-    public String barChart(Model model)
-    {
-        Map<String, Integer> data = new LinkedHashMap<String, Integer>();
-        data.put("AD", 30);
-        data.put("BL", 50);
-        data.put("GP", 70);
-        data.put("MO", 90);
-        data.put("KN", 25);
-        model.addAttribute("keySet", data.keySet());
-        model.addAttribute("values", data.values());
-        return "barChart";
-
-    }
-
-
     @Autowired
 	private ProductService productService ;
     @Autowired
@@ -83,12 +67,5 @@ public class GraphController {
         return "prixChart";
     }
 
-    @GetMapping("/pieChart")
-    public String pieChart(Model model) {
-        model.addAttribute("pass", 90);
-        model.addAttribute("fail", 10);
-        return "pieChart";
-
-    }
 
 }
