@@ -1,21 +1,13 @@
 package eu.ensup.MyResto.controller;
 
 
-import eu.ensup.MyResto.domaine.Orders;
 import eu.ensup.MyResto.domaine.Product;
 import eu.ensup.MyResto.domaine.User;
-import eu.ensup.MyResto.model.Roles;
-import eu.ensup.MyResto.model.States;
-import eu.ensup.MyResto.model.Types;
 import eu.ensup.MyResto.service.*;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -72,7 +64,7 @@ public class HomeController {
         }
         //orderService.save(new Orders(12.1f,null,null,entrees, States.CREATED,userService.getOne(1l).get()));
 
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 
         model.addAttribute("user", new User());
@@ -80,10 +72,12 @@ public class HomeController {
         model.addAttribute("plats",  plats);
         model.addAttribute("desserts",  desserts);
         model.addAttribute("boissons",  boissons);
-
         return "home";
     }
-
+    @PostMapping("/loginsuccess")
+    public String loginsuccess(@ModelAttribute User user,HttpSession session) {
+        return "redirect:/";
+    }
     @RequestMapping(value = "/addProductShoppingCard/{id}")
     public String addShoppingCard(@PathVariable("id") Long id,  Model model, HttpSession session)
     {
@@ -103,10 +97,8 @@ public class HomeController {
                 productIds.put(id, 1);
             session.setAttribute("ShoppingCard",productIds);
         }
-
         return "redirect:/";
     }
-
     @RequestMapping(value = "/shoppingcard")
     public String addShoppingCard(Model model, HttpSession session)
     {

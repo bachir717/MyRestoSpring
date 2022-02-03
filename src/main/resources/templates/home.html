@@ -76,29 +76,16 @@
 
 <body>
 <!-- For Seo : 1 Use the right tag, 2 : use alt, title and so on, 3 : post regularly -->
-
-        <main>
-            <a class="shopping-cart" href="javascript:window.location.href=window.location.href" th:href="@{/shoppingcard}">
-                <i class="fas fa-shopping-cart"></i>
-                <span th:if="${session.ShoppingCard}" th:text="${#maps.size(session.ShoppingCard)}"></span>
-                <span th:unless="${session.ShoppingCard}">0</span>
-            </a>
-
-    <div th:replace="fragments/header :: header"></div>
-
-
 <main>
-    <a class="shopping-cart">
-        <i class="fas fa-shopping-cart"></i>
-        <span>0</span>
-    </a>
+    <div th:replace="fragments/header :: header"></div>
 
     <div class="main_container--top">
         <div class="centered-div">
             <h1>Envie de manger du sale</h1>
             <span>Venez découvrir nos recettes de pizza au véritable fromage suisse.</span>
             <div class="_col-12">
-                <button onclick="document.getElementById('menu').scrollIntoView();" class="button--big button-double ">
+                <button onclick="document.getElementById('menu').scrollIntoView();"
+                        class="button--big button-double ">
                     Voir la carte
                 </button>
             </div>
@@ -113,7 +100,8 @@
                     <i class="fas fa-concierge-bell"></i>
                 </div>
                 <h3 class="card-icon_title">Une équipe à votre écoute</h3>
-                <div class="card-icon_text"><p>L'équipe de MyResto est à votre disposition complète. Notre objectif est
+                <div class="card-icon_text"><p>L'équipe de MyResto est à votre disposition complète. Notre objectif
+                    est
                     de vous fournir la meilleur expérience gustative possible.</p></div>
             </div>
             <div class="card-icon _col-4 _col-sm-12">
@@ -129,8 +117,10 @@
                     <i class="fas fa-glass-cheers"></i>
                 </div>
                 <h3 class="card-icon_title">Convivialité</h3>
-                <div class="card-icon_text"><p>La convivialité du resturant étant un élément primordiale à nous yeux,
-                    nous vous demandons de bien vouloir prendre des commandes à emporter, et rester le moins possible
+                <div class="card-icon_text"><p>La convivialité du resturant étant un élément primordiale à nous
+                    yeux,
+                    nous vous demandons de bien vouloir prendre des commandes à emporter, et rester le moins
+                    possible
                     sur place. Gardez votre covid pour vous bande de sans-culottes.</p></div>
             </div>
         </div>
@@ -140,16 +130,20 @@
             <h2 class="_col-12">Menu</h2>
             <div class="nav-food _col-12 _row">
                 <div>
-                    <a id="nav-1" class="nav-food_link" onclick="document.getElementById('menu-1').scrollIntoView();">Entrées</a>
+                    <a id="nav-1" class="nav-food_link"
+                       onclick="document.getElementById('menu-1').scrollIntoView();">Entrées</a>
                 </div>
                 <div>
-                    <a id="nav-2" class="nav-food_link" onclick="document.getElementById('menu-2').scrollIntoView();">Plats</a>
+                    <a id="nav-2" class="nav-food_link"
+                       onclick="document.getElementById('menu-2').scrollIntoView();">Plats</a>
                 </div>
                 <div>
-                    <a id="nav-3" class="nav-food_link" onclick="document.getElementById('menu-3').scrollIntoView();">Desserts</a>
+                    <a id="nav-3" class="nav-food_link"
+                       onclick="document.getElementById('menu-3').scrollIntoView();">Desserts</a>
                 </div>
                 <div>
-                    <a id="nav-4" class="nav-food_link" onclick="document.getElementById('menu-4').scrollIntoView();">Boissons</a>
+                    <a id="nav-4" class="nav-food_link"
+                       onclick="document.getElementById('menu-4').scrollIntoView();">Boissons</a>
                 </div>
             </div>
 
@@ -158,15 +152,17 @@
                 <th:block th:each="entree : ${entrees}">
                     <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
                         <div class="carousel-food_item_image-container">
-                            <img th:src="@{/assets/images/nourritures/}+${entree.picture}" th:alt="${entree.picture}">
+                            <img th:src="@{/assets/images/nourritures/}+${entree.picture}"
+                                 th:alt="${entree.picture}">
                         </div>
                         <h4 th:text="${entree.name}"></h4>
                         <div class="carousel-food_item_text-container">
                             <span th:text="${entree.price}+€"></span>
                             <div sec:authorize="isAuthenticated()">
-                                <button class="button-round" th:id="${entree.id}"><i class="fas fa-cart-plus"></i>
-                                    Ajouter au panier
-                                </button>
+                                <a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}">
+                                    <button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -182,61 +178,34 @@
                         <div class="carousel-food_item_text-container">
                             <span th:text="${plat.price}+€"></span>
                             <div sec:authorize="isAuthenticated()">
-                                <button class="button-round" th:id="${plat.id}"><i class="fas fa-cart-plus"></i> Ajouter
-                                    au panier
-                                </button>
+                                <a th:href="@{/addProductShoppingCard/{id}(id=${plat.id})}">
+                                    <button class="button-round" th:id="${plat.id}"><i class="fas fa-cart-plus"></i>
+                                        Ajouter au panier
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </th:block>
-
-                    <div class="carousel-food _row">
-                            <h3 id="menu-1" class="_col-12 carousel-food_title">Entrées</h3>
-                                <th:block th:each="entree : ${entrees}">
-                                    <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
-                                        <div class="carousel-food_item_image-container">
-                                            <img th:src="@{/assets/images/nourritures/}+${entree.picture}" th:alt="${entree.picture}">
-                                        </div>
-                                        <h4  th:text="${entree.name}"></h4>
-                                        <div class="carousel-food_item_text-container">
-                                            <span th:text="${entree.price}+€"></span>
-                                            <div sec:authorize="isAuthenticated()">
-                                                <a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}"><button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier</button></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </th:block>
-
-                            <h3 id="menu-2" class="_col-12 carousel-food_title">Plats</h3>
-                            <th:block th:each="plat : ${plats}">
-                                <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
-                                    <div class="carousel-food_item_image-container">
-                                        <img  th:src="@{/assets/images/nourritures/}+${plat.picture}" th:alt="${plat.picture}">
-                                    </div>
-                                    <h4  th:text="${plat.name}"></h4>
-                                    <div class="carousel-food_item_text-container">
-                                        <span th:text="${plat.price}+€"></span>
-                                        <div sec:authorize="isAuthenticated()">
-                                            <button class="button-round" th:id="${plat.id}"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </th:block>
 
 
                 <h3 id="menu-3" class="_col-12 carousel-food_title">Desserts</h3>
                 <th:block th:each="dessert : ${desserts}">
                     <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
                         <div class="carousel-food_item_image-container">
-                            <img th:src="@{/assets/images/nourritures/}+${dessert.picture}" th:alt="${dessert.picture}">
+                            <img th:src="@{/assets/images/nourritures/}+${dessert.picture}"
+                                 th:alt="${dessert.picture}">
                         </div>
                         <h4 th:text="${dessert.name}"></h4>
                         <div class="carousel-food_item_text-container">
                             <span th:text="${dessert.price}+€"></span>
                             <div sec:authorize="isAuthenticated()">
-                                <button class="button-round" th:id="${dessert.id}"><i class="fas fa-cart-plus"></i>
-                                    Ajouter au panier
-                                </button>
+                                <a th:href="@{/addProductShoppingCard/{id}(id=${dessert.id})}">
+                                    <button class="button-round" th:id="${dessert.id}"><i
+                                            class="fas fa-cart-plus"></i>
+                                        Ajouter au panier
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -246,15 +215,19 @@
                 <th:block th:each="boisson : ${boissons}">
                     <div class="carousel-food_item _col-3 _col-md-4 _col-sm-12">
                         <div class="carousel-food_item_image-container">
-                            <img th:src="@{/assets/images/nourritures/}+${boisson.picture}" th:alt="${boisson.picture}">
+                            <img th:src="@{/assets/images/nourritures/}+${boisson.picture}"
+                                 th:alt="${boisson.picture}">
                         </div>
                         <h4 th:text="${boisson.name}"></h4>
                         <div class="carousel-food_item_text-container">
                             <span th:text="${boisson.price}+€"></span>
                             <div sec:authorize="isAuthenticated()">
-                                <button class="button-round" th:id="${boisson.id}"><i class="fas fa-cart-plus"></i>
-                                    Ajouter au panier
-                                </button>
+                                <a th:href="@{/addProductShoppingCard/{id}(id=${boisson.id})}">
+                                    <button class="button-round" th:id="${boisson.id}"><i
+                                            class="fas fa-cart-plus"></i>
+                                        Ajouter au panier
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -283,7 +256,8 @@
                     </div>
                     <div class="triangle"></div>
                     <div class="card-opinion_text-container">
-                        <p class="text-color-reverse">C'est la meilleure chose qui me soit arrivé de ma vie, ça en dit
+                        <p class="text-color-reverse">C'est la meilleure chose qui me soit arrivé de ma vie, ça en
+                            dit
                             long sur à quelle point ma vie est nulle.</p>
                         <h3 class="text-color-reverse">Paul-Antoine</h3>
                     </div>
@@ -304,7 +278,8 @@
                     </div>
                     <div class="triangle"></div>
                     <div class="card-opinion_text-container">
-                        <p class="text-color-reverse">Les pizzas sont incroyable, je recommande chaudement, même si il
+                        <p class="text-color-reverse">Les pizzas sont incroyable, je recommande chaudement, même si
+                            il
                             fait froid lol.</p>
                         <h3 class="text-color-reverse">Luc-Edward</h3>
                     </div>

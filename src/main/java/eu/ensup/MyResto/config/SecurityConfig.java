@@ -21,20 +21,21 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http
-                    .authorizeRequests()
-                    .antMatchers("/", "/**").permitAll()
-                    .anyRequest().authenticated()
-                    .and()
-                    .formLogin()
-                    .loginPage("/login")
-                    .failureUrl("/login?error=true")
-                    .permitAll()
-                    .and()
-                    .logout()
-                    .logoutSuccessUrl("/")
-                    .permitAll()
-                    .and()
-                    .csrf().disable();
+                .authorizeRequests()
+                .antMatchers("/","/login","/register","/assets/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/", true)
+                .failureUrl("/login?error=true")
+                .permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/")
+                .permitAll()
+                .and()
+                .csrf().disable();
         }
 
         @Bean

@@ -39,3 +39,6 @@ build/
 /logging.file.path_IS_UNDEFINED/off.log
 /logging.file.path_IS_UNDEFINED/trace.log
 /logging.file.path_IS_UNDEFINED/warn.log
+/logging.file.path_IS_UNDEFINED/2022-02-02/error.log
+/logging.file.path_IS_UNDEFINED/2022-02-02/info.log
+/logging.file.path_IS_UNDEFINED/2022-02-02/warn.log
