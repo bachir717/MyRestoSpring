@@ -77,9 +77,11 @@
 <body>
 <!-- For Seo : 1 Use the right tag, 2 : use alt, title and so on, 3 : post regularly -->
 <main>
-    <div th:replace="fragments/header :: header"></div>
+    <header th:insert="fragments/header :: header"></header>
 
-    <div class="main_container--top">
+    <div th:replace="fragments/cart :: div"></div>
+
+    <div class="main_container--top" th:style="'background:linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.35)), url(' + @{/assets/images/nourritures/pizza-background.jpg} + ') no-repeat center center fixed;'">
         <div class="centered-div">
             <h1>Envie de manger du sale</h1>
             <span>Venez découvrir nos recettes de pizza au véritable fromage suisse.</span>
