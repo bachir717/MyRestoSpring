@@ -88,16 +88,16 @@
                                     <th>action</th>
                                 </tr>
                             </thead>
-                            <tbody th:each="product : ${products}">
+                            <tbody th:each="entry : ${products}">
                                 <tr>
-                                    <th th:text="${product.id}"></th>
-                                    <td th:text="${product.name}"></td>
-                                    <td th:text="${product.price}"></td>
-                                    <td><button class="button-round button--full button-round--main">-1</button></td>
-                                    <td>1</td>
-                                    <td><button class="button-round button--full">+1</button></td>
+                                    <th th:text="${entry.key.id}"></th>
+                                    <td th:text="${entry.key.name}"></td>
+                                    <td th:text="${entry.key.price}"></td>
+                                    <td><a class="button-round button--full button-round--main" th:href="@{/shoppingcard/less/{id}(id=${entry.key.id})}">-1</a></td>
+                                    <td th:text="${entry.value}"></td>
+                                    <td><a class="button-round button--full" th:href="@{/shoppingcard/more/{id}(id=${entry.key.id})}">+1</a></td>
                                     <td>
-                                        <button class="button-round button--full">supprimer</button>
+                                        <a class="button-round button--full" th:href="@{/shoppingcard/remove/{id}(id=${entry.key.id})}">supprimer</a>
                                     </td>
                                   </tr>
                             </tbody>
