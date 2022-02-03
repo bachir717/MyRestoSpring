@@ -102,10 +102,13 @@
                                   </tr>
                             </tbody>
                           </table>
-                          <a class="link-normal" style="color:var(--color-opposite)!important">Retourner à la carte</a>
+                          <a  th:href="@{/}" class="link-normal" style="color:var(--color-opposite)!important">Retourner à la carte</a>
                           <div class="_col-12 button-handler">
-                            <button class="button-round button--big"><i class="fas fa-check"></i> Commander</button>
-                        </div>
+                              <a th:href="@{/createsOrder}">
+                                  <button class="button-round button--big"><i class="fas fa-check"></i> Commander</button>
+                              </a>
+
+                          </div>
                     </div>
             </div>
 
