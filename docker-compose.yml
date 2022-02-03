@@ -17,6 +17,7 @@ services:
   spring-boot-app:
     container_name: spring-apps
     image: thomaslpro/myresto
+    pull: true
     depends_on:
       - db
     ports:
