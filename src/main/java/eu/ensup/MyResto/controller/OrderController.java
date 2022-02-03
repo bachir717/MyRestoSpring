@@ -17,6 +17,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpSession;
 import java.text.ParseException;
+
+import javax.servlet.http.HttpSession;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -42,6 +47,7 @@ public class OrderController {
             float total = 0f;
             for (Map.Entry<Long, Integer> entry : ids.entrySet()) {
                 for (int i = 0; i < entry.getValue(); i++) {
+
                     Product produit = productService.getOne(entry.getKey());
                     total += produit.getPrice();
                     list.add(productService.getOne(entry.getKey()));
@@ -50,6 +56,7 @@ public class OrderController {
             orderService.save(new Orders(total, new java.sql.Date(new Date().getTime()), null, list, States.CREATED, (User) (SecurityContextHolder.getContext().getAuthentication().getPrincipal())));
         } else {
             session.setAttribute("error", "Aucun produit a commander");
+
             return "shoppingcard";
         }
         return "redirect:/";
@@ -78,4 +85,5 @@ public class OrderController {
 
         return "redirect:/allCommand";
     }
+
 }
