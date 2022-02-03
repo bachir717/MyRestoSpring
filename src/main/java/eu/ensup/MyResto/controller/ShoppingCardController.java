@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.Map;
+import java.text.ParseException;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Log4j2
 @Controller
@@ -46,22 +47,50 @@ public class ShoppingCardController{
     }
 
     @RequestMapping(value = "/shoppingcard")
-    public String addShoppingCard(Model model, HttpSession session)
+    public String shoppingCard(Model model, HttpSession session)
     {
         log.info("addShoppingCard");
         Map<Product, Integer> products = new HashMap<>();
+        Float totalPrice = 0F;
+        Integer totalQuantity = 0;
 
         if( session.getAttribute("ShoppingCard") != null ) {
             Map<Long, Integer> ids = (Map<Long, Integer>) session.getAttribute("ShoppingCard");
-            for(Long id : ids.keySet() )
-                products.put(productService.getOne(id), ids.get(id));
+
+            for(Long id : ids.keySet()) {
+                Product product = productService.getOne(id);
+                Integer number = ids.get(id);
+                products.put(product, number);
+                totalPrice += product.getPrice() * number;
+                totalQuantity += number;
+            }
+            products = sortMap(products);
         }
         model.addAttribute("products", products);
+        model.addAttribute("totalPrice", totalPrice);
+        model.addAttribute("totalQuantity", totalQuantity);
         return "shoppingCard";
     }
 
+    public Map<Product, Integer> sortMap(Map<Product, Integer> mapObject) {
+        //Trier
+        List<Map.Entry<Product, Integer>> entries = new ArrayList<>(mapObject.entrySet());
+        Collections.sort(entries, new Comparator<Map.Entry<Product, Integer>>() {
+            @Override
+            public int compare(Map.Entry<Product, Integer> o1, Map.Entry<Product, Integer> o2) {
+                return o1.getKey().getId().compareTo(o2.getKey().getId());
+            }
+        });
+        //Remetre dans une map
+        Map<Product, Integer> sortedMap = new LinkedHashMap<>();
+        for (Map.Entry<Product, Integer> entry : entries) {
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
+        return sortedMap;
+    }
+
     @RequestMapping(value = "/shoppingcard/more/{id}")
-    public String moreProduct(@PathVariable("id") Long id,  Model model, HttpSession session)
+    public String moreProduct(@PathVariable("id") Long id,  Model model, HttpSession session) throws ParseException
     {
         log.info("moreProduct");
         Map<Long, Integer> mapProduct = (Map<Long, Integer>) session.getAttribute("ShoppingCard");
