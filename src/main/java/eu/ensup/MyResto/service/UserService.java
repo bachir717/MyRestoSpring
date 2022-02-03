@@ -1,8 +1,6 @@
 package eu.ensup.MyResto.service;
 
-import eu.ensup.MyResto.domaine.Product;
 import eu.ensup.MyResto.domaine.User;
-import eu.ensup.MyResto.model.Roles;
 import eu.ensup.MyResto.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,11 +10,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
-
 @Service
 @Transactional
-public class UserService  implements UserDetailsService {
+public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
@@ -26,10 +22,10 @@ public class UserService  implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-       User user =  userRepository.findByUsername(username).orElse(null);
-
-       if (!user.getActivate())
-           return null;
+        User user = userRepository.findByUsername(username).orElse(null);
+        if (user != null)
+            if (!user.getActivate())
+                return null;
 
         return user;
     }
@@ -40,7 +36,7 @@ public class UserService  implements UserDetailsService {
 
     public User getOne(Long userID) {
         User user = userRepository.findById(userID).orElse(null);
-        if( user != null )
+        if (user != null)
             user.setPassword(getEncodedPassword(user.getPassword()));
 
         return user;
