@@ -20,14 +20,13 @@ var menu1 = document.getElementById("menu-1");
 var menu2 = document.getElementById("menu-2");
 var menu3 = document.getElementById("menu-3");
 var menu4 = document.getElementById("menu-4");
-console.log(menu1.offsetTop)
 
 window.onscroll = function(){
 
     parallax(parallaxElements);
 
     var top = window.scrollY;
-
+    console.log(top)
     if (top >= menu1.offsetTop && top <= menu2.offsetTop ){
         document.getElementById("nav-1").classList.add("nav-food_link--active");
     } else {
