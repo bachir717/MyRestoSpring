@@ -161,10 +161,11 @@
                         <div class="carousel-food_item_text-container">
                             <span th:text="${entree.price}+€"></span>
                             <div sec:authorize="isAuthenticated() && hasAuthority('USER')">
-                                <a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}">
-                                    <button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier
+                                <!--a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}"-->
+                                    <button class="button-round" th:onclick="'add_product('+${entree.id}+');'">
+                                        <i class="fas fa-cart-plus"></i> Ajouter au panier
                                     </button>
-                                </a>
+                                <!--/a-->
                             </div>
                         </div>
                     </div>
@@ -180,11 +181,11 @@
                         <div class="carousel-food_item_text-container">
                             <span th:text="${plat.price}+€"></span>
                             <div sec:authorize="isAuthenticated() && hasAuthority('USER')">
-                                <a th:href="@{/addProductShoppingCard/{id}(id=${plat.id})}">
-                                    <button class="button-round" th:id="${plat.id}"><i class="fas fa-cart-plus"></i>
-                                        Ajouter au panier
+                                <!--a th:href="@{/addProductShoppingCard/{id}(id=${plat.id})}"-->
+                                    <button class="button-round" th:onclick="add_product(${plat.id});">
+                                        <i class="fas fa-cart-plus"></i> Ajouter au panier
                                     </button>
-                                </a>
+                                <!--/a-->
                             </div>
                         </div>
                     </div>
@@ -202,12 +203,11 @@
                         <div class="carousel-food_item_text-container">
                             <span th:text="${dessert.price}+€"></span>
                             <div sec:authorize="isAuthenticated() && hasAuthority('USER')">
-                                <a th:href="@{/addProductShoppingCard/{id}(id=${dessert.id})}">
-                                    <button class="button-round" th:id="${dessert.id}"><i
-                                            class="fas fa-cart-plus"></i>
-                                        Ajouter au panier
+                                <!--a th:href="@{/addProductShoppingCard/{id}(id=${dessert.id})}"-->
+                                    <button class="button-round" th:onclick="add_product(${dessert.id});">
+                                        <i class="fas fa-cart-plus"></i> Ajouter au panier
                                     </button>
-                                </a>
+                                <!--/a-->
                             </div>
                         </div>
                     </div>
@@ -224,12 +224,11 @@
                         <div class="carousel-food_item_text-container">
                             <span th:text="${boisson.price}+€"></span>
                             <div sec:authorize="isAuthenticated() && hasAuthority('USER')">
-                                <a th:href="@{/addProductShoppingCard/{id}(id=${boisson.id})}">
-                                    <button class="button-round" th:id="${boisson.id}"><i
-                                            class="fas fa-cart-plus"></i>
-                                        Ajouter au panier
+                                <!--a th:href="@{/addProductShoppingCard/{id}(id=${boisson.id})}"-->
+                                    <button class="button-round" th:onclick="add_product(${boisson.id});">
+                                        <i class="fas fa-cart-plus"></i> Ajouter au panier
                                     </button>
-                                </a>
+                                <!--/a-->
                             </div>
                         </div>
                     </div>
