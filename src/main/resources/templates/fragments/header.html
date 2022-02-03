@@ -5,10 +5,10 @@
         </a>
     </div>
     <div class="_col-4 navbar-music_container">
-        <a sec:authorize="isAuthenticated() && hasAuthority('USER') || hasAuthority('GERANT')" class="navbar-music_link" th:href="@{/shoppingcard}"><span>Mon panier</span></a>
-        <a sec:authorize="isAuthenticated() && hasAuthority('USER') || hasAuthority('GERANT')" class="navbar-music_link"><span>Mes commandes</span></a>
-        <a sec:authorize="isAuthenticated() && hasAuthority('GERANT')" class="navbar-music_link"><span>Les commandes</span></a>
-        <a sec:authorize="isAuthenticated() && hasAuthority('GERANT')" class="navbar-music_link"><span>Les utilisateurs</span></a>
+        <a sec:authorize="isAuthenticated() && hasAuthority('USER')" class="navbar-music_link" th:href="@{/shoppingcard}"><span>Mon panier</span></a>
+        <a sec:authorize="isAuthenticated() && hasAuthority('USER')" class="navbar-music_link" th:href="@{/myCommand}"><span>Mes commandes</span></a>
+        <a sec:authorize="isAuthenticated() && hasAuthority('GERANT')" class="navbar-music_link" th:href="@{/allCommand}"><span>Les commandes</span></a>
+        <a sec:authorize="isAuthenticated() && hasAuthority('GERANT')" class="navbar-music_link" th:href="@{/myCommand}"><span>Les utilisateurs</span></a>
     </div>
     <div class="_col-4 navbar-music_container--right" >
         <a sec:authorize="!isAuthenticated()" class="navbar-music_link" th:href="@{/login}"><span>Se connecter</span></a>
