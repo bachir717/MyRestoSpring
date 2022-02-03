@@ -185,7 +185,13 @@ public class HomeController {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = ((User)principal);
         if (user.getRole() == Roles.GERANT){
-            userRepository.deleteById(id);
+            User deletedUser=userRepository.findById(id).get();
+            if (deletedUser != null){
+                deletedUser.setActivate(false);
+                userRepository.save(deletedUser);
+
+            }
+
             return listUser(model);
         }else
             return "error";
