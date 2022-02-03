@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static eu.ensup.MyResto.model.Types.*;
 
@@ -79,16 +81,20 @@ public class HomeController {
     @RequestMapping(value = "/addProductShoppingCard/{id}")
     public String addShoppingCard(@PathVariable("id") Long id,  Model model, HttpSession session)
     {
-        List<Long> productIds = new ArrayList<>();
+        log.info("addShoppingCard");
+        Map<Long, Integer> productIds = new HashMap<>();
         if( session.getAttribute("ShoppingCard") == null )
         {
-            productIds.add(id);
+            productIds.put(id, 1);
             session.setAttribute("ShoppingCard",productIds);
         }
         else
         {
-            productIds = (List<Long>) session.getAttribute("ShoppingCard");
-            productIds.add(id);
+            productIds = (Map<Long, Integer>) session.getAttribute("ShoppingCard");
+            if( productIds.containsKey(id) )
+                productIds.put(id, productIds.get(id)+1);
+            else
+                productIds.put(id, 1);
             session.setAttribute("ShoppingCard",productIds);
         }
         return "redirect:/";
@@ -96,14 +102,60 @@ public class HomeController {
     @RequestMapping(value = "/shoppingcard")
     public String addShoppingCard(Model model, HttpSession session)
     {
-        List<Product> products = new ArrayList<>();
+        log.info("addShoppingCard");
+        Map<Product, Integer> products = new HashMap<>();
 
         if( session.getAttribute("ShoppingCard") != null ) {
-            List<Long> ids = (List<Long>) session.getAttribute("ShoppingCard");
-            for(Long id : ids )
-                products.add(productService.getOne(id));
+            Map<Long, Integer> ids = (Map<Long, Integer>) session.getAttribute("ShoppingCard");
+            for(Long id : ids.keySet() )
+                products.put(productService.getOne(id), ids.get(id));
         }
         model.addAttribute("products", products);
         return "shoppingCard";
+    }
+
+    @RequestMapping(value = "/shoppingcard/more/{id}")
+    public String moreProduct(@PathVariable("id") Long id,  Model model, HttpSession session)
+    {
+        log.info("moreProduct");
+        Map<Long, Integer> mapProduct = (Map<Long, Integer>) session.getAttribute("ShoppingCard");
+        if( mapProduct != null && ! mapProduct.isEmpty() && mapProduct.keySet().contains(id) )
+        {
+            mapProduct.put(id, mapProduct.get(id)+1);
+            session.setAttribute("ShoppingCard",mapProduct);
+        }
+
+        return "redirect:/shoppingcard";
+    }
+
+    @RequestMapping(value = "/shoppingcard/less/{id}")
+    public String lessProduct(@PathVariable("id") Long id,  Model model, HttpSession session)
+    {
+        log.info("lessProduct");
+        Map<Long, Integer> mapProduct = (Map<Long, Integer>) session.getAttribute("ShoppingCard");
+        if( mapProduct != null && ! mapProduct.isEmpty() && mapProduct.keySet().contains(id) )
+        {
+            int number = mapProduct.get(id)-1;
+            if( number > 0 )  mapProduct.put(id, number);
+            else              mapProduct.remove(id);
+
+            session.setAttribute("ShoppingCard",mapProduct);
+        }
+
+        return "redirect:/shoppingcard";
+    }
+
+    @RequestMapping(value = "/shoppingcard/remove/{id}")
+    public String removeProduct(@PathVariable("id") Long id,  Model model, HttpSession session)
+    {
+        log.info("removeProduct");
+        Map<Long, Integer> mapProduct = (Map<Long, Integer>) session.getAttribute("ShoppingCard");
+        if( mapProduct != null && ! mapProduct.isEmpty() && mapProduct.keySet().contains(id) )
+        {
+            mapProduct.remove(id);
+            session.setAttribute("ShoppingCard",mapProduct);
+        }
+
+        return "redirect:/shoppingcard";
     }
 }
