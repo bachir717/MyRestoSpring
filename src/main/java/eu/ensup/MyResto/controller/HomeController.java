@@ -1,22 +1,13 @@
 package eu.ensup.MyResto.controller;
 
 
-import eu.ensup.MyResto.domaine.Orders;
 import eu.ensup.MyResto.domaine.Product;
 import eu.ensup.MyResto.domaine.User;
-import eu.ensup.MyResto.model.Roles;
-import eu.ensup.MyResto.model.States;
-import eu.ensup.MyResto.model.Types;
 import eu.ensup.MyResto.service.*;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -81,7 +72,10 @@ public class HomeController {
         model.addAttribute("boissons",  boissons);
         return "home";
     }
-
+    @PostMapping("/loginsuccess")
+    public String loginsuccess(@ModelAttribute User user,HttpSession session) {
+        return "redirect:/";
+    }
     @RequestMapping(value = "/addProductShoppingCard/{id}")
     public String addShoppingCard(@PathVariable("id") Long id,  Model model, HttpSession session)
     {
