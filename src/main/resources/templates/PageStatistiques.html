@@ -85,23 +85,38 @@
         <div class="_row">
             <div class="_col-6">
                 <div class="container">
-                    <h2 align="center">Graph</h2>
+                    <h2 align="center">État Des Commandes</h2>
 
                     <div id="container1"
                          style="width: 550px; height: 400px; margin: 0 auto"></div>
                 </div>
+            </div>
+            <div class="_col-6">
                 <div class="container">
-                    <h2 align="center">Graph</h2>
+                    <h2 align="center">Chiffre d'affaire</h2>
 
                     <div id="container2"
                          style="width: 550px; height: 400px; margin: 0 auto"></div>
                 </div>
             </div>
+            <div class="_col-6">
+                <div class="container">
+                    <h2 align="center">Chiffre d'affaire</h2>
+
+                    <div id="container3"
+                         style="width: 550px; height: 400px; margin: 0 auto"></div>
+                </div>
+            </div>
+
             <script
-                    src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                    src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+
+            </script>
             <!-- Latest compiled and minified JavaScript -->
             <script
-                    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+
+            </script>
             <script src="https://code.highcharts.com/highcharts.js"></script>
             <script src="https://code.highcharts.com/modules/exporting.js"></script>
             <script th:inline="javascript">
@@ -198,9 +213,80 @@
       });
     });
 </script>
-        </div>
-    </div>
+            <script th:inline="javascript">
+    $(function(){
+   Highcharts.chart('container3', {
+            chart: {
+                type: 'spline'
+            },
+            title: {
+                text: 'Snow depth at Vikjafjellet, Norway'
+            },
+            subtitle: {
+                text: 'Irregular time data in Highcharts JS'
+            },
+            xAxis: {
+                type: 'datetime',
+                labels: {
+                    formatter: function() {
+                        return Highcharts.dateFormat('%d-%m-%Y', this.value);
+                    }
+                },
+                title: {
+                    text: 'Date'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Price'
+                },
+                min: 0
+            },
+            tooltip: {
+                headerFormat: '<b>{series.name}</b><br>',
+                pointFormat: '{point.x:%e %b., %Y}: {point.y:.2f} m'
+            },
 
+            plotOptions: {
+                series: {
+                    marker: {
+                        enabled: true
+                    }
+                }
+            },
+
+            colors: ['#2471A3', '#229954', '#BA4A00'],
+
+            series: [{
+                name: 'Created',
+                data: [[${mapCreated}]]
+            },{
+                name: 'Delivered',
+                data: [[${mapDelivered}]]
+            }],
+
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        plotOptions: {
+                            series: {
+                                marker: {
+                                    radius: 2.5
+                                }
+                            }
+                        }
+                    }
+                }]
+            }
+        });
+    });
+</script>
+        </div>
+
+    </div>
 </main>
 
 <footer>
@@ -214,6 +300,7 @@
     <a><i class="fas fa-user"></i></a>
 </nav>
 
-<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6d74cff8d9bc086f',m:'NJxE7M1qVwugoXaTrFSha5RXkjS.dgoQhy65ViJwItM-1643819513-0-AdM967KVR5MJyyQaKIm9+c5usTBT+ZMKdTw+Xp4+HflBKb1K8FQBKg4WLgwb4a0z+1xD1S9/BT91Pz2rB5u+3XDehXkBsozsxLlgPhYXa1Tv7BoRoY/yO7oHrvgUyseFgZzV2+ryxJsEHFwgooc7ALCbjCe7VBYF3RuO7XtKj31z2+3JOME7vmfp6fuGMSs0+L574Nb/U594VFCipjv90PM=',s:[0x76e0dc5a50,0x3bdf3daa40],}})();</script></body>
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6d74cff8d9bc086f',m:'NJxE7M1qVwugoXaTrFSha5RXkjS.dgoQhy65ViJwItM-1643819513-0-AdM967KVR5MJyyQaKIm9+c5usTBT+ZMKdTw+Xp4+HflBKb1K8FQBKg4WLgwb4a0z+1xD1S9/BT91Pz2rB5u+3XDehXkBsozsxLlgPhYXa1Tv7BoRoY/yO7oHrvgUyseFgZzV2+ryxJsEHFwgooc7ALCbjCe7VBYF3RuO7XtKj31z2+3JOME7vmfp6fuGMSs0+L574Nb/U594VFCipjv90PM=',s:[0x76e0dc5a50,0x3bdf3daa40],}})();</script>
+</body>
 </html>
 

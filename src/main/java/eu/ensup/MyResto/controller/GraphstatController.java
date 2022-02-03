@@ -9,9 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class GraphstatController {
@@ -36,9 +34,9 @@ public class GraphstatController {
         }
         //model.addAttribute("nbProductDelivered ",nbProductDelivered);
         Map<String, Integer> data = new LinkedHashMap<String, Integer>();
-        data.put("nbProductDelivered", nbProductDelivered);
-        data.put("nbProductCreated", nbProductCreated);
-        data.put("nbProductConceld", nbProductConceld);
+        data.put("Commandes livrées", nbProductDelivered);
+        data.put("Commandes ajoutées", nbProductCreated);
+        data.put("Commandes annullées", nbProductConceld);
         //data.put("Totale des produit", orders.size());
         model.addAttribute("keySet", data.keySet());
         model.addAttribute("values", data.values());
@@ -61,11 +59,53 @@ public class GraphstatController {
         return "ok";
     }
 
+    private List<List<Object>> convertMapFloatInListFloat(Map<Long, Float> mapObject)
+    {
+        List<List<Object>> listObject = new ArrayList<>();
+        mapObject.forEach((key, value)->listObject.add(Arrays.asList(key,value)));
+        return listObject;
+    }
+
+    public String courb(Model model){
+        Map<Long, Float> mapCreated = new LinkedHashMap<>();
+        Map<Long, Float> mapDelivered = new LinkedHashMap<>();
+        List<Orders> orders = (List<Orders>) orderService.getAll();
+        for(Orders order: orders){
+            Date dateCreated = order.getCreated();
+            if(order.getSate() == States.CREATED && dateCreated != null)
+            {
+                Float total = 0F;
+                if(mapCreated.get(dateCreated) != null)
+                    total = mapCreated.get(dateCreated);
+
+                total = total + (order.getPrice() != null ? order.getPrice() : 0F);
+
+                mapCreated.put(dateCreated.getTime(), total);
+            }
+            Date dateDelivered = order.getDelivered();
+            if(order.getSate() == States.DELIVERED && dateDelivered != null)
+            {
+                Float total = 0F;
+                if(mapDelivered.get(dateDelivered.getMonth()) != null)
+                    total = mapDelivered.get(dateDelivered.getMonth());
+
+                total = (total != null ? total : 0F) + (order.getPrice() != null ? order.getPrice() : 0F);
+
+                mapDelivered.put(dateDelivered.getTime(), total);
+            }
+        }
+
+        model.addAttribute("mapCreated", convertMapFloatInListFloat(mapCreated));
+        model.addAttribute("mapDelivered", convertMapFloatInListFloat(mapDelivered));
+        return "ok";
+    }
+
     @GetMapping("/Stats")
     public String Stat(Model model)
     {
         ca( model);
         etatOrder( model);
+        courb(model);
         return "PageStatistiques";
     }
 
