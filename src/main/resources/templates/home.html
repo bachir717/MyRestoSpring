@@ -183,7 +183,7 @@
                             <span th:text="${plat.price}+€"></span>
                             <div sec:authorize="isAuthenticated() && hasAuthority('USER')">
                                 <!--a th:href="@{/addProductShoppingCard/{id}(id=${plat.id})}"-->
-                                    <button class="button-round" th:onclick="add_product(${plat.id});">
+                                    <button class="button-round" th:onclick="'add_product('+${plat.id}+');'">
                                         <i class="fas fa-cart-plus"></i> Ajouter au panier
                                     </button>
                                 <!--/a-->
@@ -205,7 +205,7 @@
                             <span th:text="${dessert.price}+€"></span>
                             <div sec:authorize="isAuthenticated() && hasAuthority('USER')">
                                 <!--a th:href="@{/addProductShoppingCard/{id}(id=${dessert.id})}"-->
-                                    <button class="button-round" th:onclick="add_product(${dessert.id});">
+                                    <button class="button-round" th:onclick="'add_product('+${dessert.id}+');'">
                                         <i class="fas fa-cart-plus"></i> Ajouter au panier
                                     </button>
                                 <!--/a-->
@@ -226,7 +226,7 @@
                             <span th:text="${boisson.price}+€"></span>
                             <div sec:authorize="isAuthenticated() && hasAuthority('USER')">
                                 <!--a th:href="@{/addProductShoppingCard/{id}(id=${boisson.id})}"-->
-                                    <button class="button-round" th:onclick="add_product(${boisson.id});">
+                                    <button class="button-round" th:onclick="'add_product('+${boisson.id}+');'">
                                         <i class="fas fa-cart-plus"></i> Ajouter au panier
                                     </button>
                                 <!--/a-->
