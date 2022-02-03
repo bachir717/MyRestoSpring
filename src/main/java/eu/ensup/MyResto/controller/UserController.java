@@ -95,11 +95,25 @@ public class UserController {
         user.setId(userload.getId());
         user.setPassword(userload.getPassword());
         user.setRole(userload.getRole());
+        user.setActivate(userload.getActivate());
         userService.save(user);
         return "redirect:/";
     }
 
+
+    @GetMapping("/deleteMyUser")
+    public String deactivateUser() {
+        log.info("deactivateUser");
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = ((User)principal);
+       User userload =  (User) userService.loadUserByUsername(user.getUsername());
+        userload.setActivate(false);
+        userService.save(userload);
+        return "redirect:/logout";
+    }
+
     @GetMapping("/myCommand")
+
     public String myCommand(Model model, HttpSession session) throws ParseException {
 
         User userload = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
