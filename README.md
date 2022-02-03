@@ -32,16 +32,13 @@
 - Avoir des connaissances en système et réseaux
 
 
-## Lancer l'application avec docker & docker-compose <a name="docker"></a> gfghfgfhhfhfg
-
+## Lancer l'application avec docker & docker-compose <a name="docker"></a>
 - Récupérer le repository.
 - ouvrer un terminal ou une invite de commande à la racine du repository
 - effectuer la commande `docker-compose up -d`
 - attendez la fin de la commande
 
-Maintenant vous pouvez accéder à l'application à l'adresse [localhost](http://localhost)
-
-avec les identifiants : `tlacomblez` & mdp : `123456789`
+Maintenant vous pouvez accéder à l'application à l'adresse [localhost/my_resto](http://localhost/my_resto/)
 
 
 ## Lancer l'application sur une Ec2 aws avec terraform et ansible <a name="terraform"></a>
@@ -100,5 +97,4 @@ Pour accéder au site et vérifier que tout à bien fonctionner accéder via l'a
 
 ## Tester notre application <a name="test"></a>
 
-Nous avons déjà déployé notre application sur AWS vous pouvez y accéder [ici](http://18.190.18.44)
-Toujours avec les identifiants : `tlacomblez` & mdp : `123456789`
+Nous avons déjà déployé notre application sur AWS vous pouvez y accéder [ici](http://52.47.44.61/my_resto/)
