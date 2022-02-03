@@ -1,188 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="fr" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout.html}">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="script.js"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', '');
-    </script>
-    <!-- Technical needs -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- To support IE8 and IE9 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Control layout on mobile -->
-
-    <!-- Stuff that is visible or useful for SEO -->
     <title>Titre de la page</title>
-
-    <meta name="description" content="">
-    <meta charset="utf-8">
-    <meta name="theme-color" content="#141414">
-    <meta name="locale" content="en_US">
-    <meta name="keywords" content="keyword, keyword">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="thumbnail" content=""/><!-- The image visible in search results -->
-
-    <meta name="robots" content="index, follow, all"/>
-
-    <link rel="manifest" href="manifest.json"> <!-- Link to the manifest.json -->
-    <link rel="canonical" href="">
-    <link rel="shortcut icon shortcut apple-touch-icon apple-touch-icon-precomposed" type="image/png"
-          href="/img/logos/logo.png">
-
-    <!-- For sharing purposes -->
-    <meta property="og:url" content=""/>
-    <meta property="og:type" content=""/><!-- On peut ajouter plusieurs types -->
-    <meta property="og:title" content=""/>
-    <meta property="og:description" content="">
-    <meta property="og:site_name" content="1234.com">
-    <meta property="og:image" content=""/>
-    <meta property="og:image:height" content="1200"/>
-    <meta property="og:image:width" content="630"/>
-
-    <meta property="fb:app_id" content=""><!-- Doesnt do anything -->
-
-    <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:title" content="">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- External Libraries DN'ai eue S -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <!-- Google Fonts for the fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&family=Roboto+Slab&display=swap"
-          rel="stylesheet">
-    <!-- Font Awesome for the icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
-
-    <base href="/">
-    <meta name="google-site-verification" content="xmPhBSEBg0SJc5EZjqOlWFBigNILnPy54t_XVX8dLk8"/>
-    <script src="" async defer></script>
-    <link th:href="@{/assets/styles.css}" rel="stylesheet"/>
-
-    <!-- <meta http-equiv="refresh" content="3"> -->
-    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script>
+    <meta name="description" content="Description de la page">
 </head>
-<body class="scrollbar-ok">
-<!-- For Seo : 1 Use the right tag, 2 : use alt, title and so on, 3 : post regularly -->
+<link th:href="@{/assets/styles.css}" rel="stylesheet"/>
 
-<header>
-    <div th:replace="fragments/header :: header"></div>
-</header>
+<body>
 
-<main>
-    <div class="main_container--commands main_container--form">
-        <div class="_row">
-            <h1 class="_col-12">Liste des commandes</h1>
-
-            <th:block th:each="command : ${allcommands}">
-                <div class="card-command _col-4 _col-md-6 _col-sm-12">
-                    <div class="card-command_title">
-                        <h2 th:text=" Commande + ${command.id}"></h2>
-                    </div>
-
-                    <div class="card-command_command">
-                        <th:block th:each="pro : ${command.products}">
-                            <div><span th:text="${pro.name}">Frites x1</span>
-                                <span th:text="${pro.price}+€">1€</span></div>
-                        </th:block>
-
-                        <div><span>Total</span><span th:text="${command.price}+€">29€</span></div>
-                    </div>
-                    <div class="card-command_status">
-                        <span th:text="${command.sate}">En cours</span>
-                        <div th:if="${command.sate  == T(eu.ensup.MyResto.model.States).CREATED}"><a th:href="@{'/deleteOrder/' + ${command.id}}"> <button class="button-round"><i class="fas fa-cart-arrow-down"></i> Annuler la commande</button></a></div>
-                    </div>
+    <main layout:fragment="content">
+            <div class="main_container--commands main_container--form">
+                <div class="_row">
+                    <h1 class="_col-12">Liste des commandes</h1>
+        
+                    <th:block th:each="command : ${allcommands}">
+                        <div class="card-command _col-4 _col-md-6 _col-sm-12">
+                            <div class="card-command_title">
+                                <h2 th:text=" Commande + ${command.id}"></h2>
+                            </div>
+        
+                            <div class="card-command_command">
+                                <th:block th:each="pro : ${command.products}">
+                                    <div><span th:text="${pro.name}">Frites x1</span>
+                                        <span th:text="${pro.price}+€">1€</span></div>
+                                </th:block>
+        
+                                <div><span>Total</span><span th:text="${command.price}+€">29€</span></div>
+                            </div>
+                            <div class="card-command_status">
+                                <span th:text="${command.sate}">En cours</span>
+                                <div th:if="${command.sate  == T(eu.ensup.MyResto.model.States).CREATED}"><a th:href="@{'/deleteOrder/' + ${command.id}}"> <button class="button-round"><i class="fas fa-cart-arrow-down"></i> Annuler la commande</button></a></div>
+                            </div>
+                        </div>
+                    </th:block>
                 </div>
-            </th:block>
+            </div>
+        
+        </main>
 
-<!--            <div class="card-command _col-4 _col-md-6 _col-sm-12">-->
-<!--                <div class="card-command_title">-->
-<!--                    <h2>Commande #1543</h2>-->
-<!--                </div>-->
-<!--                <div class="card-command_customer">-->
-<!--                    &lt;!&ndash; Seul le gérant voit cette partie &ndash;&gt;-->
-<!--                    <span>Jean-Claude</span>-->
-<!--                    <span>0634951837</span>-->
-<!--                </div>-->
-<!--                <div class="card-command_command">-->
-<!--                    <div><span>Frites x1</span><span>1€</span></div>-->
-<!--                    <div><span>Total</span><span>29€</span></div>-->
-<!--                </div>-->
-<!--                <div class="card-command_status">-->
-<!--                    <span>En cours</span>-->
-<!--                    <button class="button-round"><i class="fas fa-cart-arrow-down"></i> Annuler la commande</button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="card-command _col-4 _col-md-6 _col-sm-12">-->
-<!--                <div class="card-command_title">-->
-<!--                    <h2>Commande #1543</h2>-->
-<!--                </div>-->
-<!--                <div class="card-command_customer">-->
-<!--                    &lt;!&ndash; Seul le gérant voit cette partie &ndash;&gt;-->
-<!--                    <span>Jean-Claude</span>-->
-<!--                    <span>0634951837</span>-->
-<!--                </div>-->
-<!--                <div class="card-command_command">-->
-<!--                    <div><span>Frites x1</span><span>1€</span></div>-->
-<!--                    <div><span>Pizzas x2</span><span>28€</span></div>-->
-<!--                    <div><span>Total</span><span>29€</span></div>-->
-<!--                </div>-->
-<!--                <div class="card-command_status">-->
-<!--                    <span>En cours</span>-->
-<!--                    <button class="button-round"><i class="fas fa-cart-arrow-down"></i> Annuler la commande</button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="card-command _col-4 _col-md-6 _col-sm-12">-->
-<!--                <div class="card-command_title">-->
-<!--                    <h2>Commande #1543</h2>-->
-<!--                </div>-->
-<!--                <div class="card-command_customer">-->
-<!--                    &lt;!&ndash; Seul le gérant voit cette partie &ndash;&gt;-->
-<!--                    <span>Jean-Claude</span>-->
-<!--                    <span>0634951837</span>-->
-<!--                </div>-->
-<!--                <div class="card-command_command">-->
-<!--                    <div><span>Frites x1</span><span>1€</span></div>-->
-<!--                    <div><span>Pizzas x2</span><span>28€</span></div>-->
-<!--                    <div><span>Kebabs x2</span><span>28€</span></div>-->
-<!--                    <div><span>Tacos x2</span><span>28€</span></div>-->
-<!--                    <div><span>Pizzas x2</span><span>28€</span></div>-->
-<!--                    <div><span>Total</span><span>275€</span></div>-->
-<!--                </div>-->
-<!--                <div class="card-command_status">-->
-<!--                    <span>En cours</span>-->
-<!--                    <button class="button-round"><i class="fas fa-cart-arrow-down"></i> Annuler la commande</button>-->
-<!--                </div>-->
-<!--            </div>-->
-        </div>
-    </div>
-
-</main>
-
-<footer>
-    <div th:replace="fragments/footer :: footer"></div>
-</footer>
-
-<div th:replace="fragments/navbarMobile :: navMobile"></div>
-
-
-<script type="text/javascript">(function () {
-    window['__CF$cv$params'] = {
-        r: '6d74d0147abb086f',
-        m: 'PisPikcf_qBEzwp2qXr56K9Ot.36om.tVr2PjNdtG4A-1643819518-0-Ad16GmFM9NXTLwE4rdmz4gfQn+/D41DRX2Ci5Xkjb9fYsbUsOO+Nbxb2mpz5o8pqV5LI105AvfW6NvnVaZZl8NPr+WyiEZ1xvwK07/IHlL50fRaK27Qtj/RXiZiVH1wTLiqCi5TNjf7TXQuMeU8FPlIPKa/tUKHF4xwktEc3cYcPJPyzCQFyxhTSdf27236fKk/ZKO6DHuLNIZCsnjmRtzY=',
-        s: [0x9d540402ff, 0x21ce76d639],
-    }
-})();</script>
 </body>
 </html>
 
