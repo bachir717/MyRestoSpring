@@ -412,6 +412,7 @@ p{
     display:flex;
     align-items: center;
     user-select: none;
+    white-space: nowrap;
 }
 
 .navbar-music .navbar-music_link:hover, .navbar-music .navbar-music_link:focus {
@@ -468,6 +469,23 @@ p{
 /* #endregion */
 
 /* #region button round */
+.button-round--discret{
+    border: 0.2rem solid var(--color-opposite-shade2)!important;
+    background-color: var(--color-opposite-shade2)!important;
+}
+
+.button-round--discret:hover {
+    border-color: var(--color-opposite-shade1)!important;
+    background-color: var(--color-opposite-shade1)!important;
+}
+
+.button-round--discret:active,
+.button-round--discret:focus {
+    border-color: var(--color-opposite)!important;
+    background-color: var(--color-opposite)!important;
+}
+
+
 .button-round--main{
     border: 0.2rem solid var(--color-main)!important;
     background-color: var(--color-main)!important;
@@ -1029,6 +1047,17 @@ textarea.form-java_input{
 
 }
 
+.table-spring_case--plusminus div{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.table-spring_case--plusminus div span{
+    margin: auto 1rem;
+    color: var(--color-mode);
+}
+
 .table-spring{
     border-collapse: collapse!important;
     border-top: 0.5rem solid rgba(255, 255, 255, 0);
@@ -1038,6 +1067,11 @@ textarea.form-java_input{
 .table-spring tbody, .table-spring thead{
     display: table;
     width: 100%;
+}
+
+.table-spring .table-spring_case--empty{
+    background-color: var(--color-mode)!important;
+    text-align: center!important;
 }
 
 @media only screen and (max-width: 1080px) {

@@ -77,28 +77,27 @@
                 <div class="main_container--form">
                     <div class="_row">
                         <h1 class="_col-12">Panier</h1>
-                        <h2 class="_col-12">Product List</h2>
                         <table class="table-spring _col-12 scrollbar-ok">
-                            <thead>
+                            <tbody>
                                 <tr>
-                                    <th>Code</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th colspan="3">number</th>
-                                    <th>action</th>
+                                    <th>Produit</th>
+                                    <th>Quantité</th>
+                                    <th>Prix</th>
+                                    <th class="table-spring_case--empty"></th>
                                 </tr>
-                            </thead>
-                            <tbody th:each="entry : ${products}">
-                                <tr>
-                                    <th th:text="${entry.key.id}"></th>
+                                <tr th:each="entry : ${products}">
                                     <td th:text="${entry.key.name}"></td>
-                                    <td th:text="${entry.key.price}"></td>
-                                    <td><a class="button-round button--full button-round--main" th:href="@{/shoppingcard/less/{id}(id=${entry.key.id})}">-1</a></td>
-                                    <td th:text="${entry.value}"></td>
-                                    <td><a class="button-round button--full" th:href="@{/shoppingcard/more/{id}(id=${entry.key.id})}">+1</a></td>
-                                    <td>
-                                        <a class="button-round button--full" th:href="@{/shoppingcard/remove/{id}(id=${entry.key.id})}">supprimer</a>
+                                    <td class="table-spring_case--plusminus">
+                                        <div>
+                                            <a class="button-round button-round--discret" th:href="@{/shoppingcard/less/{id}(id=${entry.key.id})}">-1</a>
+                                            <span th:text="${entry.value}"></span>
+                                            <a class="button-round button-round--discret" th:href="@{/shoppingcard/more/{id}(id=${entry.key.id})}">+1</a>
+                                        </div>
                                     </td>
+                                    <th:block th:with="result=${entry.key.price} * ${entry.value}">
+                                        <td th:text="${#numbers.formatDecimal(result, 0, 2)}"></td>
+                                    </th:block>
+                                    <td class="table-spring_case--empty"><a class="button-round button--full button-round--discret" th:href="@{/shoppingcard/remove/{id}(id=${entry.key.id})}">Supprimer</a></td>
                                   </tr>
                             </tbody>
                           </table>
