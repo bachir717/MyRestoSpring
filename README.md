@@ -27,7 +27,7 @@ Spring est un framework JAVA qui permet de développer des applications web, dan
 * Créer un répertoire à l'emplacement de votre choix,
 * Lancer la commande `git clone https://github.com/Flav1-ann/MyRestoSpring.git`
 * Accéder au repértoire MyRestoSpring
-* Executer la commande `./mvnw spring-boot:run`
+* Executer la commande `/mvn spring-boot:run`
 * Rendez-vous sur http://localhost:8080/my_resto
 
 ## Logs :
@@ -83,7 +83,7 @@ Pour la phrase vous pouvez laisser vide et valider.
 
 Vous avez maintenant une clé ssh public et privé ! (vous les trouverez sous linux par défaut dans `~/.ssh/id_rsa` ou dans le chemin que vous avez précisé).
 
-### Executer Terraform fghjkl
+### Executer Terraform
 
 - Récupérer le repository.
 - ouvrer dans un terminal ou une invite de commande le dossier `terraform` du repository 
