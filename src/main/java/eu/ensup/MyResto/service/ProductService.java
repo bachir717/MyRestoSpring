@@ -25,11 +25,11 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public void save(Product product) {
-        productRepository.save(product);
+    public boolean save(Product product) {
+        return productRepository.save(product) != null;
     }
 
-    public Optional<Product> getOne(Long productID) {
-       return productRepository.findById(productID);
+    public Product getOne(Long productID) {
+       return productRepository.findById(productID).orElse(null);
     }
 }

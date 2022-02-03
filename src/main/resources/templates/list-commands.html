@@ -1,194 +1,166 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
-    <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="script.js"></script>
-        <script>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="script.js"></script>
+    <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', '');
-        </script>
-        <!-- Technical needs -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- To support IE8 and IE9 -->
-        <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Control layout on mobile -->
+    </script>
+    <!-- Technical needs -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- To support IE8 and IE9 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Control layout on mobile -->
 
-        <!-- Stuff that is visible or useful for SEO -->
-        <title>Titre de la page</title>
+    <!-- Stuff that is visible or useful for SEO -->
+    <title>Titre de la page</title>
 
-        <meta name="description" content="">
-        <meta charset="utf-8">
-        <meta name="theme-color" content="#141414">
-        <meta name="locale" content="en_US">
-        <meta name="keywords" content="keyword, keyword">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="thumbnail" content=""/><!-- The image visible in search results -->
+    <meta name="description" content="">
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#141414">
+    <meta name="locale" content="en_US">
+    <meta name="keywords" content="keyword, keyword">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="thumbnail" content=""/><!-- The image visible in search results -->
 
-        <meta name="robots" content="index, follow, all" />
+    <meta name="robots" content="index, follow, all"/>
 
-        <link rel="manifest" href="manifest.json"> <!-- Link to the manifest.json -->
-        <link rel="canonical" href="">
-        <link rel="shortcut icon shortcut apple-touch-icon apple-touch-icon-precomposed" type="image/png" href="/img/logos/logo.png">
+    <link rel="manifest" href="manifest.json"> <!-- Link to the manifest.json -->
+    <link rel="canonical" href="">
+    <link rel="shortcut icon shortcut apple-touch-icon apple-touch-icon-precomposed" type="image/png"
+          href="/img/logos/logo.png">
 
-        <!-- For sharing purposes -->
-        <meta property="og:url" content="" />
-        <meta property="og:type" content="" /><!-- On peut ajouter plusieurs types -->
-        <meta property="og:title" content="" />
-        <meta property="og:description" content="">
-        <meta property="og:site_name" content="1234.com">
-        <meta property="og:image" content="" />
-        <meta property="og:image:height" content="1200" />
-        <meta property="og:image:width" content="630" />
+    <!-- For sharing purposes -->
+    <meta property="og:url" content=""/>
+    <meta property="og:type" content=""/><!-- On peut ajouter plusieurs types -->
+    <meta property="og:title" content=""/>
+    <meta property="og:description" content="">
+    <meta property="og:site_name" content="1234.com">
+    <meta property="og:image" content=""/>
+    <meta property="og:image:height" content="1200"/>
+    <meta property="og:image:width" content="630"/>
 
-        <meta property="fb:app_id" content=""><!-- Doesnt do anything -->
-    
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="">
-        <meta name="twitter:description" content="">
-        <meta name="twitter:image" content="">
+    <meta property="fb:app_id" content=""><!-- Doesnt do anything -->
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="styles.css">
-        <!-- External Libraries DN'ai eue S -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <!-- Google Fonts for the fonts -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&family=Roboto+Slab&display=swap" rel="stylesheet">
-        <!-- Font Awesome for the icons -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
 
-        <base href="/">
-        <meta name="google-site-verification" content="xmPhBSEBg0SJc5EZjqOlWFBigNILnPy54t_XVX8dLk8" />
-        <script src="" async defer></script>
-        <link th:href="@{/assets/styles.css}" rel="stylesheet" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- External Libraries DN'ai eue S -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- Google Fonts for the fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&family=Roboto+Slab&display=swap"
+          rel="stylesheet">
+    <!-- Font Awesome for the icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
 
-        <!-- <meta http-equiv="refresh" content="3"> -->
-    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
-    <body class="scrollbar-ok">
-    <!-- For Seo : 1 Use the right tag, 2 : use alt, title and so on, 3 : post regularly -->
+    <base href="/">
+    <meta name="google-site-verification" content="xmPhBSEBg0SJc5EZjqOlWFBigNILnPy54t_XVX8dLk8"/>
+    <script src="" async defer></script>
+    <link th:href="@{/assets/styles.css}" rel="stylesheet"/>
 
-        <header>
-            <nav class="navbar-music _row">
-                <div class="_col-4 navbar-music_container--left">
-                    <a class="navbar-music_logo" href="">  
-                        <img src="C:\Users\brice\Desktop\front myresto\new new\logo.svg" alt="logo myresto" class="svg" />
-                    </a>
+    <!-- <meta http-equiv="refresh" content="3"> -->
+    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script>
+</head>
+<body class="scrollbar-ok">
+<!-- For Seo : 1 Use the right tag, 2 : use alt, title and so on, 3 : post regularly -->
+
+<header>
+    <div th:replace="fragments/header :: header"></div>
+</header>
+
+<main>
+    <div class="main_container--commands main_container--form">
+        <div class="_row">
+            <h1 class="_col-12">Liste des commandes</h1>
+            <div class="card-command _col-4 _col-md-6 _col-sm-12">
+                <div class="card-command_title">
+                    <h2>Commande #1543</h2>
                 </div>
-                <div class="_col-4">   
-                    <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span>Mes commandes</span></a>
-                    <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span>Mon panier</span></a>
+                <div class="card-command_customer">
+                    <!-- Seul le gérant voit cette partie -->
+                    <span>Jean-Claude</span>
+                    <span>0634951837</span>
                 </div>
-                <div class="_col-4 navbar-music_container--right">   
-                    <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span><i class="fas fa-user"></i></span></a>
+                <div class="card-command_command">
+                    <div><span>Frites x1</span><span>1€</span></div>
+                    <div><span>Total</span><span>29€</span></div>
                 </div>
-            </nav>
-        </header>
-
-        <main>
-                <div class="main_container--commands main_container--form">
-                    <div class="_row">
-                        <h1 class="_col-12">Liste des commandes</h1>
-                        <div class="card-command _col-4 _col-md-6 _col-sm-12">
-                            <div class="card-command_title">
-                                <h2>Commande #1543</h2>
-                            </div>
-                            <div class="card-command_customer">
-                                <!-- Seul le gérant voit cette partie -->
-                                <span>Jean-Claude</span>
-                                <span>0634951837</span>
-                            </div>
-                            <div class="card-command_command">
-                                <div><span>Frites x1</span><span>1€</span></div>
-                                <div><span>Total</span><span>29€</span></div>
-                            </div>
-                            <div class="card-command_status">
-                                <span>En cours</span>
-                                <button class="button-round"><i class="fas fa-cart-arrow-down"></i> Annuler la commande</button>
-                            </div>
-                        </div>
-                        <div class="card-command _col-4 _col-md-6 _col-sm-12">
-                            <div class="card-command_title">
-                                <h2>Commande #1543</h2>
-                            </div>
-                            <div class="card-command_customer">
-                                <!-- Seul le gérant voit cette partie -->
-                                <span>Jean-Claude</span>
-                                <span>0634951837</span>
-                            </div>
-                            <div class="card-command_command">
-                                <div><span>Frites x1</span><span>1€</span></div>
-                                <div><span>Pizzas x2</span><span>28€</span></div>
-                                <div><span>Total</span><span>29€</span></div>
-                            </div>
-                            <div class="card-command_status">
-                                <span>En cours</span>
-                                <button class="button-round"><i class="fas fa-cart-arrow-down"></i> Annuler la commande</button>
-                            </div>
-                        </div>
-                        <div class="card-command _col-4 _col-md-6 _col-sm-12">
-                            <div class="card-command_title">
-                                <h2>Commande #1543</h2>
-                            </div>
-                            <div class="card-command_customer">
-                                <!-- Seul le gérant voit cette partie -->
-                                <span>Jean-Claude</span>
-                                <span>0634951837</span>
-                            </div>
-                            <div class="card-command_command">
-                                <div><span>Frites x1</span><span>1€</span></div>
-                                <div><span>Pizzas x2</span><span>28€</span></div>
-                                <div><span>Kebabs x2</span><span>28€</span></div>
-                                <div><span>Tacos x2</span><span>28€</span></div>
-                                <div><span>Pizzas x2</span><span>28€</span></div>
-                                <div><span>Total</span><span>275€</span></div>
-                            </div>
-                            <div class="card-command_status">
-                                <span>En cours</span>
-                                <button class="button-round"><i class="fas fa-cart-arrow-down"></i> Annuler la commande</button>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-
-        </main>
-        
-        <footer>
-            <div class="_row footer-container">
-                <div class="_col-4">
-                    <h3>Qui nous sommes</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias quam quis similique sint dolorem necessitatibus magni ducimus ea in numquam. Quos incidunt delectus rem soluta doloremque omnis? Maxime, dolore sequi.</p>
-                    <div class="footer_icons">
-                        <a href="https://github.com/" target="_reblank"><i class="fab fa-github"></i></a>
-                        <a href="https://fr.linkedin.com/school/ensup-business-school/" target="_rereblank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://www.facebook.com/zuck" target="_rereblank"><i class="fab fa-facebook"></i></a>
-                    </div>
-                </div>
-                <div class="_col-4">
-                    <h3>Horaire d'ouverture</h3>
-                    <span>Du lundi au lundi, Gucci et Fendi</span>
-                    <h3>Email</h3>
-                    <span>mail@info.yahoo</span>
-                    <h3>Téléphone</h3>
-                    <span>0165247835</span>
-                </div>
-                <div class="_col-4">
-                    <h3>Accès rapide</h3>
-                    <a class="link-normal" href="https://www.google.com" target="_blank">Google</a>
-                    <a class="link-normal" href="http://intranet.ensup.eu/hp/etudiant" target="_blank3">Présentiel-planning</a>
-                    <a class="link-normal" href="https://fontawesome.com/v5.15/icons/" target="_blank2">Font Awesome</a>
-                    
+                <div class="card-command_status">
+                    <span>En cours</span>
+                    <button class="button-round"><i class="fas fa-cart-arrow-down"></i> Annuler la commande</button>
                 </div>
             </div>
-        </footer>
+            <div class="card-command _col-4 _col-md-6 _col-sm-12">
+                <div class="card-command_title">
+                    <h2>Commande #1543</h2>
+                </div>
+                <div class="card-command_customer">
+                    <!-- Seul le gérant voit cette partie -->
+                    <span>Jean-Claude</span>
+                    <span>0634951837</span>
+                </div>
+                <div class="card-command_command">
+                    <div><span>Frites x1</span><span>1€</span></div>
+                    <div><span>Pizzas x2</span><span>28€</span></div>
+                    <div><span>Total</span><span>29€</span></div>
+                </div>
+                <div class="card-command_status">
+                    <span>En cours</span>
+                    <button class="button-round"><i class="fas fa-cart-arrow-down"></i> Annuler la commande</button>
+                </div>
+            </div>
+            <div class="card-command _col-4 _col-md-6 _col-sm-12">
+                <div class="card-command_title">
+                    <h2>Commande #1543</h2>
+                </div>
+                <div class="card-command_customer">
+                    <!-- Seul le gérant voit cette partie -->
+                    <span>Jean-Claude</span>
+                    <span>0634951837</span>
+                </div>
+                <div class="card-command_command">
+                    <div><span>Frites x1</span><span>1€</span></div>
+                    <div><span>Pizzas x2</span><span>28€</span></div>
+                    <div><span>Kebabs x2</span><span>28€</span></div>
+                    <div><span>Tacos x2</span><span>28€</span></div>
+                    <div><span>Pizzas x2</span><span>28€</span></div>
+                    <div><span>Total</span><span>275€</span></div>
+                </div>
+                <div class="card-command_status">
+                    <span>En cours</span>
+                    <button class="button-round"><i class="fas fa-cart-arrow-down"></i> Annuler la commande</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <nav class="navbar-mobile">
-            <a><i class="fas fa-pizza-slice"></i></a>
-            <a><i class="fas fa-clipboard"></i></a>
-            <a><span><i class="fas fa-shopping-cart"></i> 1</span></a>
-            <a><i class="fas fa-user"></i></a>
-        </nav>
+</main>
 
-    <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6d74d0147abb086f',m:'PisPikcf_qBEzwp2qXr56K9Ot.36om.tVr2PjNdtG4A-1643819518-0-Ad16GmFM9NXTLwE4rdmz4gfQn+/D41DRX2Ci5Xkjb9fYsbUsOO+Nbxb2mpz5o8pqV5LI105AvfW6NvnVaZZl8NPr+WyiEZ1xvwK07/IHlL50fRaK27Qtj/RXiZiVH1wTLiqCi5TNjf7TXQuMeU8FPlIPKa/tUKHF4xwktEc3cYcPJPyzCQFyxhTSdf27236fKk/ZKO6DHuLNIZCsnjmRtzY=',s:[0x9d540402ff,0x21ce76d639],}})();</script></body>
+<footer>
+    <div th:replace="fragments/footer :: footer"></div>
+</footer>
+
+<div th:replace="fragments/navbarMobile :: navMobile"></div>
+
+
+<script type="text/javascript">(function () {
+    window['__CF$cv$params'] = {
+        r: '6d74d0147abb086f',
+        m: 'PisPikcf_qBEzwp2qXr56K9Ot.36om.tVr2PjNdtG4A-1643819518-0-Ad16GmFM9NXTLwE4rdmz4gfQn+/D41DRX2Ci5Xkjb9fYsbUsOO+Nbxb2mpz5o8pqV5LI105AvfW6NvnVaZZl8NPr+WyiEZ1xvwK07/IHlL50fRaK27Qtj/RXiZiVH1wTLiqCi5TNjf7TXQuMeU8FPlIPKa/tUKHF4xwktEc3cYcPJPyzCQFyxhTSdf27236fKk/ZKO6DHuLNIZCsnjmRtzY=',
+        s: [0x9d540402ff, 0x21ce76d639],
+    }
+})();</script>
+</body>
 </html>
 

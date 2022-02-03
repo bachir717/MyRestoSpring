@@ -3,7 +3,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-logs/
+logs/*
 
 ### STS ###
 .apt_generated
@@ -32,3 +32,13 @@ build/
 
 ### VS Code ###
 .vscode/
+/logging.file.path_IS_UNDEFINED/debug.log
+/logging.file.path_IS_UNDEFINED/error.log
+/logging.file.path_IS_UNDEFINED/fatal.log
+/logging.file.path_IS_UNDEFINED/info.log
+/logging.file.path_IS_UNDEFINED/off.log
+/logging.file.path_IS_UNDEFINED/trace.log
+/logging.file.path_IS_UNDEFINED/warn.log
+/logging.file.path_IS_UNDEFINED/2022-02-02/error.log
+/logging.file.path_IS_UNDEFINED/2022-02-02/info.log
+/logging.file.path_IS_UNDEFINED/2022-02-02/warn.log
