@@ -10,6 +10,7 @@ import eu.ensup.MyResto.model.Types;
 import eu.ensup.MyResto.service.*;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -98,7 +99,6 @@ public class HomeController {
         }
         return "redirect:/";
     }
-
     @RequestMapping(value = "/shoppingcard")
     public String addShoppingCard(Model model, HttpSession session)
     {
