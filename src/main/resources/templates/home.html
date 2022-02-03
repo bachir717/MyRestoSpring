@@ -158,7 +158,7 @@
                         <h4 th:text="${entree.name}"></h4>
                         <div class="carousel-food_item_text-container">
                             <span th:text="${entree.price}+€"></span>
-                            <div sec:authorize="isAuthenticated()">
+                            <div sec:authorize="isAuthenticated() && hasAuthority('USER')">
                                 <a th:href="@{/addProductShoppingCard/{id}(id=${entree.id})}">
                                     <button class="button-round"><i class="fas fa-cart-plus"></i> Ajouter au panier
                                     </button>
@@ -177,7 +177,7 @@
                         <h4 th:text="${plat.name}"></h4>
                         <div class="carousel-food_item_text-container">
                             <span th:text="${plat.price}+€"></span>
-                            <div sec:authorize="isAuthenticated()">
+                            <div sec:authorize="isAuthenticated() && hasAuthority('USER')">
                                 <a th:href="@{/addProductShoppingCard/{id}(id=${plat.id})}">
                                     <button class="button-round" th:id="${plat.id}"><i class="fas fa-cart-plus"></i>
                                         Ajouter au panier
@@ -199,7 +199,7 @@
                         <h4 th:text="${dessert.name}"></h4>
                         <div class="carousel-food_item_text-container">
                             <span th:text="${dessert.price}+€"></span>
-                            <div sec:authorize="isAuthenticated()">
+                            <div sec:authorize="isAuthenticated() && hasAuthority('USER')">
                                 <a th:href="@{/addProductShoppingCard/{id}(id=${dessert.id})}">
                                     <button class="button-round" th:id="${dessert.id}"><i
                                             class="fas fa-cart-plus"></i>
@@ -221,7 +221,7 @@
                         <h4 th:text="${boisson.name}"></h4>
                         <div class="carousel-food_item_text-container">
                             <span th:text="${boisson.price}+€"></span>
-                            <div sec:authorize="isAuthenticated()">
+                            <div sec:authorize="isAuthenticated() && hasAuthority('USER')">
                                 <a th:href="@{/addProductShoppingCard/{id}(id=${boisson.id})}">
                                     <button class="button-round" th:id="${boisson.id}"><i
                                             class="fas fa-cart-plus"></i>
