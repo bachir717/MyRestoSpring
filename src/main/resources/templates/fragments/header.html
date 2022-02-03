@@ -1,36 +1,19 @@
-<div th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <nav class="navbar-music _row">
-        <div class="_col-4 navbar-music_container--left">
-            <a class="navbar-music_logo" th:href="@{/}">
-                <img src="../static/assets/images/myresto.png" th:src="@{/assets/images/myresto.png}" alt="logo myresto" class="svg" />
-            </a>
-        </div>
-        <div class="_col-4" sec:authorize="isAuthenticated() && hasAuthority('USER')">
-            <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span>Mes commandes</span></a>
-            <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span>Mon panier</span></a>
-        </div>
-        <div class="_col-4" sec:authorize="isAuthenticated() && hasAuthority('GERANT')">
-            <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span>Les commandes</span></a>
-            <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span>Les utilisateurs</span></a>
-        </div>
-        <div class="_col-4 navbar-music_container--right" sec:authorize="!isAuthenticated() && hasAuthority('USER')">
-            <a class="navbar-music_link" href="javascript:window.location.href=window.location.href"><span><i class="fas fa-user"></i></span></a>
-        </div>
-        <div class="_col-4 navbar-music_container--right" sec:authorize="!isAuthenticated()">
-            <a class="navbar-music_link" href="javascript:window.location.href=window.location.href" th:href="@{/login}"><span><i class="fas fa-sign-in-alt"></i></span></a>
-        </div>
-        <div class="_col-4 navbar-music_container--right" sec:authorize="isAuthenticated()">
-            <a class="navbar-music_link" href="javascript:window.location.href=window.location.href" th:href="@{/logout}"><span><i class="fas fa-sign-out-alt"></i></span></a>
-        </div>
-        <div class="_col-4 navbar-music_container--right" sec:authorize="!isAuthenticated()">
-            <a class="navbar-music_link" href="javascript:window.location.href=window.location.href" th:href="@{/register}"><span><i class="fas fa-user-plus"></i></span></a>
-        </div>
-        <div class="_col-4 navbar-music_container--right" sec:authorize="isAuthenticated()">
-            <a class="shopping-cart" href="javascript:window.location.href=window.location.href" th:href="@{/shoppingcard}">
-                <i class="fas fa-shopping-cart"></i>
-                <span th:if="${session.ShoppingCard}" th:text="${#maps.size(session.ShoppingCard)}"></span>
-                <span th:unless="${session.ShoppingCard}">0</span>
-            </a>
-        </div>
-    </nav>
-</div>
+<nav th:fragment="header" class="navbar-music _row" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <div class="_col-4 navbar-music_container--left">
+        <a class="navbar-music_logo" th:href="@{/}">
+            <img src="../static/assets/images/myresto.png" th:src="@{/assets/images/myresto.png}" alt="logo myresto" class="navbar-music_img" />
+        </a>
+    </div>
+    <div class="_col-4 navbar-music_container">
+        <a sec:authorize="isAuthenticated() && hasAuthority('USER') || hasAuthority('GERANT')" class="navbar-music_link" th:href="@{/shoppingcard}"><span>Mon panier</span></a>
+        <a sec:authorize="isAuthenticated() && hasAuthority('USER') || hasAuthority('GERANT')" class="navbar-music_link"><span>Mes commandes</span></a>
+        <a sec:authorize="isAuthenticated() && hasAuthority('GERANT')" class="navbar-music_link"><span>Les commandes</span></a>
+        <a sec:authorize="isAuthenticated() && hasAuthority('GERANT')" class="navbar-music_link"><span>Les utilisateurs</span></a>
+    </div>
+    <div class="_col-4 navbar-music_container--right" >
+        <a sec:authorize="!isAuthenticated()" class="navbar-music_link" th:href="@{/login}"><span>Se connecter</span></a>
+        <a sec:authorize="!isAuthenticated()" class="navbar-music_link" th:href="@{/register}"><span>Se créer un compte</span></a>
+        <a sec:authorize="isAuthenticated() && hasAuthority('USER')" class="navbar-music_link"><span><i class="fas fa-user"></i></span></a>
+        <a sec:authorize="isAuthenticated()" class="navbar-music_link" th:href="@{/logout}"><span><i class="fas fa-sign-out-alt"></i></span></a>
+    </div>
+</nav>
