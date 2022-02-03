@@ -1,127 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="fr" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout.html}">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="script.js"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', '');
-    </script>
-    <!-- Technical needs -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- To support IE8 and IE9 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Control layout on mobile -->
-
-    <!-- Stuff that is visible or useful for SEO -->
-    <title>Titre de la page</title>
-
-    <meta name="description" content="">
-    <meta charset="utf-8">
-    <meta name="theme-color" content="#141414">
-    <meta name="locale" content="en_US">
-    <meta name="keywords" content="keyword, keyword">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="thumbnail" content=""/><!-- The image visible in search results -->
-
-    <meta name="robots" content="index, follow, all"/>
-
-    <link rel="manifest" href="manifest.json"> <!-- Link to the manifest.json -->
-    <link rel="canonical" href="">
-    <link rel="shortcut icon shortcut apple-touch-icon apple-touch-icon-precomposed" type="image/png"
-          href="/img/logos/logo.png">
-
-    <!-- For sharing purposes -->
-    <meta property="og:url" content=""/>
-    <meta property="og:type" content=""/><!-- On peut ajouter plusieurs types -->
-    <meta property="og:title" content=""/>
-    <meta property="og:description" content="">
-    <meta property="og:site_name" content="1234.com">
-    <meta property="og:image" content=""/>
-    <meta property="og:image:height" content="1200"/>
-    <meta property="og:image:width" content="630"/>
-
-    <meta property="fb:app_id" content=""><!-- Doesnt do anything -->
-
-    <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:title" content="">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- External Libraries DN'ai eue S -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <!-- Google Fonts for the fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&family=Roboto+Slab&display=swap"
-          rel="stylesheet">
-    <!-- Font Awesome for the icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
-
-    <base href="/">
-    <meta name="google-site-verification" content="xmPhBSEBg0SJc5EZjqOlWFBigNILnPy54t_XVX8dLk8"/>
-    <script src="" async defer></script>
-    <link th:href="@{/assets/styles.css}" rel="stylesheet"/>
-
-    <!-- <meta http-equiv="refresh" content="3"> -->
-    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script>
+    <title>MyResto - Liste des utilisateurs</title>
+    <meta name="description" content="Tu es admin, tu peux controller qui est sur ton site.">
 </head>
-<body class="scrollbar-ok">
-<!-- For Seo : 1 Use the right tag, 2 : use alt, title and so on, 3 : post regularly -->
+<link th:href="@{/assets/styles.css}" rel="stylesheet"/>
+<link th:href="@{/assets/script.js}" rel="javascript"/>
+<script type="text/javascript" th:src="@{/assets/script_shoppingcard.js}"></script>
 
-<header>
-    <div th:replace="fragments/header :: header"></div>
-</header>
+<body>
 
-<main>
-
-    <div class="main_container--form">
-        <div class="_row">
-            <h1 class="_col-12">Liste des utilisateurs</h1>
-            <table class="table-spring _col-12 scrollbar-ok">
-                <tbody>
-
-                <tr>
-                    <th>Nom</th>
-                    <th>Email</th>
-                    <th>Adress</th>
-                    <th>Nb commandes</th>
-                    <th>Actions</th>
-                </tr>
-                <tr th:each="user: ${users}">
-                    <td th:text="${user.username}" />
-                    <td th:text="${user.email}" />
-                    <td th:text="${user.address}" />
-                    <td  th:text="${#lists.size(user.orders)}" />
-                    <td><a class="link-normal" th:href="@{/deleteUser?id={id}(id=${user.id})}">Supprimer</a></td>
-                </tr>
-                </tbody>
-            </table>
+    <main layout:fragment="content">
+        <div class="main_container--form">
+            <div class="_row">
+                <h1 class="_col-12">Liste des utilisateurs</h1>
+                <table class="table-spring _col-12 scrollbar-ok">
+                    <tbody>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Adresse</th>
+                        <th></th>
+                    </tr>
+                    <tr th:each="user: ${users}">
+                        <td th:text="${user.username}" />
+                        <td th:text="${user.email}" />
+                        <td th:text="${user.address}" />
+                        <td><a class="link-normal" th:href="@{/deleteUser?id={id}(id=${user.id})}">Supprimer</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+    </main>
 
-</main>
-
-<footer>
-    <div th:replace="fragments/footer :: footer"></div>
-</footer>
-
-<div th:replace="fragments/navbarMobile :: navMobile"></div>
-
-
-<script type="text/javascript">(function () {
-    window['__CF$cv$params'] = {
-        r: '6d74cfe28db1086f',
-        m: '5xNcIA0RF.beHUCFMUut.OlWGUp1FfpuTKdA1CSxpcw-1643819510-0-AZnxs4fPi/itnzQXu93KGNdKQ1H0KxnqbcJ/aKjJzW32+18nuDT3AVTKSiKE2rUzRATXnKx52gEPH2/i+uphx8HP/mPJEMgvCRDLS6YLP3gsbhrLZlPluilk3AgZF7D4X59Qz2xvlyiE1ZThcbcdjuf7tjLfftPN9Ei8MkCcxLIeZ31O2nlMLBPt5DMmpqqJzxQoJpiw10QxIBCZzu3W9qs=',
-        s: [0x4d3fa10875, 0x6452fb4a61],
-    }
-})();</script>
 </body>
 </html>
 
