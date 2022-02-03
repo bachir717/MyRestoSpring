@@ -69,6 +69,7 @@ public class OrderController {
 
         Orders order = orderService.getOne(orders.getId());
         order.setSate(States.CANCELED);
+        order.setDelivered(new java.sql.Date(new Date().getTime()));
         orderService.save(order);
         if (((User)(SecurityContextHolder.getContext().getAuthentication().getPrincipal())).getRole() == Roles.USER)
             return "redirect:/myCommand";
@@ -83,6 +84,7 @@ public class OrderController {
 
         Orders order = orderService.getOne(orders.getId());
         order.setSate(States.DELIVERED);
+        order.setDelivered(new java.sql.Date(new Date().getTime()));
         orderService.save(order);
 
         return "redirect:/allCommand";
