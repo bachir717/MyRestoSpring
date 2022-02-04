@@ -1,6 +1,6 @@
 <div class="" sec:authorize="isAuthenticated() && hasAuthority('USER')" xmlns:th="http://www.w3.org/1999/xhtml"
      xmlns:sec="http://www.w3.org/1999/xhtml">
-  <a class="shopping-cart cart-round" href="javascript:window.location.href=window.location.href" th:href="@{/shoppingcard}">
+  <a class="shopping-cart cart-round" th:href="@{/shoppingcard}">
     <i class="fas fa-shopping-cart"></i>
     <span id="cart-count" th:if="${session.ShoppingCard}" th:text="${#maps.size(session.ShoppingCard)}"></span>
     <span id="cart-count" th:unless="${session.ShoppingCard}">0</span>

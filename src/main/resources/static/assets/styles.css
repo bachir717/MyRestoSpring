@@ -989,6 +989,14 @@ footer a{
     background-color: var(--color-main-lighter);
 }
 
+.navbar-mobile_cart i{
+    margin: auto 0rem auto auto!important;
+}
+
+.navbar-mobile_cart span{
+    margin: auto auto auto 1rem!important;
+}
+
 
 /* #endregion  */
 
