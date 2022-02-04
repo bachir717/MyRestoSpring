@@ -26,7 +26,10 @@
                         <td th:text="${user.username}" />
                         <td th:text="${user.email}" />
                         <td th:text="${user.address}" />
-                        <td><a class="link-normal" style="color:var(--color-mode)!important" th:href="@{/deleteUser?id={id}(id=${user.id})}">Supprimer</a></td>
+                        <td th:if="${idActualUser} == ${user.id}"></td>
+                        <td th:unless="${idActualUser} == ${user.id}">
+                            <a class="link-normal" style="color:#d01c16!important" th:href="@{/deleteUser?id={id}(id=${user.id})}">Supprimer</a>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

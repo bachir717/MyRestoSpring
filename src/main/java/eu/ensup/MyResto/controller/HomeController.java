@@ -95,6 +95,7 @@ public class HomeController {
         if (user.getRole() == Roles.GERANT){
             List<User> users = userRepository.findAll().stream().filter(u->u.getActivate()==true).collect(Collectors.toList());
             model.addAttribute("users", users);
+            model.addAttribute("idActualUser", user.getId());
             return "userList";
         }else
             return "error";
@@ -106,7 +107,7 @@ public class HomeController {
         User user = ((User)principal);
         if (user.getRole() == Roles.GERANT){
             User deletedUser=userRepository.findById(id).get();
-            if (deletedUser != null){
+            if(user.getId() != deletedUser.getId() && deletedUser != null){
                 deletedUser.setActivate(false);
                 userRepository.save(deletedUser);
 
