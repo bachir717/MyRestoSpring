@@ -9,7 +9,7 @@
         <a sec:authorize="isAuthenticated() && hasAuthority('USER')" class="navbar-music_link" th:href="@{/myCommand}"><span>Mes commandes</span></a>
         <a sec:authorize="isAuthenticated() && hasAuthority('GERANT')" class="navbar-music_link" th:href="@{/allCommand}"><span>Les commandes</span></a>
         <a sec:authorize="isAuthenticated() && hasAuthority('GERANT')" class="navbar-music_link" th:href="@{/users}"><span>Les utilisateurs</span></a>
-        <a sec:authorize="isAuthenticated() && hasAuthority('GERANT')" class="navbar-music_link" th:href="@{/Stats}"><span>Les Statistiques</span></a>
+        <a sec:authorize="isAuthenticated() && hasAuthority('GERANT')" class="navbar-music_link" th:href="@{/Stats}"><span>Les statistiques</span></a>
     </div>
     <div class="_col-4 navbar-music_container--right" >
         <a sec:authorize="!isAuthenticated()" class="navbar-music_link" th:href="@{/login}"><span>Se connecter</span></a>

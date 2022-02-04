@@ -1,308 +1,198 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="fr" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout.html}">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="script.js"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', '');
-        </script>
-    <!-- Technical needs -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- To support IE8 and IE9 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Control layout on mobile -->
-
-    <!-- Stuff that is visible or useful for SEO -->
-    <title>Titre de la page</title>
-
-    <meta name="description" content="">
-    <meta charset="utf-8">
-    <meta name="theme-color" content="#141414">
-    <meta name="locale" content="en_US">
-    <meta name="keywords" content="keyword, keyword">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="thumbnail" content=""/><!-- The image visible in search results -->
-
-    <meta name="robots" content="index, follow, all" />
-
-    <link rel="manifest" href="manifest.json"> <!-- Link to the manifest.json -->
-    <link rel="canonical" href="">
-    <link rel="shortcut icon shortcut apple-touch-icon apple-touch-icon-precomposed" type="image/png" href="/img/logos/logo.png">
-
-    <!-- For sharing purposes -->
-    <meta property="og:url" content="" />
-    <meta property="og:type" content="" /><!-- On peut ajouter plusieurs types -->
-    <meta property="og:title" content="" />
-    <meta property="og:description" content="">
-    <meta property="og:site_name" content="1234.com">
-    <meta property="og:image" content="" />
-    <meta property="og:image:height" content="1200" />
-    <meta property="og:image:width" content="630" />
-
-    <meta property="fb:app_id" content=""><!-- Doesnt do anything -->
-
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- External Libraries DN'ai eue S -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <!-- Google Fonts for the fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&family=Roboto+Slab&display=swap" rel="stylesheet">
-    <!-- Font Awesome for the icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
-
-    <base href="/">
-    <meta name="google-site-verification" content="xmPhBSEBg0SJc5EZjqOlWFBigNILnPy54t_XVX8dLk8" />
-    <script src="" async defer></script>
-    <link th:href="@{/assets/styles.css}" rel="stylesheet" />
-
-    <!-- <meta http-equiv="refresh" content="3"> -->
-    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-
-    <!-- Optional theme -->
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+    <title>MyResto - Page des statistiques</title>
+    <meta name="description" content="Étudie les chiffres pour faire plus de chiffres.">
 </head>
-<body class="scrollbar-ok">
-<!-- For Seo : 1 Use the right tag, 2 : use alt, title and so on, 3 : post regularly -->
+<link th:href="@{/assets/styles.css}" rel="stylesheet"/>
 
-<header>
-    <div th:replace="fragments/header :: header"></div>
-</header>
+<body>
 
-<main>
+    <main layout:fragment="content">
+        <main>
+            <div class="main_container--form">
+                <div class="_row">
+                    <div class="_col-6">
+                        <!-- <div class="container"> -->
+                            <div id="container1"></div>
+                        <!-- </div> -->
+                    </div>
+                    <div class="_col-6">
+                        <!-- <div class="container"> -->
+                            <div id="container2"></div>
+                        <!-- </div> -->
+                    </div>
+                    <div class="_col-6">
+                        <!-- <div class="container"> -->
+                            <div id="container3"></div>
+                        <!-- </div> -->
+                    </div>
+        
+                    <script
+                            src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+        
+                    </script>
 
-    <div class="main_container--form">
-        <div class="_row">
-            <div class="_col-6">
-                <div class="container">
-                    <h2 align="center">État Des Commandes</h2>
-
-                    <div id="container1"
-                         style="width: 550px; height: 400px; margin: 0 auto"></div>
-                </div>
-            </div>
-            <div class="_col-6">
-                <div class="container">
-                    <h2 align="center">Chiffre d'affaire</h2>
-
-                    <div id="container2"
-                         style="width: 550px; height: 400px; margin: 0 auto"></div>
-                </div>
-            </div>
-            <div class="_col-6">
-                <div class="container">
-                    <h2 align="center">Chiffre d'affaire</h2>
-
-                    <div id="container3"
-                         style="width: 550px; height: 400px; margin: 0 auto"></div>
-                </div>
-            </div>
-
-            <script
-                    src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-
-            </script>
-            <!-- Latest compiled and minified JavaScript -->
-            <script
-                    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
-
-            </script>
-            <script src="https://code.highcharts.com/highcharts.js"></script>
-            <script src="https://code.highcharts.com/modules/exporting.js"></script>
-            <script th:inline="javascript">
-    $(function(){
-    Highcharts.chart('container1', {
-    colors: ['#058DC7', '#50B432', '#ED561B'],
-        chart: {
-            type: 'column'
-        },
-        title: {
-            text: 'MyResto'
-        },
-        subtitle: {
-            text: 'Details'
-        },
-        xAxis: {
-            categories: [[${keySet}]],
-            crosshair: true,
-            title: {
-                text: 'Etat'
-            }
-        },
-        yAxis: {
-            min: 0,
-            max:100,
-            title: {
-                text: 'Nombre'
-            }
-        },
-        tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
-            footerFormat: '</table>',
-            shared: true,
-            useHTML: true
-        },
-        plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
-            }
-        },
-        colors: ['#50B432', '#058DC7', '#ED561B'],
-        series: [{
-            name: 'Total',
-            data: [[${values}]]
-        }]
-      });
-    });
-</script>
-            <script th:inline="javascript">
-    $(function(){
-    Highcharts.chart('container2', {
-        chart: {
-            type: 'column'
-        },
-        title: {
-            text: 'MyResto'
-        },
-        subtitle: {
-            text: 'Details'
-        },
-        xAxis: {
-            categories: [[${key}]],
-            crosshair: true,
-             title: {
-                text: 'Date'
-            }
-        },
-        yAxis: {
-            min: 0,
-            max:100,
-            title: {
-                text: 'Prix'
-            }
-        },
-        tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} €</b></td></tr>',
-            footerFormat: '</table>',
-            shared: true,
-            useHTML: true
-        },
-        plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
-            }
-        },
-        series: [{
-            name: 'Total',
-            data: [[${val}]]
-        }]
-      });
-    });
-</script>
-            <script th:inline="javascript">
-    $(function(){
-   Highcharts.chart('container3', {
-            chart: {
-                type: 'spline'
-            },
-            title: {
-                text: 'Snow depth at Vikjafjellet, Norway'
-            },
-            subtitle: {
-                text: 'Irregular time data in Highcharts JS'
-            },
-            xAxis: {
-                type: 'datetime',
-                labels: {
-                    formatter: function() {
-                        return Highcharts.dateFormat('%d-%m-%Y', this.value);
-                    }
+                    <!-- Latest compiled and minified JavaScript -->
+                    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> -->
+        
+                    </script>
+                    <script src="https://code.highcharts.com/highcharts.js"></script>
+                    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                    <script th:inline="javascript">
+            $(function(){
+            Highcharts.chart('container1', {
+            colors: ['#058DC7', '#50B432', '#ED561B'],
+                chart: {
+                    type: 'column'
                 },
                 title: {
-                    text: 'Date'
-                }
-            },
-            yAxis: {
-                title: {
-                    text: 'Price'
+                    text: 'États des commandes'
                 },
-                min: 0
-            },
-            tooltip: {
-                headerFormat: '<b>{series.name}</b><br>',
-                pointFormat: '{point.x:%e %b., %Y}: {point.y:.2f} m'
-            },
-
-            plotOptions: {
-                series: {
-                    marker: {
-                        enabled: true
+                xAxis: {
+                    categories: [[${keySet}]],
+                    crosshair: true,
+                },
+                yAxis: {
+                    min: 0,
+                    max:50,
+                    title: {
+                        text: 'Volume'
                     }
-                }
-            },
-
-            colors: ['#2471A3', '#229954', '#BA4A00'],
-
-            series: [{
-                name: 'Created',
-                data: [[${mapCreated}]]
-            },{
-                name: 'Delivered',
-                data: [[${mapDelivered}]]
-            }],
-
-            responsive: {
-                rules: [{
-                    condition: {
-                        maxWidth: 500
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                colors: ['#50B432', '#058DC7', '#ED561B'],
+                series: [{
+                    name: 'Total',
+                    data: [[${values}]]
+                }]
+              });
+            });
+        </script>
+                    <script th:inline="javascript">
+            $(function(){
+            Highcharts.chart('container2', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Chiffres d\'affaires par jour'
+                },
+                xAxis: {
+                    categories: [[${key}]],
+                    crosshair: true,
+                },
+                yAxis: {
+                    min: 0,
+                    max:500,
+                    title: {
+                        text: 'Euros'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} €</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    name: 'Total',
+                    data: [[${val}]]
+                }]
+              });
+            });
+        </script>
+                    <script th:inline="javascript">
+            $(function(){
+           Highcharts.chart('container3', {
+                    chart: {
+                        type: 'spline'
                     },
-                    chartOptions: {
-                        plotOptions: {
-                            series: {
-                                marker: {
-                                    radius: 2.5
-                                }
+                    title: {
+                        text: 'Chiffre d\affaire par jour par état de commande'
+                    },
+                    xAxis: {
+                        type: 'datetime',
+                        labels: {
+                            formatter: function() {
+                                return Highcharts.dateFormat('%d-%m-%Y', this.value);
+                            }
+                        },
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Euros'
+                        },
+                        min: 0
+                    },
+                    tooltip: {
+                        headerFormat: '<b>{series.name}</b><br>',
+                        pointFormat: '{point.x:%e %b., %Y}: {point.y:.2f} m'
+                    },
+        
+                    plotOptions: {
+                        series: {
+                            marker: {
+                                enabled: true
                             }
                         }
+                    },
+        
+                    colors: ['#2471A3', '#229954', '#BA4A00'],
+        
+                    series: [{
+                        name: 'Created',
+                        data: [[${mapCreated}]]
+                    },{
+                        name: 'Delivered',
+                        data: [[${mapDelivered}]]
+                    }],
+        
+                    responsive: {
+                        rules: [{
+                            condition: {
+                                maxWidth: 500
+                            },
+                            chartOptions: {
+                                plotOptions: {
+                                    series: {
+                                        marker: {
+                                            radius: 2.5
+                                        }
+                                    }
+                                }
+                            }
+                        }]
                     }
-                }]
-            }
-        });
-    });
-</script>
-        </div>
-
-    </div>
-</main>
-
-<footer>
-    <div th:replace="fragments/footer :: footer"></div>
-</footer>
-
-<nav class="navbar-mobile">
-    <a><i class="fas fa-pizza-slice"></i></a>
-    <a><i class="fas fa-clipboard"></i></a>
-    <a><span><i class="fas fa-shopping-cart"></i> 1</span></a>
-    <a><i class="fas fa-user"></i></a>
-</nav>
-
-<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6d74cff8d9bc086f',m:'NJxE7M1qVwugoXaTrFSha5RXkjS.dgoQhy65ViJwItM-1643819513-0-AdM967KVR5MJyyQaKIm9+c5usTBT+ZMKdTw+Xp4+HflBKb1K8FQBKg4WLgwb4a0z+1xD1S9/BT91Pz2rB5u+3XDehXkBsozsxLlgPhYXa1Tv7BoRoY/yO7oHrvgUyseFgZzV2+ryxJsEHFwgooc7ALCbjCe7VBYF3RuO7XtKj31z2+3JOME7vmfp6fuGMSs0+L574Nb/U594VFCipjv90PM=',s:[0x76e0dc5a50,0x3bdf3daa40],}})();</script>
+                });
+            });
+        </script>
+                </div>
+        
+            </div>
+        </main>
 </body>
 </html>
 
