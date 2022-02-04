@@ -93,9 +93,11 @@ public class HomeController {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = ((User)principal);
         if (user.getRole() == Roles.GERANT){
-            List<User> users = userRepository.findAll().stream().filter(u->u.getActivate()==true).collect(Collectors.toList());
+            List<User> users = userRepository.findAll().stream()
+                    .filter(u->u.getActivate()==true && u.getRole() == Roles.USER)
+                    .collect(Collectors.toList());
+
             model.addAttribute("users", users);
-            model.addAttribute("idActualUser", user.getId());
             return "userList";
         }else
             return "error";
@@ -107,10 +109,9 @@ public class HomeController {
         User user = ((User)principal);
         if (user.getRole() == Roles.GERANT){
             User deletedUser=userRepository.findById(id).get();
-            if(user.getId() != deletedUser.getId() && deletedUser != null){
+            if(deletedUser != null){
                 deletedUser.setActivate(false);
                 userRepository.save(deletedUser);
-
             }
 
             return listUser(model);
