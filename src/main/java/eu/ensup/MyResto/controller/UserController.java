@@ -69,7 +69,7 @@ public class UserController {
         if (!"".equals(user.getUsername()) && !"".equals(user.getPassword())  && !"".equals(user.getAddress())  && !"".equals(user.getLastName()))
             if (validate(user.getEmail()))
                 if (user.getPassword().split(",")[0].equals(user.getPassword().split(",")[1]))
-                    if (userService.loadUserByUsername(user.getUsername()) == null)
+                    if(userService.loadUserByUsername(user.getUsername()) == null && userService.loadAllUserByUsername(user.getUsername()) == null)
                     {
                         user.setPassword(user.getPassword().split(",")[0]);
                         user.setActivate(true);
