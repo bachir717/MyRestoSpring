@@ -53,7 +53,8 @@ public class UserController {
     }
 
     @GetMapping("/edit")
-    public String editPage(Model model) {
+    public String editPage(Model model,HttpSession session) {
+        session.removeAttribute("error");
         log.info("loginPage");
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = ((User)principal);
@@ -105,6 +106,7 @@ public class UserController {
     @GetMapping("/deleteMyUser")
     public String deactivateUser() {
         log.info("deactivateUser");
+
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = ((User)principal);
        User userload =  (User) userService.loadUserByUsername(user.getUsername());
