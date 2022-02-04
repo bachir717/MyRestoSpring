@@ -157,6 +157,12 @@ div[class^="main_container"]{
     color: var(--color-opposite);
 }
 
+.centered-div h1, .centered-div span, .centered-div button{
+    /* clip-path: polygon(0 100%, 0% 100%, 100% 100%); */
+    opacity: 0;
+    transform: translateY(100px);
+}
+
 .main_container--auto{
     height: auto;
     padding:10rem 5rem!important;

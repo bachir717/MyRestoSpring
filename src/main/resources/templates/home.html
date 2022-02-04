@@ -323,6 +323,14 @@
 
     <nav th:replace=" fragments/navbarMobile :: navMobile"></nav>
     <footer th:replace=" fragments/footer :: footer"></footer>
-  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        let tl = gsap.timeline({ defaults: {ease: "power4.inOut", duration: 1.8}});
+
+        tl.to('.centered-div h1', { opacity: 1, y: 0, duration: 1.8})
+        tl.to('.centered-div span', { opacity: 1, y: 0, duration: 2})
+        tl.to('.centered-div div button', { opacity: 1, y: 0, duration: 2.2})
+
+    </script>
   </body>
   </html>
