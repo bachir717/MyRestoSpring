@@ -21,7 +21,7 @@
   
     <link rel="manifest" href="manifest.json"> <!-- Link to the manifest.json -->
     <link rel="canonical" href="">
-    <link rel="shortcut icon shortcut apple-touch-icon apple-touch-icon-precomposed" type="image/png" href="/img/logos/logo.png">
+    <link rel="shortcut icon shortcut apple-touch-icon apple-touch-icon-precomposed" type="image/png" th:src="@{/assets/images/favicon.ico}" 
   
     <!-- For sharing purposes -->
     <meta property="og:url" content="" />
@@ -64,7 +64,7 @@
         <!-- Si nécessaire -->
         <div th:replace="fragments/cart :: div"></div>
         
-        <div class="main_container--top" th:style="'background:linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.35)), url(' + @{/assets/images/nourritures/pizza-background.jpg} + ') no-repeat center center fixed;'">
+        <div class="main_container--top" th:style="'background:linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.35)), url(' + @{/assets/images/nourritures/pizza-background.jpg} + ');background-repeat: no-repeat;background-size: cover;background-attachment: fixed;background-position:cover;'">
             <div class="centered-div">
                 <h1>Envie de manger du sale</h1>
                 <span>Venez découvrir nos recettes de pizza au véritable fromage suisse.</span>

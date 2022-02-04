@@ -1,6 +1,7 @@
 <nav th:fragment="navMobile" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" class="navbar-mobile">
         <a  th:href="@{/}"><i class="fas fa-pizza-slice"></i></a>
-        <a sec:authorize="isAuthenticated() && hasAuthority('USER')"  th:href="@{/shoppingcard}"><i class="fas fa-shopping-cart"></i><span id="cart-count-nav">0</span></a>
+        <a class="navbar-mobile_cart" th:if="${session.ShoppingCard}" sec:authorize="isAuthenticated() && hasAuthority('USER')"  th:href="@{/shoppingcard}"><i class="fas fa-shopping-cart"></i><span id="cart-count-nav" th:text="${#maps.size(session.ShoppingCard)}"></span></a>
+        <a class="navbar-mobile_cart"s th:unless="${session.ShoppingCard}" sec:authorize="isAuthenticated() && hasAuthority('USER')"  th:href="@{/shoppingcard}"><i class="fas fa-shopping-cart"></i><span id="cart-count-nav">0</span></a>
         <a sec:authorize="isAuthenticated() && hasAuthority('GERANT')"  th:href="@{/allCommand}"><i class="fas fa-file-invoice-dollar"></i></a>
         <a sec:authorize="isAuthenticated() && hasAuthority('GERANT')" th:href="@{/users}"><i class="fas fa-users"></i></a>
         <a sec:authorize="isAuthenticated() && hasAuthority('GERANT')" th:href="@{/Stats}"><i class="fas fa-chart-pie"></i></a>
