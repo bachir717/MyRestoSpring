@@ -141,22 +141,15 @@ div[class^="main_container"]{
 
 .main_container--top{
     height: 100vh;
-
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    background-attachment: fixed;
-    background-position:cover;
     padding-top:calc(2rem + var(--navbar-height));
     display: flex;
 }
 
 @media only screen and (max-width: 1080px) {
     .main_container--top{
-        background-attachment:scroll
+        /* background-size: 100%!important; */
     }
 }
-
-
 
 .centered-div{
     margin: auto auto;
