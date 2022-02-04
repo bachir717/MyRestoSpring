@@ -1,0 +1,59 @@
+---
+  - hosts: all
+    become: yes
+    become_user: root
+    become_method: sudo
+    tasks:
+    - name: Install git, python 3.8
+      apt:
+        name:
+          - git
+          - python3.8
+          - python3-pip
+        state: present
+        update_cache: yes
+    - name: install docker python module
+      pip:
+        name:
+          - docker
+          - pyyaml
+          - docker-compose
+    - name: Clone a github repository
+      git:
+        repo: https://github.com/Flav1-ann/MyRestoSpring.git
+        dest: /MyRestoSpring/
+        version: docker-compose
+        clone: yes
+        update: yes
+    - name: install prerequisites
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg-agent
+          - software-properties-common
+        update_cache: yes
+    - name: add apt-key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+    - name: add docker repo
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu focal stable
+    - name: install docker
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        update_cache: yes
+    - name: Install Docker Compose
+      get_url:
+        url: https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-linux-x86_64
+        dest: /usr/local/bin/docker-compose
+        mode: u+x,g+x,o+x
+    - name: deploy Docker Compose stack
+      docker_compose:
+        project_src: /MyRestoSpring/
+        files:
+        - docker-compose.yml
