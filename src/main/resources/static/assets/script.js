@@ -63,9 +63,13 @@ function add_product(idProduct) {
 }
 
 function incrementeCart() {
-    console.log('toto')
     cart = document.getElementById('cart-count');
     var cartCount = Number(document.getElementById('cart-count').innerHTML);
     var newCount = cartCount + 1;
     cart.innerHTML = newCount;
+
+    cart2 = document.getElementById('cart-count-nav');
+    var cartCount = Number(document.getElementById('cart-count-nav').innerHTML);
+    var newCount = cartCount + 1;
+    cart2.innerHTML = newCount;
 }
