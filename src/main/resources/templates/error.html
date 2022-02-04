@@ -58,7 +58,7 @@
     <script src='/cdn-cgi/bm/cv/669835187/api.js' async defer ></script></head>
   <body class="scrollbar-ok">
   
-    <header th:insert="/fragments/header :: header"></header>
+    <header th:insert=" fragments/header :: header"></header>
   
     <main>
         <div class="main_container--form">
@@ -69,8 +69,8 @@
         </div>
     </main>
 
-    <nav th:replace="/fragments/navbarMobile :: navMobile"></nav>
-    <footer th:replace="/fragments/footer :: footer"></footer>
+    <nav th:replace=" fragments/navbarMobile :: navMobile"></nav>
+    <footer th:replace=" fragments/footer :: footer"></footer>
   
   </body>
   </html>
