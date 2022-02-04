@@ -1,140 +1,64 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
-    <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="script.js"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+<html lang="fr" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout.html}">
+<head>
+    <title>MyResto - My Panier</title>
+    <meta name="description" content="Panier, piano, panier, piano, panier, piano, pianser, paion, painier, paino.">
+</head>
+<link th:href="@{/assets/styles.css}" rel="stylesheet"/>
+<link th:href="@{/assets/script.js}" rel="javascript"/>
 
-        gtag('config', '');
-        </script>
-        <!-- Technical needs -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- To support IE8 and IE9 -->
-        <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Control layout on mobile -->
+<body>
 
-        <!-- Stuff that is visible or useful for SEO -->
-        <title>Titre de la page</title>
-
-        <meta name="description" content="">
-        <meta charset="utf-8">
-        <meta name="theme-color" content="#141414">
-        <meta name="locale" content="en_US">
-        <meta name="keywords" content="keyword, keyword">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="thumbnail" content=""/><!-- The image visible in search results -->
-
-        <meta name="robots" content="index, follow, all" />
-
-        <link rel="manifest" href="manifest.json"> <!-- Link to the manifest.json -->
-        <link rel="canonical" href="">
-        <link rel="shortcut icon shortcut apple-touch-icon apple-touch-icon-precomposed" type="image/png" href="/img/logos/logo.png">
-
-        <!-- For sharing purposes -->
-        <meta property="og:url" content="" />
-        <meta property="og:type" content="" /><!-- On peut ajouter plusieurs types -->
-        <meta property="og:title" content="" />
-        <meta property="og:description" content="">
-        <meta property="og:site_name" content="1234.com">
-        <meta property="og:image" content="" />
-        <meta property="og:image:height" content="1200" />
-        <meta property="og:image:width" content="630" />
-
-        <meta property="fb:app_id" content=""><!-- Doesnt do anything -->
-    
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="">
-        <meta name="twitter:description" content="">
-        <meta name="twitter:image" content="">
-
-        <!-- Styles -->
-        <link rel="stylesheet" href="styles.css">
-        <!-- External Libraries DN'ai eue S -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <!-- Google Fonts for the fonts -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&family=Roboto+Slab&display=swap" rel="stylesheet">
-        <!-- Font Awesome for the icons -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
-
-        <base href="/">
-        <meta name="google-site-verification" content="xmPhBSEBg0SJc5EZjqOlWFBigNILnPy54t_XVX8dLk8" />
-        <script src="" async defer></script>
-        <link th:href="@{/assets/styles.css}" rel="stylesheet" />
-
-        <!-- <meta http-equiv="refresh" content="3"> -->
-    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
-    <body class="scrollbar-ok">
-    <!-- For Seo : 1 Use the right tag, 2 : use alt, title and so on, 3 : post regularly -->
-
-        <header>
-            <div th:replace="fragments/header :: header"></div>
-        </header>
-
-        <main>
-
-                <div class="main_container--form">
-                    <div class="_row">
-                        <h1 class="_col-12">Panier</h1>
-                        <table class="table-spring _col-12 scrollbar-ok">
-                            <tbody>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Type</th>
-                                    <th>Produit</th>
-                                    <th>Prix UT</th>
-                                    <th>Quantité</th>
-                                    <th>Prix</th>
-                                    <th class="table-spring_case--empty"></th>
-                                </tr>
-                                <tr th:each="entry : ${products}">
-                                    <th th:text="${entry.key.id}"></th>
-                                    <td th:text="${entry.key.type}"></td>
-                                    <td th:text="${entry.key.name}"></td>
-                                    <td th:text="${entry.key.price}"></td>
-                                    <td class="table-spring_case--plusminus">
-                                        <div>
-                                            <a class="button-round button-round--discret" th:href="@{/shoppingcard/less/{id}(id=${entry.key.id})}">-1</a>
-                                            <span th:text="${entry.value}"></span>
-                                            <a class="button-round button-round--discret" th:href="@{/shoppingcard/more/{id}(id=${entry.key.id})}">+1</a>
-                                        </div>
-                                    </td>
-                                    <th:block th:with="result=${entry.key.price} * ${entry.value}">
-                                        <td th:text="${#numbers.formatDecimal(result, 0, 2)}"></td>
-                                    </th:block>
-                                    <td class="table-spring_case--empty"><a class="button-round button--full button-round--discret" th:href="@{/shoppingcard/remove/{id}(id=${entry.key.id})}">Supprimer</a></td>
-                                  </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="4" th:text="'Total quantité: '+${totalQuantity}"></td>
-                                    <td colspan="3" th:text="'Total: '+${totalPrice}+'€'"></td>
-                                </tr>
-                            </tfoot>
-                          </table>
-                          <a  th:href="@{/}" class="link-normal" style="color:var(--color-opposite)!important">Retourner à la carte</a>
-                          <div class="_col-12 button-handler">
-                              <a th:href="@{/createsOrder}">
-                                  <button class="button-round button--big"><i class="fas fa-check"></i> Commander</button>
-                              </a>
-                              <h4 th:text="${session.error}"></h4>
-                          </div>
-                    </div>
+    <main layout:fragment="content">
+        <div class="main_container--form">
+            <div class="_row">
+                <h1 class="_col-12">Panier</h1>
+                <div class="_col-12">
+                    <span class="error-handler" th:text="${session.error}"></span>
+                </div>
+                <table class="table-spring _col-12 scrollbar-ok">
+                    <tbody>
+                        <tr>
+                            <th>Produit</th>
+                            <th>Prix UT</th>
+                            <th>Quantité</th>
+                            <th>Prix</th>
+                            <th></th>
+                        </tr>
+                        <tr th:each="entry : ${products}">
+                            <td th:text="${entry.key.name}"></td>
+                            <td th:text="${entry.key.price} + €"></td>
+                            <td class="table-spring_case--plusminus">
+                                <div>
+                                    <a class="button-round button-round--discret" th:href="@{/shoppingcard/less/{id}(id=${entry.key.id})}">-1</a>
+                                    <span th:text="${entry.value}"></span>
+                                    <a class="button-round button-round--discret" th:href="@{/shoppingcard/more/{id}(id=${entry.key.id})}">+1</a>
+                                </div>
+                            </td>
+                            <th:block th:with="result=${entry.key.price} * ${entry.value}">
+                                <td th:text="${#numbers.formatDecimal(result, 0, 2)} + €"></td>
+                            </th:block>
+                            <td><a class="link-normal" style="color:var(--color-mode)!important" th:href="@{/shoppingcard/remove/{id}(id=${entry.key.id})}">Supprimer</a></td>
+                          </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <!-- <td colspan="4" th:text="'Total quantité: '+${totalQuantity}"></td> -->
+                            <td colspan="5" th:text="'Total: '+${totalPrice}+'€'"></td>
+                        </tr>
+                    </tfoot>
+                  </table>
+                  <a  th:href="@{/}" class="link-normal" style="color:var(--color-opposite)!important">Retourner à la carte</a>
+                  <div class="_col-12 button-handler">
+                      <a th:href="@{/createsOrder}">
+                          <button class="button-round button--big"><i class="fas fa-check"></i> Commander</button>
+                      </a>
+                  </div>
             </div>
+    </div>
+</main>
 
-        </main>
-        
-        <footer>
-            <div th:replace="fragments/footer :: footer"></div>
-        </footer>
-
-        <nav class="navbar-mobile">
-            <a><i class="fas fa-pizza-slice"></i></a>
-            <a><i class="fas fa-clipboard"></i></a>
-            <a><span><i class="fas fa-shopping-cart"></i> 1</span></a>
-            <a><i class="fas fa-user"></i></a>
-        </nav>
-    </body>
+</body>
 </html>
 
