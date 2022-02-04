@@ -28,7 +28,7 @@
                         </tr>
                         <tr th:each="entry : ${products}">
                             <td th:text="${entry.key.name}"></td>
-                            <td th:text="${entry.key.price}"></td>
+                            <td th:text="${entry.key.price} + €"></td>
                             <td class="table-spring_case--plusminus">
                                 <div>
                                     <a class="button-round button-round--discret" th:href="@{/shoppingcard/less/{id}(id=${entry.key.id})}">-1</a>
@@ -37,7 +37,7 @@
                                 </div>
                             </td>
                             <th:block th:with="result=${entry.key.price} * ${entry.value}">
-                                <td th:text="${#numbers.formatDecimal(result, 0, 2)}"></td>
+                                <td th:text="${#numbers.formatDecimal(result, 0, 2)} + €"></td>
                             </th:block>
                             <td><a class="link-normal" style="color:var(--color-mode)!important" th:href="@{/shoppingcard/remove/{id}(id=${entry.key.id})}">Supprimer</a></td>
                           </tr>
