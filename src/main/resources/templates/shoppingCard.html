@@ -14,6 +14,9 @@
         <div class="main_container--form">
             <div class="_row">
                 <h1 class="_col-12">Panier</h1>
+                <div class="_col-12">
+                    <span class="error-handler" th:text="${session.error}"></span>
+                </div>
                 <table class="table-spring _col-12 scrollbar-ok">
                     <tbody>
                         <tr>
@@ -25,7 +28,7 @@
                         </tr>
                         <tr th:each="entry : ${products}">
                             <td th:text="${entry.key.name}"></td>
-                            <td th:text="${entry.key.price}"></td>
+                            <td th:text="${entry.key.price} + €"></td>
                             <td class="table-spring_case--plusminus">
                                 <div>
                                     <a class="button-round button-round--discret" th:href="@{/shoppingcard/less/{id}(id=${entry.key.id})}">-1</a>
@@ -34,7 +37,7 @@
                                 </div>
                             </td>
                             <th:block th:with="result=${entry.key.price} * ${entry.value}">
-                                <td th:text="${#numbers.formatDecimal(result, 0, 2)}"></td>
+                                <td th:text="${#numbers.formatDecimal(result, 0, 2)} + €"></td>
                             </th:block>
                             <td><a class="link-normal" style="color:var(--color-mode)!important" th:href="@{/shoppingcard/remove/{id}(id=${entry.key.id})}">Supprimer</a></td>
                           </tr>
@@ -51,7 +54,6 @@
                       <a th:href="@{/createsOrder}">
                           <button class="button-round button--big"><i class="fas fa-check"></i> Commander</button>
                       </a>
-                      <h4 th:text="${session.error}"></h4>
                   </div>
             </div>
     </div>
