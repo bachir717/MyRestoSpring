@@ -30,6 +30,10 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
+    public UserDetails loadAllUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findAllByUsername(username).orElse(null);
+    }
+
     public boolean save(User user) {
         return userRepository.save(user) != null;
     }
