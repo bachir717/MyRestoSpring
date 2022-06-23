@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         String branchName = "CherifBachir"
-        String repoUrl = "https://github.com/Chatbrume/ManagerAccountMicroServices.git"
+        String repoUrl = "https://github.com/bachir717/MyRestoSpring.git"
     }
     stages {
         stage('Checkout') {
@@ -24,7 +24,7 @@ pipeline {
                 script {
                     echo 'Execute all test...'
                     withMaven {
-                        bat "mvn -f ManagerAccountService/pom.xml clean test"
+                        bat "mvn -f MyRestoSpring/pom.xml clean test"
                     }
                     echo 'End of the execution'
                 }
@@ -35,7 +35,7 @@ pipeline {
                 script {
                     echo 'Generation of the javadoc...'
                     withMaven {
-                        bat "mvn -f ManagerAccountService/pom.xml javadoc:javadoc"
+                        bat "mvn -f MyRestoSpring/pom.xml javadoc:javadoc"
                     }
                     echo 'The javadoc have been generated !'
                 }
@@ -44,7 +44,7 @@ pipeline {
         }
         stage('confirmation email') {
             steps {
-                emailext to: "nioche.amelie@gmail.com", subject: "[Jenkins] ManagerAccount", body: "ManagerAccount jenkins pipeline build finished with success"
+                emailext to: "bachir_c@etna-alternance..net", subject: "[Jenkins] MyRestoSrping", body: "MyRestoSrping jenkins pipeline build finished with success"
                 echo 'An email have been send ! Consult your email adress !'
             }
         }
