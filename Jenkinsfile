@@ -1,9 +1,6 @@
 pipeline {
     agent any
-    tools {
-        jdk 'JDK_1.8_221'
-        maven 'MavenInstallation'
-    }
+    
     environment {
         String branchName = "CherifBachir"
         String repoUrl = "https://github.com/bachir717/MyRestoSpring.git"
