@@ -1,21 +1,51 @@
 pipeline {
     agent any
+    tools {
+        jdk 'JDK_1.8_221'
+        maven 'MavenInstallation'
+    }
+    environment {
+        String branchName = "CherifBachir"
+        String repoUrl = "https://github.com/Chatbrume/ManagerAccountMicroServices.git"
+    }
     stages {
-        stage("build"){
-            steps{
-            echo 'building the application...'
+        stage('Checkout') {
+            steps {
+                script {
+                    echo 'Cloning the "'+branchName+'" branch from "'+repoUrl+'".'
+                    echo 'Start cloning the github repository...'
+                    git branch: branchName, url: repoUrl
+                    echo 'repository clone on branch master done.'
+                }
             }
         }
-        
-        stage("test"){
-            steps{
-            echo 'testing the application...'
+        stage('Test') {
+            steps {
+                script {
+                    echo 'Execute all test...'
+                    withMaven {
+                        bat "mvn -f ManagerAccountService/pom.xml clean test"
+                    }
+                    echo 'End of the execution'
+                }
             }
         }
-        
-        stage("deploy"){
-            steps{
-            echo 'deploying the application...'
+        stage('generate javadoc') {
+            steps {
+                script {
+                    echo 'Generation of the javadoc...'
+                    withMaven {
+                        bat "mvn -f ManagerAccountService/pom.xml javadoc:javadoc"
+                    }
+                    echo 'The javadoc have been generated !'
+                }
+            }
+
+        }
+        stage('confirmation email') {
+            steps {
+                emailext to: "nioche.amelie@gmail.com", subject: "[Jenkins] ManagerAccount", body: "ManagerAccount jenkins pipeline build finished with success"
+                echo 'An email have been send ! Consult your email adress !'
             }
         }
     }
