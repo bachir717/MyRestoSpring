@@ -1,49 +1,62 @@
-pipeline {
+   pipeline {
     agent any
+    tools{
+        maven 'maven'
+    }
     
-    environment {
+     environment {
         String branchName = "CherifBachir"
         String repoUrl = "https://github.com/bachir717/MyRestoSpring.git"
+        registry = "youness/shop"
+        registryCredential = 'dockerhub'
+        app = ''
     }
     stages {
         stage('Checkout') {
             steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/CherifBachir']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/bachir717/MyRestoSpring.git']]])
+                bat('dir C:\\formationmaven\\outils\\apache-maven-3.6.3\\bin')
+            }
+        }
+        
+        stage('Compile') {
+            steps {
                 script {
-                    echo 'Cloning the "'+branchName+'" branch from "'+repoUrl+'".'
-                    echo 'Start cloning the github repository...'
-                    git branch: branchName, url: repoUrl
-                    echo 'repository clone on branch master done.'
+                    echo 'compiling'
+                    bat("C:\\formationmaven\\outils\\apache-maven-3.6.3\\bin\\mvn compile")
+                    echo 'compile success'
                 }
             }
         }
         stage('Test') {
             steps {
                 script {
-                    echo 'Execute all test...'
-                    withMaven {
-                        bat "mvn -f MyRestoSpring/pom.xml clean test"
-                    }
-                    echo 'End of the execution'
+                    echo 'starting spring boot application unit test .....'
+                    bat("C:\\formationmaven\\outils\\apache-maven-3.6.3\\bin\\mvn test")
+                    echo 'spring boot application unit tests passed'
                 }
             }
         }
-        stage('generate javadoc') {
+        stage('Javadoc') {
             steps {
                 script {
-                    echo 'Generation of the javadoc...'
-                    withMaven {
-                        bat "mvn -f MyRestoSpring/pom.xml javadoc:javadoc"
-                    }
-                    echo 'The javadoc have been generated !'
+                    echo 'generating doc'
+                    bat("C:\\formationmaven\\outils\\apache-maven-3.6.3\\bin\\mvn javadoc:javadoc")
+                    echo 'doc generated'
                 }
             }
-
         }
-        stage('confirmation email') {
-            steps {
-                emailext to: "bachir_c@etna-alternance..net", subject: "[Jenkins] MyRestoSrping", body: "MyRestoSrping jenkins pipeline build finished with success"
-                echo 'An email have been send ! Consult your email adress !'
-            }
-        }
+     }
+     post {
+    failure  
+    {
+        mail to: 'bachir_c@etna-alternance.net',               
+                    subject: "Job $JOB_NAME failed" ,
+                    body: """Build $BUILD_NUMBER failed.    
+Go to $BUILD_URL for more info."""
+    }
     }
 }
+   
+   
+ 
